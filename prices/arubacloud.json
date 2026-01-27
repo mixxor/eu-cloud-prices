@@ -7,7 +7,7 @@
   "instances": [
     {
       "id": "vps-o1i1",
-      "name": "VPS O1I1-test",
+      "name": "VPS O1I1",
       "vcpu": 1,
       "ram_gb": 1,
       "disk_gb": 20,
