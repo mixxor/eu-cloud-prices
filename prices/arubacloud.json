@@ -6,7 +6,7 @@
   "manual": true,
   "instances": [
     {
-      "id": "vps-o1i1",
+      "id": "vps-o1i1-t",
       "name": "VPS O1I1",
       "vcpu": 1,
       "ram_gb": 1,
