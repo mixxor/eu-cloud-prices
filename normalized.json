@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-27T22:22:22.862Z",
+  "last_updated": "2026-01-27T22:25:34.802Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
@@ -10,7 +10,7 @@
       "instances": [
         {
           "id": "vps-o1i1",
-          "name": "VPS O1I1",
+          "name": "VPS O1I1-test",
           "vcpu": 1,
           "ram_gb": 1,
           "disk_gb": 20,
