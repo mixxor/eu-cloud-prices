@@ -1,0 +1,25 @@
+name: Update Normalized Data
+
+on:
+  push:
+    branches: [main]
+    paths: ['prices/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate normalized.json
+        run: node normalize.js normalized.json
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update normalized.json [skip ci]"
+          file_pattern: normalized.json
