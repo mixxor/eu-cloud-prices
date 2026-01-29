@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-27T22:31:28.378Z",
+  "last_updated": "2026-01-29T11:20:23.667Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
@@ -6226,6 +6226,104 @@
         "notes": "Tiered: €0.018/GB first 50TB, €0.017 next 450TB, €0.0166 over 500TB"
       }
     },
+    "c1v": {
+      "provider": "c1v",
+      "fetched_at": "2026-01-29T12:00:00.000Z",
+      "source": "c1vhosting.it/store/linux-vps-ssd",
+      "manual": true,
+      "instances": [
+        {
+          "id": "venice",
+          "name": "VENICE",
+          "vcpu": 2,
+          "ram_gb": 2,
+          "disk_gb": 40,
+          "disk_type": "ssd",
+          "price_hourly": 0.00694,
+          "price_monthly": 5,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "it-rom",
+          "category": "standard"
+        },
+        {
+          "id": "naples",
+          "name": "NAPLES",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 60,
+          "disk_type": "ssd",
+          "price_hourly": 0.00736,
+          "price_monthly": 5.3,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "it-rom",
+          "category": "standard"
+        },
+        {
+          "id": "naples-500gb",
+          "name": "NAPLES 500GB",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 500,
+          "disk_type": "hdd",
+          "price_hourly": 0.00569,
+          "price_monthly": 4.1,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "it-rom",
+          "category": "storage"
+        },
+        {
+          "id": "piacenza",
+          "name": "PIACENZA",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 100,
+          "disk_type": "ssd",
+          "price_hourly": 0.01042,
+          "price_monthly": 7.5,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "it-rom",
+          "category": "standard"
+        },
+        {
+          "id": "verona",
+          "name": "VERONA",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 150,
+          "disk_type": "ssd",
+          "price_hourly": 0.01319,
+          "price_monthly": 9.5,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "it-rom",
+          "category": "standard"
+        },
+        {
+          "id": "trieste",
+          "name": "TRIESTE",
+          "vcpu": 8,
+          "ram_gb": 20,
+          "disk_gb": 200,
+          "disk_type": "ssd",
+          "price_hourly": 0.02222,
+          "price_monthly": 16,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "it-rom",
+          "category": "standard"
+        }
+      ],
+      "egress": {
+        "free_tb": 20,
+        "bandwidth_gbps": 1,
+        "notes": "20TB @ 1Gbps bandwidth included"
+      },
+      "notes": "RAID 10 SSD storage, DDR4 ECC RAM. Datacenter in Pomezia, Rome. IPv4 + IPv6 included."
+    },
     "civo": {
       "provider": "civo",
       "fetched_at": "2026-01-25T19:32:53.281Z",
@@ -6479,6 +6577,78 @@
         "notes": "Storage allocated in 500GB blocks. Free egress included."
       },
       "notes": "Set CIVO_API_TOKEN env var for live size data"
+    },
+    "cleura": {
+      "provider": "cleura",
+      "fetched_at": "2026-01-29T12:00:00.000Z",
+      "source": "getdeploying.com + cleura.com",
+      "manual": true,
+      "control_plane_cost": 0,
+      "instances": [
+        {
+          "id": "public-1-1",
+          "name": "Public 1vCPU 1GB",
+          "vcpu": 1,
+          "ram_gb": 1,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.022,
+          "price_monthly": 15.95,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "public-4-8",
+          "name": "Public 4vCPU 8GB",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.129,
+          "price_monthly": 92.82,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "public-8-16",
+          "name": "Public 8vCPU 16GB",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.258,
+          "price_monthly": 185.64,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        }
+      ],
+      "block_storage": {
+        "price_per_gb_monthly": 0.1197
+      },
+      "object_storage": {
+        "price_per_gb_monthly": 0.03256,
+        "notes": "1TB = $32.56/month"
+      },
+      "load_balancer": {
+        "price_monthly": 41.24
+      },
+      "primary_ip": {
+        "ipv4_monthly": 4.84,
+        "ipv6_monthly": 0,
+        "currency": "EUR"
+      },
+      "egress": {
+        "price_per_gb": 0.02875,
+        "currency": "EUR",
+        "notes": "~€34.43/TB, ingress free"
+      },
+      "notes": "OpenStack-based cloud. Pricing in USD for compute, EUR for storage/network. Data centers in Sweden and Germany."
     },
     "contabo": {
       "provider": "contabo",
@@ -7192,6 +7362,89 @@
         "min_object_size_kb": 128,
         "notes": "Tiered pricing: €0.018/GB up to 512TiB, cheaper for larger volumes. 128KB minimum object billing."
       }
+    },
+    "gcore": {
+      "provider": "gcore",
+      "fetched_at": "2026-01-29T12:00:00.000Z",
+      "source": "getdeploying.com + gcore.com",
+      "manual": true,
+      "control_plane_cost": 0,
+      "instances": [
+        {
+          "id": "g0-standard-1-2",
+          "name": "g0-standard-1-2",
+          "vcpu": 1,
+          "ram_gb": 2,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.02,
+          "price_monthly": 14.6,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "g0-standard-2-4",
+          "name": "g0-standard-2-4",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.04,
+          "price_monthly": 29.2,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "g0-standard-4-8",
+          "name": "g0-standard-4-8",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.08,
+          "price_monthly": 58.3,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "g0-standard-8-16",
+          "name": "g0-standard-8-16",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.18,
+          "price_monthly": 129.02,
+          "currency": "USD",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        }
+      ],
+      "load_balancer": {
+        "price_monthly": 21.22,
+        "currency": "USD",
+        "specs": "1 vCPU, 2 GB RAM, 1 Public IP"
+      },
+      "object_storage": {
+        "price_per_gb_monthly": 0.04879,
+        "currency": "USD",
+        "notes": "1 TB (~$48.79) includes 250k write requests"
+      },
+      "egress": {
+        "free_tb": "unlimited",
+        "cdn_free_tb": 1,
+        "cdn_overage_per_gb": 0.03,
+        "currency": "EUR",
+        "notes": "Server egress free. CDN includes 1 TB, then €0.030/GB"
+      },
+      "notes": "Luxembourg-based cloud. Free DDoS protection and WAF included. g0 instances are legacy Intel Xeon E3-E5."
     },
     "gcp": {
       "provider": "gcp",
@@ -10588,6 +10841,347 @@
         "notes": "€0.003/hour per IP"
       }
     },
+    "safespring": {
+      "provider": "safespring",
+      "fetched_at": "2026-01-29T12:00:00.000Z",
+      "source": "safespring.com/en/price",
+      "manual": true,
+      "control_plane_cost": 0,
+      "instances": [
+        {
+          "id": "b2-c1r2",
+          "name": "b2.c1r2",
+          "vcpu": 1,
+          "ram_gb": 2,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0235,
+          "price_monthly": 16.91,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c1r4",
+          "name": "b2.c1r4",
+          "vcpu": 1,
+          "ram_gb": 4,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0371,
+          "price_monthly": 26.7,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c2r4",
+          "name": "b2.c2r4",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.047,
+          "price_monthly": 33.82,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c2r8",
+          "name": "b2.c2r8",
+          "vcpu": 2,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0742,
+          "price_monthly": 53.4,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c4r8",
+          "name": "b2.c4r8",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0939,
+          "price_monthly": 67.64,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c4r16",
+          "name": "b2.c4r16",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.1483,
+          "price_monthly": 106.8,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c8r16",
+          "name": "b2.c8r16",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.1879,
+          "price_monthly": 135.28,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c8r32",
+          "name": "b2.c8r32",
+          "vcpu": 8,
+          "ram_gb": 32,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.2967,
+          "price_monthly": 213.6,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c16r32",
+          "name": "b2.c16r32",
+          "vcpu": 16,
+          "ram_gb": 32,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.3758,
+          "price_monthly": 270.56,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "b2-c16r64",
+          "name": "b2.c16r64",
+          "vcpu": 16,
+          "ram_gb": 64,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.5933,
+          "price_monthly": 427.2,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "l2-c2r4-100",
+          "name": "l2.c2r4.100",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 100,
+          "disk_type": "nvme",
+          "price_hourly": 0.0593,
+          "price_monthly": 42.72,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c2r4-500",
+          "name": "l2.c2r4.500",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 500,
+          "disk_type": "nvme",
+          "price_hourly": 0.1088,
+          "price_monthly": 78.32,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c4r8-100",
+          "name": "l2.c4r8.100",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 100,
+          "disk_type": "nvme",
+          "price_hourly": 0.1063,
+          "price_monthly": 76.54,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c4r8-500",
+          "name": "l2.c4r8.500",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 500,
+          "disk_type": "nvme",
+          "price_hourly": 0.1558,
+          "price_monthly": 112.14,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c8r16-100",
+          "name": "l2.c8r16.100",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 100,
+          "disk_type": "nvme",
+          "price_hourly": 0.2003,
+          "price_monthly": 144.18,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c8r16-500",
+          "name": "l2.c8r16.500",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 500,
+          "disk_type": "nvme",
+          "price_hourly": 0.2497,
+          "price_monthly": 179.78,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c16r32-100",
+          "name": "l2.c16r32.100",
+          "vcpu": 16,
+          "ram_gb": 32,
+          "disk_gb": 100,
+          "disk_type": "nvme",
+          "price_hourly": 0.3881,
+          "price_monthly": 279.46,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c16r32-500",
+          "name": "l2.c16r32.500",
+          "vcpu": 16,
+          "ram_gb": 32,
+          "disk_gb": 500,
+          "disk_type": "nvme",
+          "price_hourly": 0.4376,
+          "price_monthly": 315.06,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        },
+        {
+          "id": "l2-c32r64-1000",
+          "name": "l2.c32r64.1000",
+          "vcpu": 32,
+          "ram_gb": 64,
+          "disk_gb": 1000,
+          "disk_type": "nvme",
+          "price_hourly": 0.875,
+          "price_monthly": 630.12,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "local-storage"
+        }
+      ],
+      "gpu_instances": [
+        {
+          "id": "l2-c4r16-125-gA2",
+          "name": "l2.c4r16.125.gA2",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 125,
+          "gpu": "NVIDIA A2",
+          "gpu_count": 1,
+          "price_monthly": 297.71,
+          "currency": "EUR"
+        },
+        {
+          "id": "l2-c8r32-250-gA2",
+          "name": "l2.c8r32.250.gA2",
+          "vcpu": 8,
+          "ram_gb": 32,
+          "disk_gb": 250,
+          "gpu": "NVIDIA A2",
+          "gpu_count": 1,
+          "price_monthly": 415.63,
+          "currency": "EUR"
+        },
+        {
+          "id": "b2-c4r8-gA2",
+          "name": "b2.c4r8.gA2",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "gpu": "NVIDIA A2",
+          "gpu_count": 1,
+          "price_monthly": 247.42,
+          "currency": "EUR"
+        },
+        {
+          "id": "b2-c8r16-gA2",
+          "name": "b2.c8r16.gA2",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "gpu": "NVIDIA A2",
+          "gpu_count": 1,
+          "price_monthly": 315.06,
+          "currency": "EUR"
+        }
+      ],
+      "block_storage": {
+        "price_per_gb_monthly": 0.1068,
+        "ssd_price_per_gb_monthly": 0.3204,
+        "currency": "EUR",
+        "type": "HDD (3-replica Ceph)",
+        "notes": "HDD €0.1068/GB, SSD €0.3204/GB"
+      },
+      "object_storage": {
+        "price_per_gb_monthly": 0.0445,
+        "archive_price_per_gb_monthly": 0.03115,
+        "currency": "EUR",
+        "type": "S3-compatible",
+        "notes": "Standard €44.50/TB, Archive €31.15/TB"
+      },
+      "egress": {
+        "free_tb": "unlimited",
+        "price_per_gb": 0,
+        "notes": "Zero egress fees - no traffic cost for data sent to or from services"
+      },
+      "notes": "Swedish cloud provider. b2 flavors use network storage, l2 flavors have local NVMe. GPU options with NVIDIA A2."
+    },
     "scaleway": {
       "provider": "scaleway",
       "fetched_at": "2026-01-25T19:32:50.872Z",
@@ -11447,6 +12041,556 @@
         "notes": "Standard €0.01/GB, One Zone €0.012/GB, Glacier €0.002/GB. 750GB free for 90 days."
       }
     },
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://eu-cloud-prices/prices/schema.json",
+      "title": "Cloud Provider Price File",
+      "description": "Schema for EU cloud provider pricing data files",
+      "type": "object",
+      "required": [
+        "provider",
+        "fetched_at",
+        "manual",
+        "instances"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "Provider identifier (lowercase, matches filename)"
+        },
+        "fetched_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when data was fetched"
+        },
+        "source": {
+          "type": "string",
+          "description": "Data source description or URL"
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "API endpoint or webpage URL for pricing data"
+        },
+        "manual": {
+          "type": "boolean",
+          "description": "True if data was manually collected, false if from API"
+        },
+        "control_plane_cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Monthly cost for Kubernetes control plane in EUR. 0 = free, null = no K8s support"
+        },
+        "instances": {
+          "type": "array",
+          "description": "List of VM/compute instance types",
+          "items": {
+            "$ref": "#/$defs/instance"
+          }
+        },
+        "gpu_instances": {
+          "type": "array",
+          "description": "List of GPU-enabled instance types (optional)",
+          "items": {
+            "$ref": "#/$defs/gpu_instance"
+          }
+        },
+        "load_balancer": {
+          "$ref": "#/$defs/load_balancer"
+        },
+        "block_storage": {
+          "$ref": "#/$defs/block_storage"
+        },
+        "object_storage": {
+          "$ref": "#/$defs/object_storage"
+        },
+        "egress": {
+          "$ref": "#/$defs/egress"
+        },
+        "primary_ip": {
+          "$ref": "#/$defs/primary_ip"
+        },
+        "snapshots": {
+          "$ref": "#/$defs/snapshots"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional notes about the provider or data"
+        }
+      },
+      "$defs": {
+        "instance": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "vcpu",
+            "ram_gb",
+            "disk_gb",
+            "price_monthly",
+            "currency"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique instance identifier"
+            },
+            "name": {
+              "type": "string",
+              "description": "Display name for the instance type"
+            },
+            "vcpu": {
+              "type": "number",
+              "minimum": 0.1,
+              "description": "Number of virtual CPUs (can be fractional for shared instances)"
+            },
+            "ram_gb": {
+              "type": "number",
+              "minimum": 0,
+              "description": "RAM in gigabytes"
+            },
+            "disk_gb": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Included disk storage in GB. 0 = network storage required"
+            },
+            "disk_type": {
+              "type": "string",
+              "enum": [
+                "ssd",
+                "nvme",
+                "hdd",
+                "network",
+                "block-storage-required"
+              ],
+              "description": "Type of storage"
+            },
+            "price_hourly": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "description": "Hourly price"
+            },
+            "price_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Monthly price (typically ~730 hours)"
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ],
+              "description": "Price currency"
+            },
+            "architecture": {
+              "type": "string",
+              "enum": [
+                "x86",
+                "arm64"
+              ],
+              "description": "CPU architecture"
+            },
+            "location": {
+              "type": "string",
+              "description": "Region/location code (e.g., 'eu', 'eu-central-1', 'fr-par-1')"
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "standard",
+                "shared",
+                "dedicated",
+                "compute",
+                "memory",
+                "storage",
+                "general",
+                "development",
+                "production",
+                "burstable",
+                "local-storage"
+              ],
+              "description": "Instance category/type"
+            },
+            "range": {
+              "type": "string",
+              "description": "Product range/tier (e.g., 'General Purpose', 'Specialized')"
+            },
+            "cpu_type": {
+              "type": "string",
+              "description": "CPU model description"
+            }
+          }
+        },
+        "gpu_instance": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "vcpu",
+            "ram_gb",
+            "gpu",
+            "gpu_count",
+            "price_monthly",
+            "currency"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "vcpu": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "ram_gb": {
+              "type": "number",
+              "minimum": 0
+            },
+            "disk_gb": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "gpu": {
+              "type": "string",
+              "description": "GPU model (e.g., 'NVIDIA A2', 'NVIDIA A100')"
+            },
+            "gpu_count": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Number of GPUs"
+            },
+            "price_monthly": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            }
+          }
+        },
+        "load_balancer": {
+          "type": "object",
+          "required": [
+            "price_monthly"
+          ],
+          "properties": {
+            "price_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Base monthly cost for load balancer"
+            },
+            "price_hourly": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "description": "Load balancer type (e.g., 'Network', 'Application')"
+            },
+            "specs": {
+              "type": "string",
+              "description": "Included specs"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "block_storage": {
+          "type": "object",
+          "required": [
+            "price_per_gb_monthly"
+          ],
+          "properties": {
+            "price_per_gb_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Price per GB per month"
+            },
+            "ssd_price_per_gb_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "SSD storage price if different from default"
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "description": "Storage type (e.g., 'SSD', 'NVMe', 'HDD', 'gp3')"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "object_storage": {
+          "type": "object",
+          "required": [
+            "price_per_gb_monthly"
+          ],
+          "properties": {
+            "price_per_gb_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Price per GB per month for standard storage"
+            },
+            "archive_price_per_gb_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Archive/cold storage price per GB"
+            },
+            "egress_price_per_gb": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Egress price per GB from object storage"
+            },
+            "base_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Base monthly fee if applicable"
+            },
+            "included_storage_tb": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Storage included in base fee"
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "description": "Storage type (e.g., 'S3-compatible', 'S3 Standard')"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "egress": {
+          "type": "object",
+          "properties": {
+            "free_tb": {
+              "type": [
+                "number",
+                "string"
+              ],
+              "description": "Free egress in TB. Use 'unlimited' for unlimited free egress"
+            },
+            "price_per_gb": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Price per GB for egress overage"
+            },
+            "price_per_gb_overage": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Alternative key for overage pricing"
+            },
+            "bandwidth_gbps": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Included bandwidth in Gbps"
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "primary_ip": {
+          "type": "object",
+          "properties": {
+            "price_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Monthly cost for primary IPv4 address"
+            },
+            "ipv4_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Alternative key for IPv4 pricing"
+            },
+            "ipv6_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Monthly cost for IPv6 (usually 0)"
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            }
+          }
+        },
+        "snapshots": {
+          "type": "object",
+          "properties": {
+            "price_per_gb_monthly": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Price per GB per month for snapshots"
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "EUR",
+                "USD"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "serverspace": {
+      "provider": "serverspace",
+      "fetched_at": "2026-01-29T12:00:00.000Z",
+      "source": "serverspace.io/pricing",
+      "manual": true,
+      "control_plane_cost": 0,
+      "instances": [
+        {
+          "id": "vstack-1-1-10",
+          "name": "vStack 1vCPU 1GB",
+          "vcpu": 1,
+          "ram_gb": 1,
+          "disk_gb": 10,
+          "disk_type": "ssd",
+          "price_hourly": 0.00076,
+          "price_monthly": 0.55,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "vstack-2-4-50",
+          "name": "vStack 2vCPU 4GB",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 50,
+          "disk_type": "ssd",
+          "price_hourly": 0.00347,
+          "price_monthly": 2.5,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "vstack-4-16-100",
+          "name": "vStack 4vCPU 16GB",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 100,
+          "disk_type": "ssd",
+          "price_hourly": 0.01278,
+          "price_monthly": 9.2,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "vstack-8-32-250",
+          "name": "vStack 8vCPU 32GB",
+          "vcpu": 8,
+          "ram_gb": 32,
+          "disk_gb": 250,
+          "disk_type": "ssd",
+          "price_hourly": 0.03603,
+          "price_monthly": 25.94,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "vstack-16-64-500",
+          "name": "vStack 16vCPU 64GB",
+          "vcpu": 16,
+          "ram_gb": 64,
+          "disk_gb": 500,
+          "disk_type": "ssd",
+          "price_hourly": 0.07079,
+          "price_monthly": 50.97,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "vstack-32-128-1000",
+          "name": "vStack 32vCPU 128GB",
+          "vcpu": 32,
+          "ram_gb": 128,
+          "disk_gb": 1000,
+          "disk_type": "ssd",
+          "price_hourly": 0.14031,
+          "price_monthly": 101.02,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        }
+      ],
+      "block_storage": {
+        "price_per_gb_monthly": 0.09,
+        "currency": "EUR",
+        "type": "SSD"
+      },
+      "primary_ip": {
+        "price_monthly": 1.3,
+        "currency": "EUR"
+      },
+      "vmware_pricing": {
+        "vcpu_monthly": 4.87,
+        "ram_per_gb_monthly": 4.87,
+        "ssd_per_gb_monthly": 0.14,
+        "currency": "EUR"
+      },
+      "egress": {
+        "free_tb": "unlimited",
+        "notes": "Unlimited traffic included"
+      },
+      "notes": "vStack cloud with pay-as-you-go billing in 10-minute increments. Locations: Amsterdam, Toronto, Dubai, Almaty, New Jersey, Sao Paulo."
+    },
     "stackit": {
       "provider": "stackit",
       "provider_name": "STACKIT (Schwarz Group)",
@@ -12191,6 +13335,205 @@
         "api_docs": "https://docs.api.eu01.stackit.cloud/",
         "machine_types": "https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html"
       }
+    },
+    "thalassa": {
+      "provider": "thalassa",
+      "fetched_at": "2026-01-29T12:00:00.000Z",
+      "source": "thalassa.cloud/pricing",
+      "manual": true,
+      "control_plane_cost": 19.5,
+      "instances": [
+        {
+          "id": "dgp-small",
+          "name": "dgp-small",
+          "vcpu": 1,
+          "ram_gb": 2,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0072,
+          "price_monthly": 5.18,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "development"
+        },
+        {
+          "id": "dgp-medium",
+          "name": "dgp-medium",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.021,
+          "price_monthly": 15.11,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "development"
+        },
+        {
+          "id": "dgp-large",
+          "name": "dgp-large",
+          "vcpu": 2,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0546,
+          "price_monthly": 39.27,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "development"
+        },
+        {
+          "id": "dgp-xlarge",
+          "name": "dgp-xlarge",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.1247,
+          "price_monthly": 89.79,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "development"
+        },
+        {
+          "id": "dgp-2xlarge",
+          "name": "dgp-2xlarge",
+          "vcpu": 8,
+          "ram_gb": 32,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.2634,
+          "price_monthly": 189.63,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "development"
+        },
+        {
+          "id": "dgp-4xlarge",
+          "name": "dgp-4xlarge",
+          "vcpu": 16,
+          "ram_gb": 64,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.539,
+          "price_monthly": 388.11,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "development"
+        },
+        {
+          "id": "pgp-small",
+          "name": "pgp-small",
+          "vcpu": 1,
+          "ram_gb": 2,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0113,
+          "price_monthly": 8.14,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "production"
+        },
+        {
+          "id": "pgp-medium",
+          "name": "pgp-medium",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0278,
+          "price_monthly": 20,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "production"
+        },
+        {
+          "id": "pgp-large",
+          "name": "pgp-large",
+          "vcpu": 2,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.0688,
+          "price_monthly": 49.54,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "production"
+        },
+        {
+          "id": "pgp-xlarge",
+          "name": "pgp-xlarge",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.151,
+          "price_monthly": 108.72,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "production"
+        },
+        {
+          "id": "pgp-2xlarge",
+          "name": "pgp-2xlarge",
+          "vcpu": 8,
+          "ram_gb": 32,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.3072,
+          "price_monthly": 221.18,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "production"
+        },
+        {
+          "id": "pgp-4xlarge",
+          "name": "pgp-4xlarge",
+          "vcpu": 16,
+          "ram_gb": 64,
+          "disk_gb": 0,
+          "disk_type": "network",
+          "price_hourly": 0.6288,
+          "price_monthly": 452.74,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "production"
+        }
+      ],
+      "block_storage": {
+        "price_per_gb_monthly": 0.18,
+        "price_hourly": 0.000246,
+        "currency": "EUR"
+      },
+      "object_storage": {
+        "price_per_gb_monthly": 0.1,
+        "price_hourly": 0.000137,
+        "currency": "EUR"
+      },
+      "load_balancer": {
+        "price_monthly": 15,
+        "price_hourly": 0.0206,
+        "currency": "EUR",
+        "type": "HA Network Load Balancer (TCP/UDP)"
+      },
+      "egress": {
+        "free_tb": "unlimited",
+        "price_per_gb": 0,
+        "notes": "Data transfer free for all network types: private, cross-AZ, inbound, outbound"
+      },
+      "notes": "Dutch cloud provider. DGP (development) uses Intel Xeon E5, PGP (production) uses Intel Xeon Gold. Per-minute billing."
     },
     "upcloud": {
       "provider": "upcloud",
