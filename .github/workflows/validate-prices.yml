@@ -54,13 +54,7 @@ jobs:
             if [ "$filename" = "schema.json" ]; then
               continue
             fi
-            if python -c "
-import json, sys
-with open('$file') as f: data = json.load(f)
-required = ['provider', 'fetched_at', 'manual', 'instances']
-missing = [k for k in required if k not in data]
-sys.exit(1 if missing else 0)
-" 2>/dev/null; then
+            if python -c "import json, sys; data = json.load(open('$file')); required = ['provider', 'fetched_at', 'manual', 'instances']; missing = [k for k in required if k not in data]; sys.exit(1 if missing else 0)" 2>/dev/null; then
               echo "| $filename | ✅ Valid |" >> $GITHUB_STEP_SUMMARY
             else
               echo "| $filename | ❌ Invalid |" >> $GITHUB_STEP_SUMMARY
