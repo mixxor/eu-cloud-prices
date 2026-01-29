@@ -1,0 +1,98 @@
+{
+  "provider": "c1v",
+  "fetched_at": "2026-01-29T12:00:00.000Z",
+  "source": "c1vhosting.it/store/linux-vps-ssd",
+  "manual": true,
+  "instances": [
+    {
+      "id": "venice",
+      "name": "VENICE",
+      "vcpu": 2,
+      "ram_gb": 2,
+      "disk_gb": 40,
+      "disk_type": "ssd",
+      "price_hourly": 0.00694,
+      "price_monthly": 5.00,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "it-rom",
+      "category": "standard"
+    },
+    {
+      "id": "naples",
+      "name": "NAPLES",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_gb": 60,
+      "disk_type": "ssd",
+      "price_hourly": 0.00736,
+      "price_monthly": 5.30,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "it-rom",
+      "category": "standard"
+    },
+    {
+      "id": "naples-500gb",
+      "name": "NAPLES 500GB",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_gb": 500,
+      "disk_type": "hdd",
+      "price_hourly": 0.00569,
+      "price_monthly": 4.10,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "it-rom",
+      "category": "storage"
+    },
+    {
+      "id": "piacenza",
+      "name": "PIACENZA",
+      "vcpu": 4,
+      "ram_gb": 8,
+      "disk_gb": 100,
+      "disk_type": "ssd",
+      "price_hourly": 0.01042,
+      "price_monthly": 7.50,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "it-rom",
+      "category": "standard"
+    },
+    {
+      "id": "verona",
+      "name": "VERONA",
+      "vcpu": 4,
+      "ram_gb": 16,
+      "disk_gb": 150,
+      "disk_type": "ssd",
+      "price_hourly": 0.01319,
+      "price_monthly": 9.50,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "it-rom",
+      "category": "standard"
+    },
+    {
+      "id": "trieste",
+      "name": "TRIESTE",
+      "vcpu": 8,
+      "ram_gb": 20,
+      "disk_gb": 200,
+      "disk_type": "ssd",
+      "price_hourly": 0.02222,
+      "price_monthly": 16.00,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "it-rom",
+      "category": "standard"
+    }
+  ],
+  "egress": {
+    "free_tb": 20,
+    "bandwidth_gbps": 1,
+    "notes": "20TB @ 1Gbps bandwidth included"
+  },
+  "notes": "RAID 10 SSD storage, DDR4 ECC RAM. Datacenter in Pomezia, Rome. IPv4 + IPv6 included."
+}

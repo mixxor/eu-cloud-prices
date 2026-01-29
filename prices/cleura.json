@@ -1,0 +1,72 @@
+{
+  "provider": "cleura",
+  "fetched_at": "2026-01-29T12:00:00.000Z",
+  "source": "getdeploying.com + cleura.com",
+  "manual": true,
+  "control_plane_cost": 0,
+  "instances": [
+    {
+      "id": "public-1-1",
+      "name": "Public 1vCPU 1GB",
+      "vcpu": 1,
+      "ram_gb": 1,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.022,
+      "price_monthly": 15.95,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "public-4-8",
+      "name": "Public 4vCPU 8GB",
+      "vcpu": 4,
+      "ram_gb": 8,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.129,
+      "price_monthly": 92.82,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "public-8-16",
+      "name": "Public 8vCPU 16GB",
+      "vcpu": 8,
+      "ram_gb": 16,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.258,
+      "price_monthly": 185.64,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    }
+  ],
+  "block_storage": {
+    "price_per_gb_monthly": 0.1197
+  },
+  "object_storage": {
+    "price_per_gb_monthly": 0.03256,
+    "notes": "1TB = $32.56/month"
+  },
+  "load_balancer": {
+    "price_monthly": 41.24
+  },
+  "primary_ip": {
+    "ipv4_monthly": 4.84,
+    "ipv6_monthly": 0,
+    "currency": "EUR"
+  },
+  "egress": {
+    "price_per_gb": 0.02875,
+    "currency": "EUR",
+    "notes": "~€34.43/TB, ingress free"
+  },
+  "notes": "OpenStack-based cloud. Pricing in USD for compute, EUR for storage/network. Data centers in Sweden and Germany."
+}

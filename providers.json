@@ -352,5 +352,77 @@
       "source_type": "benchmark",
       "source_url": "https://www.vpsbenchmarks.com/yabs/aruba_cloud-12c-23gb-tg6042"
     }
+  },
+  "gcore": {
+    "name": "Gcore",
+    "country": "LU",
+    "flag": "/flags/lu.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": ["lu-lux", "de-fra", "nl-ams"],
+    "certifications": ["ISO27001", "SOC2", "PCI-DSS"],
+    "egress_free_tb": "unlimited",
+    "website": "https://gcore.com/cloud"
+  },
+  "cleura": {
+    "name": "Cleura",
+    "country": "SE",
+    "flag": "/flags/se.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": ["se-sto", "de-fra"],
+    "certifications": ["ISO27001"],
+    "egress_free_tb": 0,
+    "website": "https://cleura.com/"
+  },
+  "serverspace": {
+    "name": "Serverspace",
+    "country": "NL",
+    "flag": "/flags/nl.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": ["nl-ams"],
+    "certifications": [],
+    "egress_free_tb": "unlimited",
+    "website": "https://serverspace.io/"
+  },
+  "c1v": {
+    "name": "C1V Hosting",
+    "country": "IT",
+    "flag": "/flags/it.svg",
+    "type": "vm-only",
+    "managed_k8s": false,
+    "control_plane_cost": null,
+    "locations": ["it-rom"],
+    "certifications": [],
+    "egress_free_tb": 20,
+    "website": "https://www.c1vhosting.it/"
+  },
+  "safespring": {
+    "name": "Safespring",
+    "country": "SE",
+    "flag": "/flags/se.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": ["se-sto", "no-osl"],
+    "certifications": ["ISO27001"],
+    "egress_free_tb": 0,
+    "website": "https://www.safespring.com/"
+  },
+  "thalassa": {
+    "name": "Thalassa Cloud",
+    "country": "NL",
+    "flag": "/flags/nl.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 19.50,
+    "locations": ["nl-ams"],
+    "certifications": [],
+    "egress_free_tb": 0,
+    "website": "https://thalassa.cloud/"
   }
 }

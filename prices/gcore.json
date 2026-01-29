@@ -1,0 +1,83 @@
+{
+  "provider": "gcore",
+  "fetched_at": "2026-01-29T12:00:00.000Z",
+  "source": "getdeploying.com + gcore.com",
+  "manual": true,
+  "control_plane_cost": 0,
+  "instances": [
+    {
+      "id": "g0-standard-1-2",
+      "name": "g0-standard-1-2",
+      "vcpu": 1,
+      "ram_gb": 2,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.02,
+      "price_monthly": 14.60,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "g0-standard-2-4",
+      "name": "g0-standard-2-4",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.04,
+      "price_monthly": 29.20,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "g0-standard-4-8",
+      "name": "g0-standard-4-8",
+      "vcpu": 4,
+      "ram_gb": 8,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.08,
+      "price_monthly": 58.30,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "g0-standard-8-16",
+      "name": "g0-standard-8-16",
+      "vcpu": 8,
+      "ram_gb": 16,
+      "disk_gb": 0,
+      "disk_type": "network",
+      "price_hourly": 0.18,
+      "price_monthly": 129.02,
+      "currency": "USD",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    }
+  ],
+  "load_balancer": {
+    "price_monthly": 21.22,
+    "currency": "USD",
+    "specs": "1 vCPU, 2 GB RAM, 1 Public IP"
+  },
+  "object_storage": {
+    "price_per_gb_monthly": 0.04879,
+    "currency": "USD",
+    "notes": "1 TB (~$48.79) includes 250k write requests"
+  },
+  "egress": {
+    "free_tb": "unlimited",
+    "cdn_free_tb": 1,
+    "cdn_overage_per_gb": 0.03,
+    "currency": "EUR",
+    "notes": "Server egress free. CDN includes 1 TB, then €0.030/GB"
+  },
+  "notes": "Luxembourg-based cloud. Free DDoS protection and WAF included. g0 instances are legacy Intel Xeon E3-E5."
+}
