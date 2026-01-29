@@ -1,0 +1,68 @@
+name: Validate Price Files
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['prices/**']
+  push:
+    branches: [main]
+    paths: ['prices/**']
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate JSON Schema
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate price files
+        run: python scripts/validate-prices.py
+
+      - name: Check JSON syntax
+        run: |
+          echo "Checking JSON syntax..."
+          errors=0
+          for file in prices/*.json; do
+            if ! python -m json.tool "$file" > /dev/null 2>&1; then
+              echo "❌ Invalid JSON: $file"
+              errors=$((errors + 1))
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "Found $errors files with invalid JSON syntax"
+            exit 1
+          fi
+          echo "✅ All JSON files have valid syntax"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Price Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| File | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          for file in prices/*.json; do
+            filename=$(basename "$file")
+            if [ "$filename" = "schema.json" ]; then
+              continue
+            fi
+            if python -c "
+import json, sys
+with open('$file') as f: data = json.load(f)
+required = ['provider', 'fetched_at', 'manual', 'instances']
+missing = [k for k in required if k not in data]
+sys.exit(1 if missing else 0)
+" 2>/dev/null; then
+              echo "| $filename | ✅ Valid |" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "| $filename | ❌ Invalid |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done

@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Generate normalized.json
-        run: node normalize.js normalized.json
+        run: node scripts/normalize.js normalized.json
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5

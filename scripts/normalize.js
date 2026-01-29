@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const pricesDir = path.join(__dirname, 'prices');
+const pricesDir = path.join(__dirname, '..', 'prices');
 const outputFile = process.argv[2] || 'normalized-automated.json';
 
 // Read all JSON files from prices folder
-const files = fs.readdirSync(pricesDir).filter(f => f.endsWith('.json'));
+const files = fs.readdirSync(pricesDir).filter(f => f.endsWith('.json') && f !== 'schema.json');
 
 const providers = {};
 for (const file of files.sort()) {
