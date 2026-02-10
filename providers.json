@@ -363,7 +363,13 @@
     "locations": ["lu-lux", "de-fra", "nl-ams"],
     "certifications": ["ISO27001", "SOC2", "PCI-DSS"],
     "egress_free_tb": "unlimited",
-    "website": "https://gcore.com/cloud"
+    "website": "https://gcore.com/cloud",
+    "storage_iops": {
+      "max_iops": 9000,
+      "max_bandwidth_mbps": 500,
+      "source_type": "official",
+      "source_url": "https://gcore.com/docs/cloud/volumes/about-volumes"
+    }
   },
   "cleura": {
     "name": "Cleura",

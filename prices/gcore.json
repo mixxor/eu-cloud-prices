@@ -1286,6 +1286,15 @@
       "currency": "EUR"
     }
   ],
+  "load_balancer": {
+    "price_monthly": 17.72,
+    "notes": "Base price for LB. Additional costs for traffic processing."
+  },
+  "block_storage": {
+    "price_per_gb_monthly": 0.10,
+    "type": "High IOPS SSD",
+    "notes": "High IOPS SSD: 60 IOPS/GB, max 9000 IOPS, 500 MB/s. Standard SSD: 6 IOPS/GB, max 4500 IOPS, 300 MB/s. SSD Low-Latency: up to 5000 IOPS, ~300µs latency."
+  },
   "object_storage": {
     "price_per_gb_monthly": 0.04,
     "currency": "EUR",
