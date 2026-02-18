@@ -430,5 +430,23 @@
     "certifications": [],
     "egress_free_tb": 0,
     "website": "https://thalassa.cloud/"
+  },
+  "nws": {
+    "name": "NETWAYS Web Services",
+    "country": "DE",
+    "flag": "/flags/de.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 50.4,
+    "locations": ["nbg3", "nbg4"],
+    "certifications": ["ISO27001", "PCI-DSS"],
+    "egress_free_tb": 0,
+    "website": "https://nws.netways.de/en",
+    "storage_iops": {
+      "max_iops": 10000,
+      "max_bandwidth_mbps": 2000,
+      "source_type": "official",
+      "source_url": "https://docs.nws.netways.de/en/cloud/reference/storage-classes/"
+    }
   }
 }
