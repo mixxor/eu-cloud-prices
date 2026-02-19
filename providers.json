@@ -6,8 +6,14 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["nbg1", "fsn1", "hel1"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "nbg1",
+      "fsn1",
+      "hel1"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": 20,
     "website": "https://www.hetzner.com/cloud",
     "api_pricing_url": "https://api.hetzner.cloud/v1/pricing",
@@ -16,7 +22,8 @@
       "max_bandwidth_mbps": 300,
       "source_type": "official",
       "source_url": "https://docs.hetzner.com/cloud/volumes/overview/"
-    }
+    },
+    "gpu_available": true
   },
   "ovh": {
     "name": "OVHcloud",
@@ -25,15 +32,25 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["gra", "sbg", "bhs", "waw", "de"],
-    "certifications": ["ISO27001", "HDS"],
+    "locations": [
+      "gra",
+      "sbg",
+      "bhs",
+      "waw",
+      "de"
+    ],
+    "certifications": [
+      "ISO27001",
+      "HDS"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://www.ovhcloud.com/en/public-cloud/kubernetes/",
     "storage_iops": {
       "max_iops": 3000,
       "source_type": "official",
       "source_url": "https://www.ovhcloud.com/en/public-cloud/iops/"
-    }
+    },
+    "gpu_available": true
   },
   "scaleway": {
     "name": "Scaleway",
@@ -42,15 +59,23 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["fr-par", "nl-ams", "pl-waw"],
-    "certifications": ["ISO27001", "HDS"],
+    "locations": [
+      "fr-par",
+      "nl-ams",
+      "pl-waw"
+    ],
+    "certifications": [
+      "ISO27001",
+      "HDS"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://www.scaleway.com/en/kubernetes-kapsule/",
     "storage_iops": {
       "max_iops": 15000,
       "source_type": "official",
       "source_url": "https://www.scaleway.com/en/block-storage/"
-    }
+    },
+    "gpu_available": true
   },
   "ionos": {
     "name": "IONOS",
@@ -59,15 +84,25 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["de/fra", "de/txl", "es/vit", "gb/lhr", "us/ewr", "us/las"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "de/fra",
+      "de/txl",
+      "es/vit",
+      "gb/lhr",
+      "us/ewr",
+      "us/las"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": 0,
     "website": "https://cloud.ionos.com/managed-kubernetes",
     "storage_iops": {
       "max_iops": 45000,
       "source_type": "official",
       "source_url": "https://cloud.ionos.com/storage/ssd-performance-classes"
-    }
+    },
+    "gpu_available": true
   },
   "upcloud": {
     "name": "UpCloud",
@@ -76,15 +111,24 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["de-fra1", "fi-hel1", "nl-ams1", "pl-waw1", "es-mad1"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "de-fra1",
+      "fi-hel1",
+      "nl-ams1",
+      "pl-waw1",
+      "es-mad1"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://upcloud.com/products/managed-kubernetes",
     "storage_iops": {
       "max_iops": 100000,
       "source_type": "official",
       "source_url": "https://upcloud.com/blog/going-beyond-ssd-with-maxiops/"
-    }
+    },
+    "gpu_available": true
   },
   "exoscale": {
     "name": "Exoscale",
@@ -93,15 +137,26 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0.03,
-    "locations": ["ch-gva-2", "ch-dk-2", "de-fra-1", "de-muc-1", "at-vie-1", "bg-sof-1"],
-    "certifications": ["ISO27001", "FINMA"],
+    "locations": [
+      "ch-gva-2",
+      "ch-dk-2",
+      "de-fra-1",
+      "de-muc-1",
+      "at-vie-1",
+      "bg-sof-1"
+    ],
+    "certifications": [
+      "ISO27001",
+      "FINMA"
+    ],
     "egress_free_tb": 0,
     "website": "https://www.exoscale.com/sks/",
     "storage_iops": {
       "max_iops": 5000,
       "source_type": "official",
       "source_url": "https://www.exoscale.com/block-storage/"
-    }
+    },
+    "gpu_available": true
   },
   "netcup": {
     "name": "netcup",
@@ -110,15 +165,21 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["de-nur", "at-vie"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "de-nur",
+      "at-vie"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://www.netcup.de/vserver/",
     "storage_iops": {
       "max_iops": 99500,
       "source_type": "benchmark",
       "source_url": "https://www.vpsbenchmarks.com/yabs/netcup-20c-63gb-320e29"
-    }
+    },
+    "gpu_available": true
   },
   "contabo": {
     "name": "Contabo",
@@ -127,7 +188,10 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["de-nur", "de-muc"],
+    "locations": [
+      "de-nur",
+      "de-muc"
+    ],
     "certifications": [],
     "egress_free_tb": 32,
     "website": "https://contabo.com/en/vps/",
@@ -135,7 +199,8 @@
       "max_iops": 5800,
       "source_type": "benchmark",
       "source_url": "https://www.vpsbenchmarks.com/yabs/contabo-6c-16gb-13562"
-    }
+    },
+    "gpu_available": true
   },
   "aws": {
     "name": "AWS (EKS)",
@@ -144,15 +209,27 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 73,
-    "locations": ["eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-north-1"],
-    "certifications": ["ISO27001", "SOC2", "HIPAA", "PCI-DSS"],
+    "locations": [
+      "eu-central-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "eu-north-1"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2",
+      "HIPAA",
+      "PCI-DSS"
+    ],
     "egress_free_tb": 0,
     "website": "https://aws.amazon.com/eks/",
     "storage_iops": {
       "max_iops": 256000,
       "source_type": "official",
       "source_url": "https://aws.amazon.com/ebs/volume-types/"
-    }
+    },
+    "gpu_available": true
   },
   "gcp": {
     "name": "GCP (GKE)",
@@ -161,15 +238,27 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 73,
-    "locations": ["europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-north1"],
-    "certifications": ["ISO27001", "SOC2", "HIPAA", "PCI-DSS"],
+    "locations": [
+      "europe-west1",
+      "europe-west2",
+      "europe-west3",
+      "europe-west4",
+      "europe-north1"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2",
+      "HIPAA",
+      "PCI-DSS"
+    ],
     "egress_free_tb": 0,
     "website": "https://cloud.google.com/kubernetes-engine",
     "storage_iops": {
       "max_iops": 350000,
       "source_type": "official",
       "source_url": "https://cloud.google.com/compute/docs/disks/hyperdisks"
-    }
+    },
+    "gpu_available": true
   },
   "azure": {
     "name": "Azure (AKS)",
@@ -178,15 +267,27 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["westeurope", "northeurope", "germanywestcentral", "francecentral", "uksouth"],
-    "certifications": ["ISO27001", "SOC2", "HIPAA", "PCI-DSS"],
+    "locations": [
+      "westeurope",
+      "northeurope",
+      "germanywestcentral",
+      "francecentral",
+      "uksouth"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2",
+      "HIPAA",
+      "PCI-DSS"
+    ],
     "egress_free_tb": 0,
     "website": "https://azure.microsoft.com/en-us/products/kubernetes-service",
     "storage_iops": {
       "max_iops": 400000,
       "source_type": "official",
       "source_url": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types"
-    }
+    },
+    "gpu_available": true
   },
   "stackit": {
     "name": "STACKIT",
@@ -195,8 +296,17 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 74.63,
-    "locations": ["eu-de-1", "eu-de-2", "eu-at-1"],
-    "certifications": ["ISO27001", "ISO27017", "ISO27018", "C5"],
+    "locations": [
+      "eu-de-1",
+      "eu-de-2",
+      "eu-at-1"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO27017",
+      "ISO27018",
+      "C5"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://www.stackit.de/en/pricing/cloud-services/",
     "storage_iops": {
@@ -204,7 +314,8 @@
       "max_bandwidth_mbps": 550,
       "source_type": "official",
       "source_url": "https://stackit.com/en/products/storage/stackit-block-storage"
-    }
+    },
+    "gpu_available": true
   },
   "infomaniak": {
     "name": "Infomaniak",
@@ -213,8 +324,13 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["ch-gva"],
-    "certifications": ["ISO27001", "ISO14001"],
+    "locations": [
+      "ch-gva"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO14001"
+    ],
     "egress_free_tb": 10,
     "website": "https://www.infomaniak.com/en/hosting/public-cloud",
     "storage_iops": {
@@ -222,7 +338,8 @@
       "max_bandwidth_mbps": 400,
       "source_type": "official",
       "source_url": "https://www.infomaniak.com/en/hosting/public-cloud"
-    }
+    },
+    "gpu_available": true
   },
   "civo": {
     "name": "Civo",
@@ -231,8 +348,16 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["lon1", "nyc1", "fra1", "phx1"],
-    "certifications": ["ISO27001", "SOC2"],
+    "locations": [
+      "lon1",
+      "nyc1",
+      "fra1",
+      "phx1"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://www.civo.com/kubernetes",
     "api_pricing_url": "https://api.civo.com/v2/sizes",
@@ -240,7 +365,8 @@
       "max_iops": 840,
       "source_type": "benchmark",
       "source_url": "https://www.civo.com/learn/benchmarking-kubernetes-storage-using-kubestr"
-    }
+    },
+    "gpu_available": true
   },
   "cyso": {
     "name": "Cyso",
@@ -249,15 +375,20 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 29.99,
-    "locations": ["nl-ams"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "nl-ams"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": 4,
     "website": "https://cyso.cloud/managed-kubernetes",
     "storage_iops": {
       "max_iops": 25000,
       "source_type": "official",
       "source_url": "https://cyso.cloud/blog/speed-up-10x-save-money-tier-storage"
-    }
+    },
+    "gpu_available": false
   },
   "webdock": {
     "name": "Webdock",
@@ -266,10 +397,13 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["dk-dc1"],
+    "locations": [
+      "dk-dc1"
+    ],
     "certifications": [],
     "egress_free_tb": 1,
-    "website": "https://webdock.io/en"
+    "website": "https://webdock.io/en",
+    "gpu_available": false
   },
   "gridscale": {
     "name": "gridscale",
@@ -278,10 +412,23 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["fra-1", "fra-2", "fra-3", "ams-1", "han-1", "ezh-1", "luz-1", "app-1", "wie-1"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "fra-1",
+      "fra-2",
+      "fra-3",
+      "ams-1",
+      "han-1",
+      "ezh-1",
+      "luz-1",
+      "app-1",
+      "wie-1"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": 20,
-    "website": "https://gridscale.io/en/"
+    "website": "https://gridscale.io/en/",
+    "gpu_available": true
   },
   "leafcloud": {
     "name": "Leafcloud",
@@ -289,11 +436,17 @@
     "flag": "/flags/nl.svg",
     "type": "managed",
     "managed_k8s": true,
-    "control_plane_cost": 84.50,
-    "locations": ["nl-ams"],
-    "certifications": ["ISO27001", "SOC2"],
+    "control_plane_cost": 84.5,
+    "locations": [
+      "nl-ams"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2"
+    ],
     "egress_free_tb": 0.1,
-    "website": "https://leaf.cloud/"
+    "website": "https://leaf.cloud/",
+    "gpu_available": true
   },
   "metalstack": {
     "name": "metalstack.cloud",
@@ -302,10 +455,15 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 216,
-    "locations": ["de-muc"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "de-muc"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": "unlimited",
-    "website": "https://metalstack.cloud/"
+    "website": "https://metalstack.cloud/",
+    "gpu_available": false
   },
   "plusserver": {
     "name": "plusserver",
@@ -313,11 +471,18 @@
     "flag": "/flags/de.svg",
     "type": "managed",
     "managed_k8s": true,
-    "control_plane_cost": 65.70,
-    "locations": ["de"],
-    "certifications": ["ISO27001", "C5", "SOC2"],
+    "control_plane_cost": 65.7,
+    "locations": [
+      "de"
+    ],
+    "certifications": [
+      "ISO27001",
+      "C5",
+      "SOC2"
+    ],
     "egress_free_tb": "unlimited",
-    "website": "https://shop.plusserver.com/Kubernetes/Managed-Kubernetes/"
+    "website": "https://shop.plusserver.com/Kubernetes/Managed-Kubernetes/",
+    "gpu_available": true
   },
   "hostinger": {
     "name": "Hostinger",
@@ -326,7 +491,14 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["lt", "nl", "us", "uk", "sg", "br"],
+    "locations": [
+      "lt",
+      "nl",
+      "us",
+      "uk",
+      "sg",
+      "br"
+    ],
     "certifications": [],
     "egress_free_tb": 4,
     "website": "https://www.hostinger.com/vps-hosting",
@@ -334,7 +506,8 @@
       "max_iops": 121166,
       "source_type": "benchmark",
       "source_url": "https://www.vpsbenchmarks.com/yabs/hostinger-8c-31gb-20241127-a36806"
-    }
+    },
+    "gpu_available": false
   },
   "arubacloud": {
     "name": "Aruba Cloud",
@@ -343,15 +516,27 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["it-rom", "it-are", "de-fra", "fr-par", "gb-lon", "cz-prg", "pl-waw"],
-    "certifications": ["ISO27001", "ISO9001"],
+    "locations": [
+      "it-rom",
+      "it-are",
+      "de-fra",
+      "fr-par",
+      "gb-lon",
+      "cz-prg",
+      "pl-waw"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO9001"
+    ],
     "egress_free_tb": 2,
     "website": "https://www.arubacloud.com/vps/",
     "storage_iops": {
       "max_iops": 71746,
       "source_type": "benchmark",
       "source_url": "https://www.vpsbenchmarks.com/yabs/aruba_cloud-12c-23gb-tg6042"
-    }
+    },
+    "gpu_available": true
   },
   "gcore": {
     "name": "Gcore",
@@ -360,8 +545,16 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["lu-lux", "de-fra", "nl-ams"],
-    "certifications": ["ISO27001", "SOC2", "PCI-DSS"],
+    "locations": [
+      "lu-lux",
+      "de-fra",
+      "nl-ams"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2",
+      "PCI-DSS"
+    ],
     "egress_free_tb": "unlimited",
     "website": "https://gcore.com/cloud",
     "storage_iops": {
@@ -369,7 +562,8 @@
       "max_bandwidth_mbps": 500,
       "source_type": "official",
       "source_url": "https://gcore.com/docs/cloud/volumes/about-volumes"
-    }
+    },
+    "gpu_available": true
   },
   "cleura": {
     "name": "Cleura",
@@ -378,10 +572,16 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["se-sto", "de-fra"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "se-sto",
+      "de-fra"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": 0,
-    "website": "https://cleura.com/"
+    "website": "https://cleura.com/",
+    "gpu_available": false
   },
   "serverspace": {
     "name": "Serverspace",
@@ -390,10 +590,18 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 19,
-    "locations": ["nl-ams", "us-nj", "ca-tor", "ae-dxb", "kz-ala", "br-sao"],
+    "locations": [
+      "nl-ams",
+      "us-nj",
+      "ca-tor",
+      "ae-dxb",
+      "kz-ala",
+      "br-sao"
+    ],
     "certifications": [],
     "egress_free_tb": "unlimited",
-    "website": "https://serverspace.io/"
+    "website": "https://serverspace.io/",
+    "gpu_available": false
   },
   "c1v": {
     "name": "C1V Hosting",
@@ -402,10 +610,13 @@
     "type": "vm-only",
     "managed_k8s": false,
     "control_plane_cost": null,
-    "locations": ["it-rom"],
+    "locations": [
+      "it-rom"
+    ],
     "certifications": [],
     "egress_free_tb": 20,
-    "website": "https://www.c1vhosting.it/"
+    "website": "https://www.c1vhosting.it/",
+    "gpu_available": false
   },
   "safespring": {
     "name": "Safespring",
@@ -414,10 +625,16 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 0,
-    "locations": ["se-sto", "no-osl"],
-    "certifications": ["ISO27001"],
+    "locations": [
+      "se-sto",
+      "no-osl"
+    ],
+    "certifications": [
+      "ISO27001"
+    ],
     "egress_free_tb": 0,
-    "website": "https://www.safespring.com/"
+    "website": "https://www.safespring.com/",
+    "gpu_available": true
   },
   "thalassa": {
     "name": "Thalassa Cloud",
@@ -425,11 +642,14 @@
     "flag": "/flags/nl.svg",
     "type": "managed",
     "managed_k8s": true,
-    "control_plane_cost": 19.50,
-    "locations": ["nl-ams"],
+    "control_plane_cost": 19.5,
+    "locations": [
+      "nl-ams"
+    ],
     "certifications": [],
     "egress_free_tb": 0,
-    "website": "https://thalassa.cloud/"
+    "website": "https://thalassa.cloud/",
+    "gpu_available": false
   },
   "nws": {
     "name": "NETWAYS Web Services",
@@ -438,8 +658,14 @@
     "type": "managed",
     "managed_k8s": true,
     "control_plane_cost": 50.4,
-    "locations": ["nbg3", "nbg4"],
-    "certifications": ["ISO27001", "PCI-DSS"],
+    "locations": [
+      "nbg3",
+      "nbg4"
+    ],
+    "certifications": [
+      "ISO27001",
+      "PCI-DSS"
+    ],
     "egress_free_tb": 0,
     "website": "https://nws.netways.de/en",
     "storage_iops": {
@@ -447,6 +673,26 @@
       "max_bandwidth_mbps": 2000,
       "source_type": "official",
       "source_url": "https://docs.nws.netways.de/en/cloud/reference/storage-classes/"
-    }
+    },
+    "gpu_available": true
+  },
+  "nebius": {
+    "name": "Nebius",
+    "country": "NL",
+    "flag": "/flags/nl.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": [
+      "fi-hel",
+      "fr-par"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2"
+    ],
+    "egress_free_tb": "unlimited",
+    "website": "https://nebius.com/services/managed-kubernetes",
+    "gpu_available": true
   }
 }
