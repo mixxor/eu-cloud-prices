@@ -295,5 +295,11 @@
     "type": "S3-compatible",
     "notes": "€4.99/month base includes 1TB storage + 1TB egress. Overage: ~€0.005/GB storage, €0.001/GB egress"
   },
+  "certifications": [
+    "ISO 27001",
+    "BSI C5 Type 2",
+    "KRITIS-V / NIS-2",
+    "PCI DSS v4.0"
+  ],
   "notes": "Set HETZNER_API_TOKEN env var for live data"
 }
