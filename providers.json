@@ -12,7 +12,9 @@
       "hel1"
     ],
     "certifications": [
-      "ISO27001"
+      "ISO27001",
+      "C5",
+      "PCI-DSS"
     ],
     "egress_free_tb": 20,
     "website": "https://www.hetzner.com/cloud",
@@ -305,7 +307,8 @@
       "ISO27001",
       "ISO27017",
       "ISO27018",
-      "C5"
+      "C5",
+      "SOC2"
     ],
     "egress_free_tb": "unlimited",
     "website": "https://www.stackit.de/en/pricing/cloud-services/",
