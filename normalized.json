@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-23T22:47:48.726Z",
+  "last_updated": "2026-03-19T10:27:16.826Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
@@ -13412,6 +13412,149 @@
         "notes": "Zero egress fees - no traffic cost for data sent to or from services"
       },
       "notes": "Swedish cloud provider. b2 flavors use network storage, l2 flavors have local NVMe. GPU options with NVIDIA A2."
+    },
+    "scaleup": {
+      "provider": "scaleup",
+      "fetched_at": "2026-03-19T00:00:00.000Z",
+      "source": "Preisliste ScaleUp Open Cloud 2026-03, Preisliste OpenStack 2022-07",
+      "source_url": "https://www.scaleuptech.com/de/open-cloud/",
+      "manual": true,
+      "control_plane_cost": 73,
+      "instances": [
+        {
+          "id": "m2.micro",
+          "name": "m2.micro",
+          "vcpu": 1,
+          "ram_gb": 1,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.025,
+          "price_monthly": 18.25,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "m2.small",
+          "name": "m2.small",
+          "vcpu": 1,
+          "ram_gb": 2,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.03,
+          "price_monthly": 21.9,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "m2.medium",
+          "name": "m2.medium",
+          "vcpu": 2,
+          "ram_gb": 4,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.06,
+          "price_monthly": 43.8,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "m2.large",
+          "name": "m2.large",
+          "vcpu": 2,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.08,
+          "price_monthly": 58.4,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "m2.xlarge",
+          "name": "m2.xlarge",
+          "vcpu": 4,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.16,
+          "price_monthly": 116.8,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "m2.2xlarge",
+          "name": "m2.2xlarge",
+          "vcpu": 8,
+          "ram_gb": 32,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.32,
+          "price_monthly": 233.6,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "standard"
+        },
+        {
+          "id": "c2.xlarge",
+          "name": "c2.xlarge",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.12,
+          "price_monthly": 87.6,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "compute"
+        },
+        {
+          "id": "c2.2xlarge",
+          "name": "c2.2xlarge",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 0,
+          "disk_type": "block-storage-required",
+          "price_hourly": 0.24,
+          "price_monthly": 175.2,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "compute"
+        }
+      ],
+      "load_balancer": {
+        "price_monthly": 18.25,
+        "price_hourly": 0.025
+      },
+      "primary_ip": {
+        "price_monthly": 3
+      },
+      "block_storage": {
+        "price_per_gb_monthly": 0.12,
+        "type": "SSD",
+        "notes": "Object Storage also 0.12€/GB/month (SSD). Local Storage 0.12€/GB/month."
+      },
+      "object_storage": {
+        "price_per_gb_monthly": 0.12,
+        "type": "S3-compatible"
+      },
+      "egress": {
+        "free_tb": "unlimited",
+        "notes": "Free with fair use policy"
+      },
+      "notes": "Pricing is resource-based: 0.02€/h per CPU core, 0.005€/h per GB RAM (730h/month). Based on Sovereign Cloud Stack (SCS). K8s non-HA: 0.10€/h (73€/month), K8s HA: 0.30€/h (219€/month). Resource packages available with 12-month commitment."
     },
     "scaleway": {
       "provider": "scaleway",
