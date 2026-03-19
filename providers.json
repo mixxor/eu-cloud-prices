@@ -679,6 +679,28 @@
     },
     "gpu_available": true
   },
+  "scaleup": {
+    "name": "ScaleUp Technologies",
+    "country": "DE",
+    "flag": "/flags/de.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 73,
+    "locations": [
+      "DE-HAM1",
+      "DE-HAM2",
+      "DE-HAM3",
+      "DE-BER1",
+      "DE-BER2",
+      "DE-BER3",
+      "DE-NUE1",
+      "DE-DUS1"
+    ],
+    "certifications": [],
+    "egress_free_tb": "unlimited",
+    "website": "https://www.scaleuptech.com/de/open-cloud/",
+    "gpu_available": false
+  },
   "nebius": {
     "name": "Nebius",
     "country": "NL",
