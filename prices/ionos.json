@@ -1,6 +1,6 @@
 {
   "provider": "ionos",
-  "fetched_at": "2026-02-19T00:00:00.000Z",
+  "fetched_at": "2026-05-20T00:00:00.000Z",
   "source": "static",
   "source_url": "https://cloud.ionos.de/managed-kubernetes",
   "manual": true,

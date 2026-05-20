@@ -1,6 +1,6 @@
 {
   "provider": "nebius",
-  "fetched_at": "2026-02-19T00:00:00.000Z",
+  "fetched_at": "2026-05-20T00:00:00.000Z",
   "source": "static",
   "source_url": "https://docs.nebius.com/compute/resources/pricing",
   "manual": true,
@@ -10,7 +10,84 @@
   "component_pricing": {
     "vcpu_per_hour_usd": 0.012,
     "ram_per_gb_hour_usd": 0.0032,
-    "notes": "CPU and RAM billed separately per hour. Intel Ice Lake and AMD EPYC Genoa have identical pricing. Prices in USD, converted at 0.92 EUR/USD."
+    "notes": "CPU and RAM billed separately per hour for non-GPU and L40S VMs. Intel Ice Lake and AMD EPYC Genoa have identical CPU/RAM pricing. H100/H200/B200/B300 use unified per-GPU-hour billing (includes vCPU+RAM) since October 1, 2025. Prices in USD, converted at 0.92 EUR/USD."
+  },
+  "gpu_pricing": {
+    "billing_unit": "second",
+    "pricing_unit": "hour",
+    "note": "H100/H200/B200/B300 use unified per-GPU-hour billing (vCPU and RAM included) from October 1, 2025. L40S billed with separate GPU+CPU+RAM components.",
+    "gpus": [
+      {
+        "id": "b300-nvlink",
+        "name": "NVIDIA B300 NVLink",
+        "platform": "gpu-b300-sxm",
+        "price_per_gpu_hour_usd": 6.10,
+        "preemptible_price_per_gpu_hour_usd": 3.40,
+        "location": "uk-south1",
+        "notes": "Private region only."
+      },
+      {
+        "id": "b200-nvlink",
+        "name": "NVIDIA B200 NVLink",
+        "platform": "gpu-b200-sxm",
+        "price_per_gpu_hour_usd": 5.50,
+        "preemptible_price_per_gpu_hour_usd": 2.90,
+        "location": "us-central1",
+        "notes": "Unified billing (GPU+vCPU+RAM)."
+      },
+      {
+        "id": "b200-nvlink-a",
+        "name": "NVIDIA B200 NVLink",
+        "platform": "gpu-b200-sxm-a",
+        "price_per_gpu_hour_usd": 5.50,
+        "preemptible_price_per_gpu_hour_usd": 2.90,
+        "location": "me-west1",
+        "notes": "Unified billing (GPU+vCPU+RAM)."
+      },
+      {
+        "id": "h200-nvlink",
+        "name": "NVIDIA H200 NVLink",
+        "price_per_gpu_hour_usd": 3.50,
+        "preemptible_price_per_gpu_hour_usd": 1.45,
+        "location": "eu-north1, eu-north2, eu-west1, us-central1",
+        "notes": "Unified billing (GPU+vCPU+RAM)."
+      },
+      {
+        "id": "h100-nvlink",
+        "name": "NVIDIA H100 NVLink",
+        "price_per_gpu_hour_usd": 2.95,
+        "preemptible_price_per_gpu_hour_usd": 1.25,
+        "location": "eu-north1",
+        "notes": "Unified billing (GPU+vCPU+RAM)."
+      },
+      {
+        "id": "rtx-pro-6000",
+        "name": "NVIDIA RTX PRO 6000",
+        "price_per_gpu_hour_usd": 1.80,
+        "preemptible_price_per_gpu_hour_usd": 0.95,
+        "location": "us-central1"
+      },
+      {
+        "id": "l40s-intel",
+        "name": "NVIDIA L40S Intel",
+        "price_per_gpu_hour_usd": 1.35,
+        "preemptible_price_per_gpu_hour_usd": 0.65,
+        "cpu_per_hour_usd": 0.012,
+        "ram_per_gib_hour_usd": 0.0032,
+        "location": "eu-north1",
+        "notes": "GPU, CPU, and RAM billed separately."
+      },
+      {
+        "id": "l40s-amd",
+        "name": "NVIDIA L40S AMD",
+        "price_per_gpu_hour_usd": 1.35,
+        "preemptible_price_per_gpu_hour_usd": 0.65,
+        "cpu_per_hour_usd": 0.01,
+        "ram_per_gib_hour_usd": 0.0032,
+        "location": "eu-north1",
+        "notes": "GPU, CPU, and RAM billed separately."
+      }
+    ]
   },
   "instances": [
     {
@@ -216,9 +293,10 @@
     "tiers": {
       "network_ssd_non_replicated": 0.0488,
       "network_ssd": 0.0653,
-      "network_ssd_io_m3": 0.1086
+      "network_ssd_io_m3": 0.1086,
+      "shared_filesystem_ssd": 0.0736
     },
-    "notes": "Network SSD non-replicated €0.0488/GiB/mo, SSD €0.0653/GiB/mo, SSD IO M3 €0.1086/GiB/mo."
+    "notes": "Network SSD non-replicated €0.0488/GiB/mo ($0.053), SSD €0.0653/GiB/mo ($0.071), SSD IO M3 €0.1086/GiB/mo ($0.118), Shared Filesystem SSD €0.0736/GiB/mo ($0.08)."
   },
   "egress": {
     "free_tb": 1000,

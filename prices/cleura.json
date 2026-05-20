@@ -1,7 +1,7 @@
 {
   "provider": "cleura",
-  "fetched_at": "2026-01-29T12:00:00.000Z",
-  "source": "getdeploying.com + cleura.com",
+  "fetched_at": "2026-05-20T00:00:00.000Z",
+  "source": "cleura.com/pricing",
   "manual": true,
   "control_plane_cost": 0,
   "instances": [
@@ -12,9 +12,9 @@
       "ram_gb": 1,
       "disk_gb": 0,
       "disk_type": "network",
-      "price_hourly": 0.022,
-      "price_monthly": 15.95,
-      "currency": "USD",
+      "price_hourly": 0.0185,
+      "price_monthly": 13.32,
+      "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
       "category": "standard"
@@ -26,9 +26,9 @@
       "ram_gb": 8,
       "disk_gb": 0,
       "disk_type": "network",
-      "price_hourly": 0.129,
-      "price_monthly": 92.82,
-      "currency": "USD",
+      "price_hourly": 0.1076,
+      "price_monthly": 77.52,
+      "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
       "category": "standard"
@@ -40,23 +40,26 @@
       "ram_gb": 16,
       "disk_gb": 0,
       "disk_type": "network",
-      "price_hourly": 0.258,
-      "price_monthly": 185.64,
-      "currency": "USD",
+      "price_hourly": 0.2153,
+      "price_monthly": 155.04,
+      "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
       "category": "standard"
     }
   ],
   "block_storage": {
-    "price_per_gb_monthly": 0.1197
+    "price_per_gb_monthly": 0.1,
+    "currency": "EUR"
   },
   "object_storage": {
-    "price_per_gb_monthly": 0.03256,
-    "notes": "1TB = $32.56/month"
+    "price_per_gb_monthly": 0.02,
+    "currency": "EUR",
+    "notes": "Swift"
   },
   "load_balancer": {
-    "price_monthly": 41.24
+    "price_monthly": 34.44,
+    "currency": "EUR"
   },
   "primary_ip": {
     "ipv4_monthly": 4.84,
@@ -66,7 +69,7 @@
   "egress": {
     "price_per_gb": 0.02875,
     "currency": "EUR",
-    "notes": "~€34.43/TB, ingress free"
+    "notes": "ingress free"
   },
-  "notes": "OpenStack-based cloud. Pricing in USD for compute, EUR for storage/network. Data centers in Sweden and Germany."
+  "notes": "OpenStack-based cloud. All prices EUR excl. VAT. Per-unit pricing: CPU €0.01009/h, RAM €0.00841/h. Data centers in Sweden and Germany."
 }

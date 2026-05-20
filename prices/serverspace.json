@@ -1,9 +1,9 @@
 {
   "provider": "serverspace",
-  "fetched_at": "2026-02-06T12:00:00.000Z",
+  "fetched_at": "2026-05-20T12:00:00.000Z",
   "source": "serverspace.io/pricing",
   "manual": true,
-  "control_plane_cost": 19,
+  "control_plane_cost": 21.85,
   "instances": [
     {
       "id": "vstack-1-1-25",
@@ -12,8 +12,8 @@
       "ram_gb": 1,
       "disk_gb": 25,
       "disk_type": "ssd",
-      "price_hourly": 0.00562,
-      "price_monthly": 4.10,
+      "price_hourly": 0.006,
+      "price_monthly": 4.63,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -26,8 +26,8 @@
       "ram_gb": 2,
       "disk_gb": 50,
       "disk_type": "ssd",
-      "price_hourly": 0.01137,
-      "price_monthly": 8.30,
+      "price_hourly": 0.013,
+      "price_monthly": 9.38,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -40,8 +40,8 @@
       "ram_gb": 2,
       "disk_gb": 60,
       "disk_type": "ssd",
-      "price_hourly": 0.01712,
-      "price_monthly": 12.50,
+      "price_hourly": 0.020,
+      "price_monthly": 14.17,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -54,8 +54,8 @@
       "ram_gb": 4,
       "disk_gb": 80,
       "disk_type": "ssd",
-      "price_hourly": 0.02288,
-      "price_monthly": 16.70,
+      "price_hourly": 0.026,
+      "price_monthly": 18.93,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -68,8 +68,8 @@
       "ram_gb": 8,
       "disk_gb": 160,
       "disk_type": "ssd",
-      "price_hourly": 0.04562,
-      "price_monthly": 33.30,
+      "price_hourly": 0.052,
+      "price_monthly": 37.74,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -82,22 +82,36 @@
       "ram_gb": 16,
       "disk_gb": 240,
       "disk_type": "ssd",
-      "price_hourly": 0.08556,
-      "price_monthly": 62.46,
+      "price_hourly": 0.099,
+      "price_monthly": 70.99,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
       "category": "standard"
     },
     {
-      "id": "vstack-8-32-625",
+      "id": "vstack-6-16-320",
+      "name": "vStack 6vCPU 16GB",
+      "vcpu": 6,
+      "ram_gb": 16,
+      "disk_gb": 320,
+      "disk_type": "ssd",
+      "price_hourly": 0.105,
+      "price_monthly": 75.59,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "vstack-8-32-640",
       "name": "vStack 8vCPU 32GB",
       "vcpu": 8,
       "ram_gb": 32,
-      "disk_gb": 625,
+      "disk_gb": 640,
       "disk_type": "ssd",
-      "price_hourly": 0.18260,
-      "price_monthly": 133.30,
+      "price_hourly": 0.210,
+      "price_monthly": 151.06,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -110,8 +124,22 @@
       "ram_gb": 48,
       "disk_gb": 720,
       "disk_type": "ssd",
-      "price_hourly": 0.24304,
-      "price_monthly": 177.42,
+      "price_hourly": 0.280,
+      "price_monthly": 201.52,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "standard"
+    },
+    {
+      "id": "vstack-16-64-1000",
+      "name": "vStack 16vCPU 64GB",
+      "vcpu": 16,
+      "ram_gb": 64,
+      "disk_gb": 1000,
+      "disk_type": "ssd",
+      "price_hourly": 0.381,
+      "price_monthly": 274.23,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
@@ -119,7 +147,7 @@
     }
   ],
   "block_storage": {
-    "price_per_gb_monthly": 0.09,
+    "price_per_gb_monthly": 0.10,
     "currency": "EUR",
     "type": "SSD"
   },
@@ -130,22 +158,22 @@
     "type": "S3-compatible"
   },
   "snapshots": {
-    "price_per_gb_monthly": 0.09,
+    "price_per_gb_monthly": 0.10,
     "currency": "EUR"
   },
   "primary_ip": {
-    "price_monthly": 1.30,
+    "price_monthly": 1.50,
     "currency": "EUR"
   },
   "vmware_pricing": {
-    "vcpu_monthly": 4.87,
-    "ram_per_gb_monthly": 4.87,
-    "ssd_per_gb_monthly": 0.14,
+    "vcpu_monthly": 5.60,
+    "ram_per_gb_monthly": 5.60,
+    "ssd_per_gb_monthly": 0.16,
     "currency": "EUR"
   },
   "egress": {
     "free_tb": "unlimited",
     "notes": "Unlimited traffic included with 50 Mbps non-tariffed bandwidth"
   },
-  "notes": "vStack cloud with pay-as-you-go billing in 10-minute increments. Fixed plans for Linux shown. Kubernetes control plane: €19/mo (standard), €57/mo (HA). Locations: Amsterdam, Toronto, Dubai, Almaty, New Jersey, Sao Paulo."
+  "notes": "vStack cloud with pay-as-you-go billing in 10-minute increments. Fixed plans for Linux shown. Kubernetes control plane: €21.85/mo (standard), €65.55/mo (HA). Locations: Amsterdam, Toronto, Dubai, Almaty, New Jersey, Sao Paulo, Tashkent (Uzbekistan)."
 }
