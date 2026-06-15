@@ -1,11 +1,11 @@
 {
   "$schema": "./schema.json",
   "provider": "nws",
-  "fetched_at": "2026-02-18T09:41:00.000Z",
+  "fetched_at": "2026-06-15T00:00:00.000Z",
   "source": "static",
   "source_url": "https://nws.netways.de/en/prices",
   "manual": true,
-  "control_plane_cost": 50.40,
+  "control_plane_cost": 50.4,
   "notes": "Prices do not include VAT. Discounts available for long-term commitments.",
   "instances": [
     {
@@ -386,7 +386,7 @@
       "disk_gb": 200,
       "gpu_count": 1,
       "gpu": "NVIDIA A10",
-      "price_monthly": 682.70,
+      "price_monthly": 682.7,
       "currency": "EUR"
     },
     {
@@ -458,22 +458,22 @@
   ],
   "load_balancer": {
     "price_hourly": 0.031945,
-    "price_monthly": 23.00,
+    "price_monthly": 23.0,
     "currency": "EUR",
     "type": "Network/Application",
     "notes": "OpenStack Octavia Load Balancer"
   },
   "block_storage": {
-    "price_per_gb_monthly": 0.12,
-    "ssd_price_per_gb": 0.16,
+    "price_per_gb_monthly": 0.118,
+    "ssd_price_per_gb": 0.118,
     "currency": "EUR",
     "type": "NVMe",
     "notes": "Block storage on NVMEs with various IOPS configurations"
   },
   "object_storage": {
-    "price_per_gb_monthly": 0.12,
-    "archive_price_per_gb_monthly": 0.01584,
-    "egress_price_per_gb": 0.06,
+    "price_per_gb_monthly": 0.118,
+    "archive_price_per_gb_monthly": 0.016,
+    "egress_price_per_gb": 0.01,
     "base_monthly": 0,
     "included_storage_tb": 0,
     "currency": "EUR",
@@ -481,19 +481,26 @@
   },
   "egress": {
     "free_tb": 0,
-    "price_per_gb": 0.06,
+    "price_per_gb": 0.01,
     "price_per_gb_overage": 0,
     "bandwidth_gbps": 10,
     "currency": "EUR"
   },
   "primary_ip": {
-    "price_monthly": 7.48,
-    "ipv4_monthly": 7.48,
+    "price_monthly": 7.475,
+    "ipv4_monthly": 7.475,
     "ipv6_monthly": 0,
     "currency": "EUR"
   },
   "snapshots": {
     "price_per_gb_monthly": 0.04,
     "currency": "EUR"
+  },
+  "component_pricing": {
+    "cpu_per_vcpu_hourly": 0.004255,
+    "cpu_per_vcpu_monthly": 3.064,
+    "ram_per_gb_hourly": 0.00368,
+    "ram_per_gb_monthly": 2.65,
+    "notes": "Custom flavors: CPU billed per vCPU, RAM per GB. Same rate for s1/s2."
   }
 }
