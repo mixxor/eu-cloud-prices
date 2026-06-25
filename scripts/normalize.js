@@ -22,13 +22,14 @@ Object.keys(providers).sort().forEach(key => {
   sortedProviders[key] = providers[key];
 });
 
-const oldestFetchedAt = Object.values(sortedProviders)
+const latestFetchedAt = Object.values(sortedProviders)
   .map(p => p.fetched_at)
   .filter(Boolean)
-  .sort()[0]; // ISO string lexicographic sort is correct for date ordering
+  .sort()
+  .at(-1); // ISO string lexicographic sort is correct; newest = last
 
 const output = {
-  last_updated: oldestFetchedAt || new Date().toISOString(),
+  last_updated: latestFetchedAt || new Date().toISOString(),
   build_timestamp: new Date().toISOString(),
   providers: sortedProviders
 };
