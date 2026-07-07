@@ -1,0 +1,131 @@
+{
+  "provider": "euronodes",
+  "fetched_at": "2026-07-06T00:00:00.000Z",
+  "source": "https://euronodes.com/cloud",
+  "manual": true,
+  "instances": [
+    {
+      "id": "vps-2c4g",
+      "name": "2 vCore / 4GB",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_gb": 100,
+      "disk_type": "ssd",
+      "price_monthly": 3.72,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-4c8g",
+      "name": "4 vCore / 8GB",
+      "vcpu": 4,
+      "ram_gb": 8,
+      "disk_gb": 150,
+      "disk_type": "ssd",
+      "price_monthly": 6.54,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-4c16g",
+      "name": "4 vCore / 16GB",
+      "vcpu": 4,
+      "ram_gb": 16,
+      "disk_gb": 150,
+      "disk_type": "ssd",
+      "price_monthly": 13.23,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-8c16g",
+      "name": "8 vCore / 16GB",
+      "vcpu": 8,
+      "ram_gb": 16,
+      "disk_gb": 200,
+      "disk_type": "ssd",
+      "price_monthly": 15.99,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-8c32g",
+      "name": "8 vCore / 32GB",
+      "vcpu": 8,
+      "ram_gb": 32,
+      "disk_gb": 200,
+      "disk_type": "ssd",
+      "price_monthly": 24.20,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-16c32g",
+      "name": "16 vCore / 32GB",
+      "vcpu": 16,
+      "ram_gb": 32,
+      "disk_gb": 200,
+      "disk_type": "ssd",
+      "price_monthly": 31.66,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-16c64g",
+      "name": "16 vCore / 64GB",
+      "vcpu": 16,
+      "ram_gb": 64,
+      "disk_gb": 350,
+      "disk_type": "ssd",
+      "price_monthly": 41.00,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    },
+    {
+      "id": "vps-32c128g",
+      "name": "32 vCore / 128GB",
+      "vcpu": 32,
+      "ram_gb": 128,
+      "disk_gb": 600,
+      "disk_type": "ssd",
+      "price_monthly": 96.00,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "dedicated"
+    }
+  ],
+  "egress": {
+    "free_tb": 20,
+    "notes": "20TB bandwidth included on every listed plan"
+  },
+  "ipv4": {
+    "included": false,
+    "verified": true,
+    "price_monthly": 0.70,
+    "notes": "Dedicated IPv4 costs an extra €0.70/month; IPv6 is always included at no charge"
+  },
+  "locations": [
+    "Portugal",
+    "Czech Republic"
+  ],
+  "object_storage": {
+    "available": true,
+    "base_monthly": 3.99,
+    "notes": "Pricing is per terabyte and rounded up to the next full TB"
+  }
+}

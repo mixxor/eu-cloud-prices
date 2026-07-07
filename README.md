@@ -19,6 +19,8 @@ Data source for [eucloudcost.com](https://www.eucloudcost.com)
 | Infomaniak | VM + Managed K8s | CH |
 | netcup | VM | DE |
 | Contabo | VM | DE |
+| Atlantic.Cloud | VM | PT |
+| Euronodes | VM | CY |
 | Hostinger | VM | LT |
 | Aruba Cloud | VM | IT |
 | Webdock | VM | DK |

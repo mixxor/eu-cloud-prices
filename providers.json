@@ -27,6 +27,53 @@
     },
     "gpu_available": true
   },
+  {
+  "euronodes": {
+    "name": "Euronodes",
+    "country": "CY",
+    "flag": "/flags/cy.svg",
+    "type": "vm-only",
+    "managed_k8s": false,
+    "control_plane_cost": null,
+    "locations": [
+      "PT",
+      "CZ"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO9001",
+      "ISO14001",
+      "ISO45001"
+    ],
+    "egress_free_tb": "20",
+    "website": "https://euronodes.com/",
+    "api_pricing_url": "https://euronodes.com/cloud",
+    "storage_iops": {
+      "max_iops": 106700,
+      "source_type": "benchmark",
+      "source_url": "https://www.vpsbenchmarks.com/yabs/euronodes-2c-4gb-20260524-aee67c"
+    },
+    "gpu_available": false
+  },
+  {
+  "atlanticcloud": {
+    "name": "Atlantic.Cloud",
+    "country": "PT",
+    "flag": "/flags/pt.svg",
+    "type": "vm-only",
+    "managed_k8s": false,
+    "control_plane_cost": null,
+    "locations": [
+      "PT"
+    ],
+    "certifications": [
+      "CDCTP"
+    ],
+    "egress_free_tb": "unlimited",
+    "website": "https://atlantic.cloud/en/vps/",
+    "api_pricing_url": ["https://api.atlantic.cloud/offer/vps-config?currency=EUR&trackViewItem=true", "https://api.atlantic.cloud/offer/vds-config?currency=EUR&trackViewItem=true"],
+    "gpu_available": false
+  },
   "ovh": {
     "name": "OVHcloud",
     "country": "FR",
