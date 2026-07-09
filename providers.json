@@ -27,7 +27,6 @@
     },
     "gpu_available": true
   },
-  {
   "euronodes": {
     "name": "Euronodes",
     "country": "CY",
@@ -55,7 +54,6 @@
     },
     "gpu_available": false
   },
-  {
   "atlanticcloud": {
     "name": "Atlantic.Cloud",
     "country": "PT",
