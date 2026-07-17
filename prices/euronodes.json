@@ -125,7 +125,8 @@
   ],
   "object_storage": {
     "available": true,
+    "price_per_gb_monthly": 0.004,
     "base_monthly": 3.99,
-    "notes": "Pricing is per terabyte and rounded up to the next full TB"
+    "notes": "€3.99 per TB, rounded up to the next full TB; per-GB price is the linear equivalent"
   }
 }
