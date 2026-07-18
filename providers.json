@@ -431,7 +431,7 @@
       "ISO27001"
     ],
     "egress_free_tb": 4,
-    "website": "https://cyso.cloud/managed-kubernetes",
+    "website": "https://cyso.cloud/services/managed-kubernetes",
     "storage_iops": {
       "max_iops": 25000,
       "source_type": "official",
