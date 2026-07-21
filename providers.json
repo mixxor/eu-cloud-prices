@@ -336,6 +336,64 @@
     },
     "gpu_available": true
   },
+  "azure-reservations-1year": {
+    "name": "Azure (AKS), 1 year reservation",
+    "country": "US",
+    "flag": "/flags/us.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": [
+      "westeurope",
+      "northeurope",
+      "germanywestcentral",
+      "francecentral",
+      "uksouth"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2",
+      "HIPAA",
+      "PCI-DSS"
+    ],
+    "egress_free_tb": 0,
+    "website": "https://azure.microsoft.com/en-us/products/kubernetes-service",
+    "storage_iops": {
+      "max_iops": 400000,
+      "source_type": "official",
+      "source_url": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types"
+    },
+    "gpu_available": true
+  },
+  "azure-reservations-3years": {
+    "name": "Azure (AKS), 3 years reservations",
+    "country": "US",
+    "flag": "/flags/us.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": [
+      "westeurope",
+      "northeurope",
+      "germanywestcentral",
+      "francecentral",
+      "uksouth"
+    ],
+    "certifications": [
+      "ISO27001",
+      "SOC2",
+      "HIPAA",
+      "PCI-DSS"
+    ],
+    "egress_free_tb": 0,
+    "website": "https://azure.microsoft.com/en-us/products/kubernetes-service",
+    "storage_iops": {
+      "max_iops": 400000,
+      "source_type": "official",
+      "source_url": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types"
+    },
+    "gpu_available": true
+  },
   "stackit": {
     "name": "STACKIT",
     "country": "DE",
