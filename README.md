@@ -17,6 +17,7 @@ Data source for [eucloudcost.com](https://www.eucloudcost.com)
 | STACKIT | VM + Managed K8s | DE |
 | Civo | Managed K8s | UK |
 | Infomaniak | VM + Managed K8s | CH |
+| Hikube | VM + Managed K8s + GPU + DBaaS | CH |
 | netcup | VM | DE |
 | Contabo | VM | DE |
 | Atlantic.Cloud | VM | PT |
