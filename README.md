@@ -55,18 +55,41 @@ documented successor requires an API key, which this project does not use.
 Every other provider file is maintained by hand and is never written to by
 automation.
 
-The workflow fetches, validates required fields, runs the schema-validation
-tests against `prices/schema.json`, then runs `scripts/plausibility_check.py`.
-If that gate passes it opens a PR; if it fails it opens an issue with the
-report and leaves `prices/` untouched. A human reviews and merges every data
-change.
+The workflow fetches all providers in one pass, validates required fields, runs
+the schema-validation tests against `prices/schema.json`, then runs
+`scripts/plausibility_check.py` once for every provider (`--json-out` gives a
+per-provider verdict alongside the human-readable report). It then opens **one
+PR per provider that actually changed**, each on its own `bot/prices-<provider>`
+branch:
+
+- A provider whose file changed and passed the gate cleanly gets a normal PR,
+  ready for review.
+- A provider whose file changed but tripped a hard finding still gets a PR —
+  as a **draft**, labelled `blocked`, with the warning and that provider's
+  findings at the top of the body. The gate's job is to make the risk
+  unmissable, not to hide the diff: reviewing a blocked PR is how you see
+  exactly what changed and decide whether to mark it ready.
+- A provider whose fetch itself failed (e.g. `gcp`'s 404s) never produces a
+  diff, so it gets no PR; instead the workflow opens (or updates) one issue
+  per failed provider.
+- A provider with no change at all gets nothing.
+
+Re-running the workflow updates each provider's existing PR in place (body,
+and a ready ⇄ draft transition if its verdict flipped) rather than opening a
+duplicate. `normalized.json` is never touched by this workflow — pushing to
+`main` under `prices/**` regenerates it separately via
+[`.github/workflows/normalize.yml`](.github/workflows/normalize.yml), so five
+per-provider PRs never fight over regenerating it themselves. A human reviews
+and merges every data change.
 
 Run it locally:
 
 ```bash
 pip install -r requirements-dev.txt
 python scripts/fetch_prices.py --provider all --dry-run
-python scripts/plausibility_check.py
+python scripts/plausibility_check.py                       # gate everything
+python scripts/plausibility_check.py --provider aws        # gate one provider
+python scripts/plausibility_check.py --json-out /tmp/verdicts.json
 ```
 
 ### Design decisions

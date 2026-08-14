@@ -34,17 +34,26 @@ jobs:
         with:
           python-version: '3.11'
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020   # v7.0.0
-        with:
-          node-version: '20'
+      - name: Capture base commit
+        # Every later step diffs against this instead of a moving "HEAD",
+        # since the per-provider loop below checks out a fresh branch (and
+        # therefore a new HEAD) for every provider that has a diff.
+        run: echo "BASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
 
       - name: Install test dependencies
         run: pip install -r requirements-dev.txt
 
-      - name: Ensure automation label exists
+      - name: Ensure automated label exists
+        if: "!inputs.dry_run"
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh label create automated --color ededed --description "Opened by the price-fetch automation" 2>/dev/null || true
+
+      - name: Ensure blocked label exists
+        if: "!inputs.dry_run"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh label create blocked --color d73a4a --description "Plausibility gate found a hard finding; do not mark ready without reviewing" 2>/dev/null || true
 
       - name: Fetch prices
         id: fetch
@@ -66,103 +75,208 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-          if [ "$(jq '.failed | length' /tmp/fetch-summary.json)" -gt 0 ]; then
-            {
-              printf '**Failed providers:** %s\n\n' "$(jq -r '.failed | keys | join(", ")' /tmp/fetch-summary.json)"
-              jq -r '.failed | to_entries[] | "- `" + .key + "`: " + .value' /tmp/fetch-summary.json
-              echo
-            } > /tmp/failed-providers.md
+      - name: Validate required fields
+        # Scoped to the providers actually fetched this run - not every
+        # file in prices/ - so a schema drift in a hand-maintained file
+        # (or an automated provider this run didn't touch) can't fail the
+        # job and take down the PR/issue loops for everyone else. Stays
+        # blocking (no continue-on-error) for the providers it does check.
+        run: |
+          mapfile -t fetched_files < <(jq -r '.ok[] | "prices/" + . + ".json"' /tmp/fetch-summary.json)
+          if [ "${#fetched_files[@]}" -eq 0 ]; then
+            echo "No providers were fetched; nothing to validate."
           else
-            : > /tmp/failed-providers.md
+            python scripts/validate-prices.py "${fetched_files[@]}"
           fi
 
-      - name: Validate required fields
-        run: python scripts/validate-prices.py
-
       - name: Validate against schema
-        run: python -m pytest tests/test_schema.py -q
+        # Same scoping, via an env var since pytest parametrize IDs aren't
+        # picked with positional args the way validate-prices.py's are.
+        run: |
+          mapfile -t fetched < <(jq -r '.ok[]' /tmp/fetch-summary.json)
+          if [ "${#fetched[@]}" -eq 0 ]; then
+            echo "No providers were fetched; running only the schema-shape tests."
+            python -m pytest tests/test_schema.py -q -k "not test_every_automated_provider_file_validates"
+          else
+            SCHEMA_TEST_PROVIDERS="${fetched[*]}" python -m pytest tests/test_schema.py -q
+          fi
 
       - name: Plausibility check
         id: plausibility
         continue-on-error: true
         run: |
           set +e
+          # Seeded before the gate runs: a gate crash must not leave a later
+          # `gh ... --body-file` / jq lookup reading a file that doesn't exist.
           printf '## Plausibility check\n\nThe gate did not produce a report; see the job log.\n' > /tmp/report.md
-          python scripts/plausibility_check.py --report /tmp/report.md
+          printf '{}' > /tmp/verdicts.json
+          python scripts/plausibility_check.py --report /tmp/report.md --json-out /tmp/verdicts.json
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           cat /tmp/report.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Detect changes
-        id: changes
-        run: |
-          if git diff --quiet -- prices/; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Open issue on hard failure
-        if: steps.plausibility.outputs.exit_code != '0' && !inputs.dry_run
+      - name: Open or update per-provider pull requests
+        if: "!inputs.dry_run"
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          title="Price fetch blocked by plausibility check"
-          cat /tmp/failed-providers.md /tmp/report.md > /tmp/issue-body.md
-          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
-          if [ -n "$existing" ]; then
-            gh issue comment "$existing" --body-file /tmp/issue-body.md
-          else
-            gh issue create --title "$title" --body-file /tmp/issue-body.md --label automated
-          fi
-          git checkout -- prices/
-          if git ls-files --error-unmatch scripts/fetchers/data/fx_rate.json >/dev/null 2>&1; then
-            git checkout -- scripts/fetchers/data/fx_rate.json
-          fi
-
-      - name: Regenerate normalized.json
-        if: steps.plausibility.outputs.exit_code == '0' && steps.changes.outputs.changed == 'true' && !inputs.dry_run
-        run: node scripts/normalize.js normalized.json
-
-      - name: Open pull request
-        if: steps.plausibility.outputs.exit_code == '0' && steps.changes.outputs.changed == 'true' && !inputs.dry_run
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
+          set +e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B bot/price-update
-          git add prices/ normalized.json
-          if [ -f scripts/fetchers/data/fx_rate.json ]; then
-            git add scripts/fetchers/data/fx_rate.json
-          fi
-          git commit -m "chore: refresh provider prices"
-          git push --force-with-lease origin bot/price-update
-          {
-            echo "Automated price refresh."
-            echo
-            cat /tmp/failed-providers.md
-            cat /tmp/report.md
-            echo
-            echo "Schema validation and the plausibility check ran in the fetch job."
-            echo "A PR opened with GITHUB_TOKEN does not trigger validate-prices.yml."
-          } > /tmp/pr-body.md
-          existing=$(gh pr list --head bot/price-update --state open --json number --jq '.[0].number // empty')
-          if [ -n "$existing" ]; then
-            gh pr edit "$existing" --body-file /tmp/pr-body.md
-          else
-            gh pr create --base main --head bot/price-update \
-              --title "chore: refresh provider prices" \
-              --body-file /tmp/pr-body.md --label automated
-          fi
+
+          mapfile -t providers < <(jq -r '.ok[]' /tmp/fetch-summary.json)
+
+          for provider in "${providers[@]}"; do
+            file="prices/${provider}.json"
+
+            if git diff --quiet "$BASE_SHA" -- "$file"; then
+              continue   # fetched ok, but nothing actually changed for this provider
+            fi
+
+            # Missing from verdicts.json (e.g. the gate crashed before writing
+            # it) defaults to blocked rather than clean: absence of evidence
+            # is not evidence of safety.
+            verdict=$(jq -c --arg p "$provider" \
+              'if has($p) then .[$p] else {"hard":1,"soft":0,"blocked":true} end' \
+              /tmp/verdicts.json)
+            hard=$(printf '%s' "$verdict" | jq -r '.hard')
+            blocked=$(printf '%s' "$verdict" | jq -r '.blocked')
+
+            branch="bot/prices-${provider}"
+
+            if ! git checkout -B "$branch" "$BASE_SHA"; then
+              echo "::warning::branch checkout failed for ${provider}, skipping"
+              continue
+            fi
+
+            # A per-provider report, not the whole-run one: the whole-run
+            # report (already gated once, above, for --json-out) carries
+            # every provider's findings, and cat-ing all of it into every
+            # single PR body scales with provider count x finding count -
+            # a few hundred findings for one provider is enough to push a
+            # blocked body past GitHub's 65,536-char limit on its own, and
+            # a clean provider's PR should never show another provider's
+            # hard failures anyway. Must run before `git add`/`git commit`
+            # below: the file has to still be an uncommitted diff against
+            # HEAD (== $BASE_SHA right after the checkout above) for the
+            # gate to see it as changed at all.
+            report_file="/tmp/report-${provider}.md"
+            printf "## Plausibility check\n\nThe gate did not produce a per-provider report for %s; see the job log.\n" \
+              "$provider" > "$report_file"
+            python scripts/plausibility_check.py --prices-dir prices --provider "$provider" --report "$report_file" > /dev/null
+
+            git add "$file"
+            if ! git commit -m "chore: refresh ${provider} prices"; then
+              echo "::warning::commit failed for ${provider}, skipping"
+              git checkout "$BASE_SHA" -- "$file"
+              continue
+            fi
+            if ! git push --force-with-lease origin "$branch"; then
+              echo "::warning::push failed for ${provider}, skipping"
+              git checkout "$BASE_SHA" -- "$file"
+              continue
+            fi
+
+            body="/tmp/pr-body-${provider}.md"
+            {
+              if [ "$blocked" = "true" ]; then
+                printf "⚠️ BLOCKED — %s hard finding(s). Do not mark ready without reviewing.\n\n" "$hard"
+              fi
+              printf "Automated price refresh for \`%s\`.\n\n" "$provider"
+              cat "$report_file"
+              echo
+              echo "Schema validation and the plausibility check ran in the fetch job."
+              echo "A PR opened with GITHUB_TOKEN does not trigger validate-prices.yml."
+            } > "$body"
+
+            # Backstop, not the primary defence: the per-provider report
+            # above should already keep this well under the limit, but one
+            # provider's own findings alone can still be pathological (e.g.
+            # a fetcher regression that nulls out every instance's price).
+            if [ "$(wc -c < "$body")" -gt 65000 ]; then
+              head -c 65000 "$body" | iconv -c -f utf-8 -t utf-8 > "${body}.tmp"
+              printf '\n\n_(body truncated at 65,000 chars; see the job summary for the full report)_\n' >> "${body}.tmp"
+              mv "${body}.tmp" "$body"
+            fi
+
+            existing_json=$(gh pr list --head "$branch" --state open --json number,isDraft --jq '.[0] // empty')
+
+            if [ -n "$existing_json" ]; then
+              existing=$(printf '%s' "$existing_json" | jq -r '.number')
+              is_draft=$(printf '%s' "$existing_json" | jq -r '.isDraft')
+              gh pr edit "$existing" --body-file "$body" \
+                || echo "::warning::PR body update failed for ${provider}"
+              # Draft/ready and the blocked label are two independent facts
+              # about the same verdict, not two branches of one flip: keying
+              # the label off the draft transition left it stale whenever a
+              # human toggled ready/draft by hand between runs.
+              if [ "$blocked" = "true" ]; then
+                if [ "$is_draft" = "false" ]; then
+                  gh pr ready "$existing" --undo \
+                    || echo "::warning::draft conversion failed for ${provider}"
+                fi
+                gh pr edit "$existing" --add-label blocked \
+                  || echo "::warning::adding blocked label failed for ${provider}"
+              else
+                if [ "$is_draft" = "true" ]; then
+                  gh pr ready "$existing" \
+                    || echo "::warning::ready conversion failed for ${provider}"
+                fi
+                gh pr edit "$existing" --remove-label blocked \
+                  || echo "::warning::removing blocked label failed for ${provider}"
+              fi
+            elif [ "$blocked" = "true" ]; then
+              gh pr create --draft --base main --head "$branch" \
+                --title "chore: refresh ${provider} prices" \
+                --body-file "$body" --label automated --label blocked \
+                || echo "::warning::PR create failed for ${provider}"
+            else
+              gh pr create --base main --head "$branch" \
+                --title "chore: refresh ${provider} prices" \
+                --body-file "$body" --label automated \
+                || echo "::warning::PR create failed for ${provider}"
+            fi
+          done
+
+          # Leave the checkout matching the original base: every provider's
+          # file is either untouched or safely committed on its own branch,
+          # never sitting here as an uncommitted (dirty) change. This does
+          # NOT cover scripts/fetchers/data/fx_rate.json, which fetch_prices.py
+          # may have rewritten this run: that file is deliberately never
+          # added or committed by this loop (it isn't any one provider's
+          # file), so it can be left modified in the working tree here. The
+          # runner is destroyed at the end of the job either way.
+          git checkout "$BASE_SHA" 2>/dev/null || true
+
+      - name: Open issues for providers whose fetch failed
+        if: "!inputs.dry_run"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          mapfile -t failed_providers < <(jq -r '.failed | keys[]' /tmp/fetch-summary.json)
+
+          for provider in "${failed_providers[@]}"; do
+            reason=$(jq -r --arg p "$provider" '.failed[$p]' /tmp/fetch-summary.json)
+            title="Price fetch failed: ${provider}"
+            body="/tmp/issue-body-${provider}.md"
+            printf "Automated price fetch for \`%s\` failed:\n\n\`\`\`\n%s\n\`\`\`\n" "$provider" "$reason" > "$body"
+
+            existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+            if [ -n "$existing" ]; then
+              gh issue comment "$existing" --body-file "$body"
+            else
+              gh issue create --title "$title" --body-file "$body" --label automated
+            fi
+          done
 
       - name: Open issue on total workflow failure
         if: failure() && !inputs.dry_run
         env:
           GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           title="Price fetch workflow failed"
-          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          printf 'The price-fetch workflow failed before it could produce a report (e.g. every provider failed, or a step crashed).\n\nSee the run log: %s\n' "$run_url" > /tmp/failure-body.md
+          printf 'The price-fetch workflow failed before it could produce a report (e.g. every provider failed, or a step crashed).\n\nSee the run log: %s\n' "$RUN_URL" > /tmp/failure-body.md
           existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --body-file /tmp/failure-body.md

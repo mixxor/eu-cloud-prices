@@ -2,8 +2,17 @@
 """
 Validate price JSON files against the schema.
 Exit code 0 = all valid, 1 = validation errors found.
+
+    python scripts/validate-prices.py [FILE ...]
+
+With no arguments, validates every file in prices/ (the historical
+behaviour, used by validate-prices.yml on every push/PR). Given explicit
+paths, validates only those - e.g. so a CI run only holds the providers it
+actually fetched to account, without a hand-maintained file elsewhere in
+prices/ blocking automation for providers it never touched.
 """
 
+import argparse
 import json
 import os
 import sys
@@ -54,6 +63,8 @@ def validate_price_file(filepath: str, schema: dict) -> list:
     try:
         with open(filepath) as f:
             data = json.load(f)
+    except FileNotFoundError:
+        return [f"File not found: {filepath}"]
     except json.JSONDecodeError as e:
         return [f"Invalid JSON: {e}"]
 
@@ -99,8 +110,15 @@ def validate_price_file(filepath: str, schema: dict) -> list:
     return errors
 
 
-def main():
+def main(argv=None):
     """Main entry point."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "files", nargs="*",
+        help="specific price files to validate; defaults to every file in prices/",
+    )
+    args = parser.parse_args(argv)
+
     prices_dir = Path(__file__).parent.parent / 'prices'
     schema_path = prices_dir / 'schema.json'
 
@@ -110,11 +128,14 @@ def main():
 
     schema = load_schema(schema_path)
 
-    # Find all price files (exclude schema.json)
-    price_files = sorted([
-        f for f in prices_dir.glob('*.json')
-        if f.name != 'schema.json'
-    ])
+    if args.files:
+        price_files = sorted(Path(f) for f in args.files)
+    else:
+        # Find all price files (exclude schema.json)
+        price_files = sorted([
+            f for f in prices_dir.glob('*.json')
+            if f.name != 'schema.json'
+        ])
 
     if not price_files:
         print("❌ No price files found")
