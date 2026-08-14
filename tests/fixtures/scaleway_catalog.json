@@ -1,0 +1,1047 @@
+{
+ "products": [
+  {
+   "sku": "/compute/vc1l/run",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "VC1-L",
+   "variant": "VC1-L - fr-par-2",
+   "description": "VC1-L - fr-par-2 (0\u20ac)",
+   "locality": {
+    "zone": "fr-par-2"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 0
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "Intel Atom C3855, x64, vCPUs: 6",
+      "arch": "x64",
+      "type": "Intel Atom C3855",
+      "virtual": {
+       "count": 6
+      },
+      "threads": 6,
+      "shared": true
+     },
+     "ram": {
+      "description": "8 GiB",
+      "size": 8589934592,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 200 Mb/s, Public: 200 Mb/s",
+      "internal_bandwidth": 200000000,
+      "public_bandwidth": 200000000,
+      "max_public_bandwidth": 200000000
+     }
+    },
+    "instance": {
+     "range": "VC1",
+     "offer_id": "VC1L",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/vc1m/run",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "VC1-M",
+   "variant": "VC1-M - fr-par-2",
+   "description": "VC1-M - fr-par-2 (0\u20ac)",
+   "locality": {
+    "zone": "fr-par-2"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 0
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "Intel Atom C3855, x64, vCPUs: 4",
+      "arch": "x64",
+      "type": "Intel Atom C3855",
+      "virtual": {
+       "count": 4
+      },
+      "threads": 4,
+      "shared": true
+     },
+     "ram": {
+      "description": "4 GiB",
+      "size": 4294967296,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 200 Mb/s, Public: 200 Mb/s",
+      "internal_bandwidth": 200000000,
+      "public_bandwidth": 200000000,
+      "max_public_bandwidth": 200000000
+     }
+    },
+    "instance": {
+     "range": "VC1",
+     "offer_id": "VC1M",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/vc1s/run",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "VC1-S",
+   "variant": "VC1-S - fr-par-2",
+   "description": "VC1-S - fr-par-2 (0\u20ac)",
+   "locality": {
+    "zone": "fr-par-2"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 0
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "Intel Atom C3855, x64, vCPUs: 2",
+      "arch": "x64",
+      "type": "Intel Atom C3855",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": true
+     },
+     "ram": {
+      "description": "2 GiB",
+      "size": 2147483648,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 200 Mb/s, Public: 200 Mb/s",
+      "internal_bandwidth": 200000000,
+      "public_bandwidth": 200000000,
+      "max_public_bandwidth": 200000000
+     }
+    },
+    "instance": {
+     "range": "VC1",
+     "offer_id": "VC1S",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_120gb/run_ams1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-120GB",
+   "variant": "X64-120GB - nl-ams-1",
+   "description": "X64-120GB - nl-ams-1 (0.3777\u20ac per hour)",
+   "locality": {
+    "zone": "nl-ams-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 377700000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 12",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 12
+      },
+      "threads": 12,
+      "shared": true
+     },
+     "ram": {
+      "description": "120 GiB",
+      "size": 128849018880,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 1 Gb/s, Public: 1 Gb/s",
+      "internal_bandwidth": 1000000000,
+      "public_bandwidth": 1000000000,
+      "max_public_bandwidth": 1000000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-120GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_120gb/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-120GB",
+   "variant": "X64-120GB - fr-par-1",
+   "description": "X64-120GB - fr-par-1 (0.3777\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 377700000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 12",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 12
+      },
+      "threads": 12,
+      "shared": true
+     },
+     "ram": {
+      "description": "120 GiB",
+      "size": 128849018880,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 1 Gb/s, Public: 1 Gb/s",
+      "internal_bandwidth": 1000000000,
+      "public_bandwidth": 1000000000,
+      "max_public_bandwidth": 1000000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-120GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_15gb/run_ams1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-15GB",
+   "variant": "X64-15GB - nl-ams-1",
+   "description": "X64-15GB - nl-ams-1 (0.0475\u20ac per hour)",
+   "locality": {
+    "zone": "nl-ams-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 47500000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 6",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 6
+      },
+      "threads": 6,
+      "shared": true
+     },
+     "ram": {
+      "description": "15 GiB",
+      "size": 16106127360,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 250 Mb/s, Public: 250 Mb/s",
+      "internal_bandwidth": 250000000,
+      "public_bandwidth": 250000000,
+      "max_public_bandwidth": 250000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-15GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_15gb/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-15GB",
+   "variant": "X64-15GB - fr-par-1",
+   "description": "X64-15GB - fr-par-1 (0.0475\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 47500000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 6",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 6
+      },
+      "threads": 6,
+      "shared": true
+     },
+     "ram": {
+      "description": "15 GiB",
+      "size": 16106127360,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 250 Mb/s, Public: 250 Mb/s",
+      "internal_bandwidth": 250000000,
+      "public_bandwidth": 250000000,
+      "max_public_bandwidth": 250000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-15GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_30gb/run_ams1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-30GB",
+   "variant": "X64-30GB - nl-ams-1",
+   "description": "X64-30GB - nl-ams-1 (0.0975\u20ac per hour)",
+   "locality": {
+    "zone": "nl-ams-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 97500000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 8",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 8
+      },
+      "threads": 8,
+      "shared": true
+     },
+     "ram": {
+      "description": "30 GiB",
+      "size": 32212254720,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 500 Mb/s, Public: 500 Mb/s",
+      "internal_bandwidth": 500000000,
+      "public_bandwidth": 500000000,
+      "max_public_bandwidth": 500000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-30GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_30gb/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-30GB",
+   "variant": "X64-30GB - fr-par-1",
+   "description": "X64-30GB - fr-par-1 (0.0975\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 97500000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 8",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 8
+      },
+      "threads": 8,
+      "shared": true
+     },
+     "ram": {
+      "description": "30 GiB",
+      "size": 32212254720,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 500 Mb/s, Public: 500 Mb/s",
+      "internal_bandwidth": 500000000,
+      "public_bandwidth": 500000000,
+      "max_public_bandwidth": 500000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-30GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/x64_60gb/run_ams1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "X64-60GB",
+   "variant": "X64-60GB - nl-ams-1",
+   "description": "X64-60GB - nl-ams-1 (0.1782\u20ac per hour)",
+   "locality": {
+    "zone": "nl-ams-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 178200000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC 7401P, x64, vCPUs: 10",
+      "arch": "x64",
+      "type": "AMD EPYC 7401P",
+      "virtual": {
+       "count": 10
+      },
+      "threads": 10,
+      "shared": true
+     },
+     "ram": {
+      "description": "60 GiB",
+      "size": 64424509440,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Dynamic local: 1 x SSD, Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 1 Gb/s, Public: 1 Gb/s",
+      "internal_bandwidth": 1000000000,
+      "public_bandwidth": 1000000000,
+      "max_public_bandwidth": 1000000000
+     }
+    },
+    "instance": {
+     "range": "X64",
+     "offer_id": "X64-60GB",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "retired",
+   "end_of_life_at": "2026-05-31T00:00:00Z",
+   "badges": []
+  },
+  {
+   "sku": "/compute/basic2_a2c_4g/run_ams1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "BASIC2-A2C-4G",
+   "variant": "BASIC2-A2C-4G - nl-ams-1",
+   "description": "BASIC2-A2C-4G - nl-ams-1 (0.023\u20ac per hour)",
+   "locality": {
+    "zone": "nl-ams-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 23000000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "Ampere M128-30, arm64, vCPUs: 2",
+      "arch": "arm64",
+      "type": "Ampere M128-30",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": true
+     },
+     "ram": {
+      "description": "4 GiB",
+      "size": 4294967296,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 200 Mb/s, Public: 200 Mb/s",
+      "internal_bandwidth": 200000000,
+      "public_bandwidth": 200000000,
+      "max_public_bandwidth": 200000000
+     }
+    },
+    "instance": {
+     "range": "General Purpose",
+     "offer_id": "BASIC2-A2C-4G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "environmental_impact_estimation": {
+    "kg_co2_equivalent": 0.0061172466,
+    "m3_water_usage": 1.2468583e-05
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  },
+  {
+   "sku": "/compute/b300_sxm_8_288g/run_fr-par-2",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "B300-SXM-8-288G",
+   "variant": "B300-SXM-8-288G - fr-par-2",
+   "description": "B300-SXM-8-288G - fr-par-2 (1\u20ac per minute)",
+   "locality": {
+    "zone": "fr-par-2"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 1,
+     "nanos": 0
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "Intel Xeon 6 6776P (2.3GHz), x64, vCPUs: 224",
+      "arch": "x64",
+      "type": "Intel Xeon 6 6776P (2.3GHz)",
+      "virtual": {
+       "count": 224
+      },
+      "threads": 224,
+      "shared": false
+     },
+     "ram": {
+      "description": "3.75 TiB",
+      "size": 4123168604160,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block, Scratch",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 20 Gb/s, Public: 20 Gb/s",
+      "internal_bandwidth": 20000000000,
+      "public_bandwidth": 20000000000,
+      "max_public_bandwidth": 20000000000
+     },
+     "gpu": {
+      "description": "8 x B300-SXM",
+      "count": 8,
+      "type": "B300-SXM"
+     }
+    },
+    "instance": {
+     "range": "GPU",
+     "offer_id": "B300-SXM-8-288G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "unit_of_measure": {
+    "unit": "minute",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  },
+  {
+   "sku": "/compute/compute3_x2c_4g/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "COMPUTE3-X2C-4G",
+   "variant": "COMPUTE3-X2C-4G - fr-par-1",
+   "description": "COMPUTE3-X2C-4G - fr-par-1 (0.0585\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 58500000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC\u2122 9555P (3.2 GHz), x64, vCPUs: 2",
+      "arch": "x64",
+      "type": "AMD EPYC\u2122 9555P (3.2 GHz)",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": false
+     },
+     "ram": {
+      "description": "4 GiB",
+      "size": 4294967296,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 4 Gb/s, Public: 500 Mb/s",
+      "internal_bandwidth": 4000000000,
+      "public_bandwidth": 500000000,
+      "max_public_bandwidth": 500000000
+     }
+    },
+    "instance": {
+     "range": "Specialized",
+     "offer_id": "COMPUTE3-X2C-4G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "environmental_impact_estimation": {
+    "kg_co2_equivalent": 0.0015372143,
+    "m3_water_usage": 1.7454856e-07
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  },
+  {
+   "sku": "/compute/memory3_x2c_16g/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "MEMORY3-X2C-16G",
+   "variant": "MEMORY3-X2C-16G - fr-par-1",
+   "description": "MEMORY3-X2C-16G - fr-par-1 (0.1133\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 113300000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC\u2122 9555P (3.2 GHz), x64, vCPUs: 2",
+      "arch": "x64",
+      "type": "AMD EPYC\u2122 9555P (3.2 GHz)",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": false
+     },
+     "ram": {
+      "description": "16 GiB",
+      "size": 17179869184,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 4 Gb/s, Public: 500 Mb/s",
+      "internal_bandwidth": 4000000000,
+      "public_bandwidth": 500000000,
+      "max_public_bandwidth": 500000000
+     }
+    },
+    "instance": {
+     "range": "Specialized",
+     "offer_id": "MEMORY3-X2C-16G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "environmental_impact_estimation": {
+    "kg_co2_equivalent": 0.0022567748,
+    "m3_water_usage": 2.0730609e-07
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  },
+  {
+   "sku": "/compute/pop2_hc_2c_4g/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "POP2-HC-2C-4G",
+   "variant": "POP2-HC-2C-4G - fr-par-1",
+   "description": "POP2-HC-2C-4G - fr-par-1 (0.0532\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 53200000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC\u2122 7543 (2.8 GHz), x64, vCPUs: 2",
+      "arch": "x64",
+      "type": "AMD EPYC\u2122 7543 (2.8 GHz)",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": false
+     },
+     "ram": {
+      "description": "4 GiB",
+      "size": 4294967296,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 400 Mb/s, Public: 400 Mb/s",
+      "internal_bandwidth": 400000000,
+      "public_bandwidth": 400000000,
+      "max_public_bandwidth": 400000000
+     }
+    },
+    "instance": {
+     "range": "Specialized",
+     "offer_id": "POP2-HC-2C-4G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "environmental_impact_estimation": {
+    "kg_co2_equivalent": 0.0010203389,
+    "m3_water_usage": 1.08775836e-07
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  },
+  {
+   "sku": "/compute/pop2_hm_2c_16g/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "POP2-HM-2C-16G",
+   "variant": "POP2-HM-2C-16G - fr-par-1",
+   "description": "POP2-HM-2C-16G - fr-par-1 (0.103\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 103000000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC\u2122 7543 (2.8 GHz), x64, vCPUs: 2",
+      "arch": "x64",
+      "type": "AMD EPYC\u2122 7543 (2.8 GHz)",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": false
+     },
+     "ram": {
+      "description": "16 GiB",
+      "size": 17179869184,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 400 Mb/s, Public: 400 Mb/s",
+      "internal_bandwidth": 400000000,
+      "public_bandwidth": 400000000,
+      "max_public_bandwidth": 400000000
+     }
+    },
+    "instance": {
+     "range": "Specialized",
+     "offer_id": "POP2-HM-2C-16G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "environmental_impact_estimation": {
+    "kg_co2_equivalent": 0.0015432372,
+    "m3_water_usage": 1.1984365e-07
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  },
+  {
+   "sku": "/compute/pop2_2c_8g/run_par1",
+   "service_category": "Compute",
+   "product_category": "Instance",
+   "product": "POP2-2C-8G",
+   "variant": "POP2-2C-8G - fr-par-1",
+   "description": "POP2-2C-8G - fr-par-1 (0.0735\u20ac per hour)",
+   "locality": {
+    "zone": "fr-par-1"
+   },
+   "price": {
+    "retail_price": {
+     "currency_code": "EUR",
+     "units": 0,
+     "nanos": 73500000
+    }
+   },
+   "properties": {
+    "hardware": {
+     "cpu": {
+      "description": "AMD EPYC\u2122 7543 (2.8 GHz), x64, vCPUs: 2",
+      "arch": "x64",
+      "type": "AMD EPYC\u2122 7543 (2.8 GHz)",
+      "virtual": {
+       "count": 2
+      },
+      "threads": 2,
+      "shared": false
+     },
+     "ram": {
+      "description": "8 GiB",
+      "size": 8589934592,
+      "type": "",
+      "ecc_type": "standard"
+     },
+     "storage": {
+      "description": "Block",
+      "total": 0
+     },
+     "network": {
+      "description": "Internal: 400 Mb/s, Public: 400 Mb/s",
+      "internal_bandwidth": 400000000,
+      "public_bandwidth": 400000000,
+      "max_public_bandwidth": 400000000
+     }
+    },
+    "instance": {
+     "range": "General Purpose",
+     "offer_id": "POP2-2C-8G",
+     "recommended_replacement_offer_ids": []
+    }
+   },
+   "environmental_impact_estimation": {
+    "kg_co2_equivalent": 0.001225533,
+    "m3_water_usage": 1.1527774e-07
+   },
+   "unit_of_measure": {
+    "unit": "hour",
+    "size": 1
+   },
+   "status": "general_availability",
+   "badges": []
+  }
+ ],
+ "total_count": 5452
+}

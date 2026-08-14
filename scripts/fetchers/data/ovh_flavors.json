@@ -1,0 +1,458 @@
+{
+  "b2-120": {
+    "vcpu": 32,
+    "ram_gb": 120,
+    "disk_gb": 400,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B2-120"
+  },
+  "b2-15": {
+    "vcpu": 4,
+    "ram_gb": 15,
+    "disk_gb": 100,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B2-15"
+  },
+  "b2-30": {
+    "vcpu": 8,
+    "ram_gb": 30,
+    "disk_gb": 200,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B2-30"
+  },
+  "b2-60": {
+    "vcpu": 16,
+    "ram_gb": 60,
+    "disk_gb": 400,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B2-60"
+  },
+  "b2-7": {
+    "vcpu": 2,
+    "ram_gb": 7,
+    "disk_gb": 50,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B2-7"
+  },
+  "b3-128": {
+    "vcpu": 32,
+    "ram_gb": 128,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-128"
+  },
+  "b3-16": {
+    "vcpu": 4,
+    "ram_gb": 16,
+    "disk_gb": 100,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-16"
+  },
+  "b3-256": {
+    "vcpu": 64,
+    "ram_gb": 256,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-256"
+  },
+  "b3-32": {
+    "vcpu": 8,
+    "ram_gb": 32,
+    "disk_gb": 200,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-32"
+  },
+  "b3-512": {
+    "vcpu": 128,
+    "ram_gb": 512,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-512"
+  },
+  "b3-64": {
+    "vcpu": 16,
+    "ram_gb": 64,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-64"
+  },
+  "b3-640": {
+    "vcpu": 160,
+    "ram_gb": 640,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-640"
+  },
+  "b3-8": {
+    "vcpu": 2,
+    "ram_gb": 8,
+    "disk_gb": 50,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "general",
+    "name": "B3-8"
+  },
+  "bm-l1": {
+    "vcpu": 16,
+    "ram_gb": 128,
+    "disk_gb": 1920,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "metal",
+    "name": "BM-L1"
+  },
+  "bm-m1": {
+    "vcpu": 8,
+    "ram_gb": 64,
+    "disk_gb": 1920,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "metal",
+    "name": "BM-M1"
+  },
+  "bm-s1": {
+    "vcpu": 4,
+    "ram_gb": 32,
+    "disk_gb": 1920,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "metal",
+    "name": "BM-S1"
+  },
+  "c2-120": {
+    "vcpu": 32,
+    "ram_gb": 120,
+    "disk_gb": 400,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C2-120"
+  },
+  "c2-15": {
+    "vcpu": 4,
+    "ram_gb": 15,
+    "disk_gb": 100,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C2-15"
+  },
+  "c2-30": {
+    "vcpu": 8,
+    "ram_gb": 30,
+    "disk_gb": 200,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C2-30"
+  },
+  "c2-60": {
+    "vcpu": 16,
+    "ram_gb": 60,
+    "disk_gb": 400,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C2-60"
+  },
+  "c2-7": {
+    "vcpu": 2,
+    "ram_gb": 7,
+    "disk_gb": 50,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C2-7"
+  },
+  "c3-128": {
+    "vcpu": 64,
+    "ram_gb": 128,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-128"
+  },
+  "c3-16": {
+    "vcpu": 8,
+    "ram_gb": 16,
+    "disk_gb": 200,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-16"
+  },
+  "c3-256": {
+    "vcpu": 128,
+    "ram_gb": 256,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-256"
+  },
+  "c3-32": {
+    "vcpu": 16,
+    "ram_gb": 32,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-32"
+  },
+  "c3-320": {
+    "vcpu": 160,
+    "ram_gb": 320,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-320"
+  },
+  "c3-4": {
+    "vcpu": 2,
+    "ram_gb": 4,
+    "disk_gb": 50,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-4"
+  },
+  "c3-64": {
+    "vcpu": 32,
+    "ram_gb": 64,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-64"
+  },
+  "c3-8": {
+    "vcpu": 4,
+    "ram_gb": 8,
+    "disk_gb": 100,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "compute",
+    "name": "C3-8"
+  },
+  "d2-2": {
+    "vcpu": 1,
+    "ram_gb": 2,
+    "disk_gb": 25,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "burstable",
+    "name": "D2-2"
+  },
+  "d2-4": {
+    "vcpu": 2,
+    "ram_gb": 4,
+    "disk_gb": 50,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "burstable",
+    "name": "D2-4"
+  },
+  "d2-8": {
+    "vcpu": 4,
+    "ram_gb": 8,
+    "disk_gb": 50,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "burstable",
+    "name": "D2-8"
+  },
+  "i1-180": {
+    "vcpu": 32,
+    "ram_gb": 180,
+    "disk_gb": 7600,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "storage",
+    "name": "I1-180"
+  },
+  "i1-45": {
+    "vcpu": 8,
+    "ram_gb": 45,
+    "disk_gb": 1900,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "storage",
+    "name": "I1-45"
+  },
+  "i1-90": {
+    "vcpu": 16,
+    "ram_gb": 90,
+    "disk_gb": 3800,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "storage",
+    "name": "I1-90"
+  },
+  "r2-120": {
+    "vcpu": 8,
+    "ram_gb": 120,
+    "disk_gb": 200,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R2-120"
+  },
+  "r2-15": {
+    "vcpu": 2,
+    "ram_gb": 15,
+    "disk_gb": 50,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R2-15"
+  },
+  "r2-240": {
+    "vcpu": 16,
+    "ram_gb": 240,
+    "disk_gb": 400,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R2-240"
+  },
+  "r2-30": {
+    "vcpu": 2,
+    "ram_gb": 30,
+    "disk_gb": 50,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R2-30"
+  },
+  "r2-60": {
+    "vcpu": 4,
+    "ram_gb": 60,
+    "disk_gb": 100,
+    "disk_type": "ssd",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R2-60"
+  },
+  "r3-1024": {
+    "vcpu": 128,
+    "ram_gb": 1024,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-1024"
+  },
+  "r3-128": {
+    "vcpu": 16,
+    "ram_gb": 128,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-128"
+  },
+  "r3-16": {
+    "vcpu": 2,
+    "ram_gb": 16,
+    "disk_gb": 50,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-16"
+  },
+  "r3-256": {
+    "vcpu": 32,
+    "ram_gb": 256,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-256"
+  },
+  "r3-32": {
+    "vcpu": 4,
+    "ram_gb": 32,
+    "disk_gb": 100,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-32"
+  },
+  "r3-512": {
+    "vcpu": 64,
+    "ram_gb": 512,
+    "disk_gb": 400,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-512"
+  },
+  "r3-64": {
+    "vcpu": 8,
+    "ram_gb": 64,
+    "disk_gb": 200,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "memory",
+    "name": "R3-64"
+  },
+  "t2-le-180": {
+    "vcpu": 60,
+    "ram_gb": 180,
+    "disk_gb": 500,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "gpu",
+    "name": "T2-LE-180",
+    "gpu": 4,
+    "gpu_model": "Tesla V100S 32GB"
+  },
+  "t2-le-45": {
+    "vcpu": 15,
+    "ram_gb": 45,
+    "disk_gb": 300,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "gpu",
+    "name": "T2-LE-45",
+    "gpu": 1,
+    "gpu_model": "Tesla V100S 32GB"
+  },
+  "t2-le-90": {
+    "vcpu": 30,
+    "ram_gb": 90,
+    "disk_gb": 500,
+    "disk_type": "nvme",
+    "architecture": "x86",
+    "category": "gpu",
+    "name": "T2-LE-90",
+    "gpu": 2,
+    "gpu_model": "Tesla V100S 32GB"
+  }
+}
