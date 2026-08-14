@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Gate freshly fetched price files against the versions committed at HEAD.
 
-Exit code 0 = clean or soft flags only, 1 = at least one hard failure.
-A hard failure means no PR is opened; the workflow files an issue instead.
+Exit code 0 = clean or soft flags only, 1 = at least one hard failure. The
+workflow runs this once for all providers (via --json-out) and opens a
+draft PR, labelled `blocked`, for any provider with a hard failure rather
+than suppressing its PR - the exit code and --json-out verdicts drive that
+per-provider decision. --provider restricts everything to one file.
 """
 
 from __future__ import annotations
@@ -286,7 +289,7 @@ def render_report(findings: list[Finding], reverted: list[str], fx_notes: list[s
 
     hard_block: list[str] = []
     if hard:
-        hard_block = ["### Hard failures — no PR opened", "", "| Provider | Check | Detail |", "|---|---|---|"]
+        hard_block = ["### Hard failures — opens as a draft PR", "", "| Provider | Check | Detail |", "|---|---|---|"]
         included = 0
         for f in hard:
             row = f"| {f.provider} | `{f.code}` | {f.message} |"
@@ -387,12 +390,25 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--prices-dir", default=str(PRICES_DIR))
     parser.add_argument("--report", help="also write the markdown report to this path")
+    parser.add_argument(
+        "--provider",
+        help="gate only this provider's file (matched against the price file's stem); "
+             "the exit code then reflects that provider alone",
+    )
+    parser.add_argument(
+        "--json-out",
+        help="write per-provider {hard, soft, blocked} verdicts as JSON to this path, "
+             "for every provider examined - including ones with zero findings",
+    )
     args = parser.parse_args(argv)
 
     prices_dir = Path(args.prices_dir).resolve()
     findings: list[Finding] = []
     reverted: list[str] = []
     fx_notes: list[str] = []
+    # Every provider whose file was looked at this run, regardless of whether
+    # it produced a finding - the basis for --json-out's per-provider verdicts.
+    examined_providers: set[str] = set()
 
     root = Path(subprocess.run(
         ["git", "rev-parse", "--show-toplevel"],
@@ -404,6 +420,14 @@ def main(argv: list[str] | None = None) -> int:
     changed = _git_diff_paths(prices_dir, root, "d")
     deleted = _git_diff_paths(prices_dir, root, "D")
     renamed = _git_renames(prices_dir, root)
+
+    if args.provider:
+        # Restrict every query below to the one file whose stem matches
+        # --provider, so both the report and the exit code reflect it alone.
+        changed = [rel for rel in changed if Path(rel).stem == args.provider]
+        deleted = [rel for rel in deleted if Path(rel).stem == args.provider]
+        renamed = [(o, n) for o, n in renamed if Path(o).stem == args.provider]
+
     # Renames are reported through their own loop below; exclude their two
     # halves from the plain deleted/changed queries to avoid a duplicate finding.
     renamed_old_paths = {old for old, _new in renamed}
@@ -414,6 +438,7 @@ def main(argv: list[str] | None = None) -> int:
         if path.name == "schema.json":
             continue
         name = path.stem
+        examined_providers.add(name)
         old = _head_version(old_rel, root)
         if not old:
             continue
@@ -430,6 +455,7 @@ def main(argv: list[str] | None = None) -> int:
         if path.name == "schema.json":
             continue
         name = path.stem
+        examined_providers.add(name)
         old = _head_version(rel, root)
         if not old:
             continue
@@ -445,6 +471,7 @@ def main(argv: list[str] | None = None) -> int:
         if path.name == "schema.json":
             continue
         name = path.stem
+        examined_providers.add(name)
         if not path.exists():
             # Listed as changed (not a deletion) but missing on disk, e.g. a
             # dangling symlink; still needs a hard finding, not a silent skip.
@@ -502,6 +529,17 @@ def main(argv: list[str] | None = None) -> int:
     print(report)
     if args.report:
         Path(args.report).write_text(report)
+
+    if args.json_out:
+        verdicts: dict[str, dict] = {p: {"hard": 0, "soft": 0} for p in examined_providers}
+        for f in findings:
+            # setdefault, not indexing: a Finding's provider is always one we
+            # recorded in examined_providers, but falling back defensively
+            # here costs nothing and keeps this block decoupled from that guarantee.
+            verdicts.setdefault(f.provider, {"hard": 0, "soft": 0})[f.level] += 1
+        for v in verdicts.values():
+            v["blocked"] = v["hard"] > 0
+        Path(args.json_out).write_text(json.dumps(verdicts, indent=2, sort_keys=True) + "\n")
 
     return 1 if any(f.level == "hard" for f in findings) else 0
 

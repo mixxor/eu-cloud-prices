@@ -496,3 +496,146 @@ def test_main_flags_malformed_json_as_hard_instead_of_crashing(tmp_path):
     subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
 
     assert pc.main(["--prices-dir", str(prices)]) == 1
+
+
+# --- per-provider PR restructure: --provider and --json-out ---------------
+#
+# The workflow now opens one PR per provider and must be able to gate (and
+# get a machine-readable verdict for) a single provider's file without the
+# other four providers' findings leaking into its exit code or report, plus
+# a JSON verdict file it can loop over instead of re-parsing the markdown.
+
+
+def _init_two_provider_repo(tmp_path: Path) -> Path:
+    """Like ``_init_repo``, but alpha and beta are both committed as the
+    baseline before either is dirtied - unlike bolting beta on after alpha
+    is already dirtied, which would sweep alpha's uncommitted change into
+    the "baseline" commit via ``git add -A`` and hide it from every
+    comparison that follows.
+    """
+    prices = _init_repo(tmp_path)
+    (prices / "beta.json").write_text(json.dumps({
+        "provider": "beta", "fetched_at": "2026-08-13T00:00:00Z",
+        "instances": [{"id": "b", "price_monthly": 5.0, "currency": "EUR"}],
+    }))
+    subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "add beta"], cwd=tmp_path, check=True)
+    return prices
+
+
+def test_provider_flag_restricts_the_verdict_to_one_file(tmp_path):
+    """alpha gets a real (hard) price jump; beta's price is untouched. Gating
+    with --provider alpha must fail; gating with --provider beta must pass,
+    even though alpha's file is still sitting there broken."""
+    prices = _init_two_provider_repo(tmp_path)
+    (prices / "alpha.json").write_text(json.dumps({
+        "provider": "alpha", "fetched_at": "2026-08-14T00:00:00Z",
+        "instances": [{"id": "x", "price_monthly": 100.0, "currency": "EUR"}],
+    }))
+    subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
+
+    assert pc.main(["--prices-dir", str(prices), "--provider", "beta"]) == 0
+    assert pc.main(["--prices-dir", str(prices), "--provider", "alpha"]) == 1
+    # No --provider at all still sees both, so the beta-only pass above
+    # wasn't just alpha being clean.
+    assert pc.main(["--prices-dir", str(prices)]) == 1
+
+
+def test_provider_flag_excludes_other_providers_findings_from_the_report(tmp_path):
+    prices = _init_two_provider_repo(tmp_path)
+    (prices / "alpha.json").write_text(json.dumps({
+        "provider": "alpha", "fetched_at": "2026-08-14T00:00:00Z",
+        "instances": [{"id": "x", "price_monthly": 100.0, "currency": "EUR"}],
+    }))
+    subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
+
+    report_path = tmp_path / "report.md"
+    pc.main(["--prices-dir", str(prices), "--provider", "beta", "--report", str(report_path)])
+    report = report_path.read_text()
+    assert "alpha" not in report
+    assert "No anomalies detected" in report
+
+
+def test_json_out_is_written_on_a_clean_run_with_no_changes(tmp_path):
+    """'Write it even when the run is clean' - including the degenerate case
+    where nothing changed at all, so the verdicts dict is empty."""
+    prices = _init_repo(tmp_path)
+    json_out = tmp_path / "verdicts.json"
+
+    assert pc.main(["--prices-dir", str(prices), "--json-out", str(json_out)]) == 0
+    assert json.loads(json_out.read_text()) == {}
+
+
+def test_json_out_includes_a_provider_with_zero_findings(tmp_path):
+    """A file can genuinely change (not a fetched_at-only no-op) without
+    tripping any check - e.g. a field compare() doesn't look at. That
+    provider must still show up in --json-out with hard=0, soft=0,
+    blocked=false, not be silently absent.
+    """
+    prices = _init_repo(tmp_path)
+    data = json.loads((prices / "alpha.json").read_text())
+    data["fetched_at"] = "2026-08-14T00:00:00Z"
+    data["instances"][0]["location"] = "us"  # not checked by compare() at all
+    (prices / "alpha.json").write_text(json.dumps(data))
+    subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
+
+    json_out = tmp_path / "verdicts.json"
+    assert pc.main(["--prices-dir", str(prices), "--json-out", str(json_out)]) == 0
+
+    verdicts = json.loads(json_out.read_text())
+    assert verdicts == {"alpha": {"hard": 0, "soft": 0, "blocked": False}}
+
+
+def test_json_out_is_written_on_a_blocked_run(tmp_path):
+    prices = _init_two_provider_repo(tmp_path)
+    (prices / "alpha.json").write_text(json.dumps({
+        "provider": "alpha", "fetched_at": "2026-08-14T00:00:00Z",
+        "instances": [{"id": "x", "price_monthly": 100.0, "currency": "EUR"}],
+    }))
+    subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
+    # beta gets a real, non-fetched_at-only change that trips no check, so
+    # it's "examined" with zero findings rather than absent or reverted.
+    beta_data = json.loads((prices / "beta.json").read_text())
+    beta_data["instances"][0]["location"] = "us"
+    (prices / "beta.json").write_text(json.dumps(beta_data))
+    subprocess.run(["git", "add", "prices/beta.json"], cwd=tmp_path, check=True)
+
+    json_out = tmp_path / "verdicts.json"
+    assert pc.main(["--prices-dir", str(prices), "--json-out", str(json_out)]) == 1
+
+    verdicts = json.loads(json_out.read_text())
+    assert verdicts["alpha"]["hard"] >= 1
+    assert verdicts["alpha"]["blocked"] is True
+    assert verdicts["beta"] == {"hard": 0, "soft": 0, "blocked": False}
+
+
+def test_json_out_and_provider_flag_combine_to_one_entry(tmp_path):
+    prices = _init_two_provider_repo(tmp_path)
+    (prices / "alpha.json").write_text(json.dumps({
+        "provider": "alpha", "fetched_at": "2026-08-14T00:00:00Z",
+        "instances": [{"id": "x", "price_monthly": 100.0, "currency": "EUR"}],
+    }))
+    subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
+    beta_data = json.loads((prices / "beta.json").read_text())
+    beta_data["instances"][0]["location"] = "us"
+    (prices / "beta.json").write_text(json.dumps(beta_data))
+    subprocess.run(["git", "add", "prices/beta.json"], cwd=tmp_path, check=True)
+
+    json_out = tmp_path / "verdicts.json"
+    pc.main(["--prices-dir", str(prices), "--provider", "beta", "--json-out", str(json_out)])
+
+    assert json.loads(json_out.read_text()) == {"beta": {"hard": 0, "soft": 0, "blocked": False}}
+
+
+def test_default_behaviour_without_the_new_flags_is_unchanged(tmp_path):
+    """Regression guard: introducing --provider/--json-out must not alter
+    the existing no-flags exit code or report for a run that never sets
+    them, e.g. by a stray verdicts computation running unconditionally."""
+    prices = _init_repo(tmp_path)
+    (prices / "alpha.json").write_text(json.dumps({
+        "provider": "alpha", "fetched_at": "2026-08-14T00:00:00Z",
+        "instances": [{"id": "x", "price_monthly": 100.0, "currency": "EUR"}],
+    }))
+    subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
+
+    assert pc.main(["--prices-dir", str(prices)]) == 1
