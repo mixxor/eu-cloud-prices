@@ -28,6 +28,35 @@
       "type": "boolean",
       "description": "True if data was manually collected, false if from API"
     },
+    "fx": {
+      "type": "object",
+      "description": "Exchange rates used to convert source-currency prices to EUR",
+      "required": ["base", "rate_date", "rates", "source"],
+      "properties": {
+        "base": {
+          "type": "string",
+          "description": "Base currency the rates are expressed against"
+        },
+        "rate_date": {
+          "type": "string",
+          "description": "ECB observation date (YYYY-MM-DD) the rates were published for"
+        },
+        "rates": {
+          "type": "object",
+          "description": "Units of each currency per 1 unit of base",
+          "additionalProperties": {"type": "number", "exclusiveMinimum": 0}
+        },
+        "source": {
+          "type": "string",
+          "description": "Human-readable description of the rate source"
+        }
+      }
+    },
+    "unknown_plan_codes": {
+      "type": "array",
+      "description": "Upstream plan codes with no local spec entry, reported for review",
+      "items": {"type": "string"}
+    },
     "control_plane_cost": {
       "type": ["number", "null"],
       "minimum": 0,
@@ -100,7 +129,7 @@
         },
         "disk_type": {
           "type": "string",
-          "enum": ["ssd", "nvme", "hdd", "network", "block-storage-required"],
+          "enum": ["ssd", "nvme", "hdd", "network", "block-storage-required", "ebs", "pd-ssd", "managed-ssd"],
           "description": "Type of storage"
         },
         "price_hourly": {
@@ -129,7 +158,7 @@
         },
         "category": {
           "type": "string",
-          "enum": ["standard", "shared", "dedicated", "compute", "memory", "storage", "general", "development", "production", "burstable", "local-storage"],
+          "enum": ["standard", "shared", "dedicated", "compute", "memory", "storage", "general", "development", "production", "burstable", "local-storage", "gpu", "metal", "vps"],
           "description": "Instance category/type"
         },
         "range": {

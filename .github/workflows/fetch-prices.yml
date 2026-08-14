@@ -1,0 +1,171 @@
+name: Fetch Prices
+
+on:
+  schedule:
+    - cron: '0 13 * * 5'     # Fridays 13:00 UTC (15:00 CEST)
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: 'Provider name or "all"'
+        default: 'all'
+      dry_run:
+        description: 'Fetch and report without opening a PR'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: fetch-prices
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1   # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97   # v7.0.0
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020   # v7.0.0
+        with:
+          node-version: '20'
+
+      - name: Install test dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Ensure automation label exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh label create automated --color ededed --description "Opened by the price-fetch automation" 2>/dev/null || true
+
+      - name: Fetch prices
+        id: fetch
+        env:
+          PROVIDER: ${{ inputs.provider || 'all' }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python scripts/fetch_prices.py --provider "$PROVIDER" --dry-run --summary-file /tmp/fetch-summary.json
+          else
+            python scripts/fetch_prices.py --provider "$PROVIDER" --summary-file /tmp/fetch-summary.json
+          fi
+
+          {
+            echo "## Fetch summary"
+            echo
+            echo '```json'
+            cat /tmp/fetch-summary.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$(jq '.failed | length' /tmp/fetch-summary.json)" -gt 0 ]; then
+            {
+              printf '**Failed providers:** %s\n\n' "$(jq -r '.failed | keys | join(", ")' /tmp/fetch-summary.json)"
+              jq -r '.failed | to_entries[] | "- `" + .key + "`: " + .value' /tmp/fetch-summary.json
+              echo
+            } > /tmp/failed-providers.md
+          else
+            : > /tmp/failed-providers.md
+          fi
+
+      - name: Validate required fields
+        run: python scripts/validate-prices.py
+
+      - name: Validate against schema
+        run: python -m pytest tests/test_schema.py -q
+
+      - name: Plausibility check
+        id: plausibility
+        continue-on-error: true
+        run: |
+          set +e
+          printf '## Plausibility check\n\nThe gate did not produce a report; see the job log.\n' > /tmp/report.md
+          python scripts/plausibility_check.py --report /tmp/report.md
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          cat /tmp/report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- prices/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open issue on hard failure
+        if: steps.plausibility.outputs.exit_code != '0' && !inputs.dry_run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Price fetch blocked by plausibility check"
+          cat /tmp/failed-providers.md /tmp/report.md > /tmp/issue-body.md
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file /tmp/issue-body.md
+          else
+            gh issue create --title "$title" --body-file /tmp/issue-body.md --label automated
+          fi
+          git checkout -- prices/
+          if git ls-files --error-unmatch scripts/fetchers/data/fx_rate.json >/dev/null 2>&1; then
+            git checkout -- scripts/fetchers/data/fx_rate.json
+          fi
+
+      - name: Regenerate normalized.json
+        if: steps.plausibility.outputs.exit_code == '0' && steps.changes.outputs.changed == 'true' && !inputs.dry_run
+        run: node scripts/normalize.js normalized.json
+
+      - name: Open pull request
+        if: steps.plausibility.outputs.exit_code == '0' && steps.changes.outputs.changed == 'true' && !inputs.dry_run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B bot/price-update
+          git add prices/ normalized.json
+          if [ -f scripts/fetchers/data/fx_rate.json ]; then
+            git add scripts/fetchers/data/fx_rate.json
+          fi
+          git commit -m "chore: refresh provider prices"
+          git push --force-with-lease origin bot/price-update
+          {
+            echo "Automated price refresh."
+            echo
+            cat /tmp/failed-providers.md
+            cat /tmp/report.md
+            echo
+            echo "Schema validation and the plausibility check ran in the fetch job."
+            echo "A PR opened with GITHUB_TOKEN does not trigger validate-prices.yml."
+          } > /tmp/pr-body.md
+          existing=$(gh pr list --head bot/price-update --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --body-file /tmp/pr-body.md
+          else
+            gh pr create --base main --head bot/price-update \
+              --title "chore: refresh provider prices" \
+              --body-file /tmp/pr-body.md --label automated
+          fi
+
+      - name: Open issue on total workflow failure
+        if: failure() && !inputs.dry_run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Price fetch workflow failed"
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          printf 'The price-fetch workflow failed before it could produce a report (e.g. every provider failed, or a step crashed).\n\nSee the run log: %s\n' "$run_url" > /tmp/failure-body.md
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file /tmp/failure-body.md
+          else
+            gh issue create --title "$title" --body-file /tmp/failure-body.md --label automated
+          fi
