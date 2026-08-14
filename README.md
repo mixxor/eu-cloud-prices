@@ -49,11 +49,14 @@ Data source for [eucloudcost.com](https://www.eucloudcost.com)
 Five providers are refreshed automatically every Friday by
 [`.github/workflows/fetch-prices.yml`](.github/workflows/fetch-prices.yml):
 `aws`, `azure`, `ovh`, `scaleway`, `atlanticcloud`. They are the providers
-with public, unauthenticated pricing APIs. `gcp` is also registered but is
-currently failing on every run: its public pricing JSON was withdrawn and its
-documented successor requires an API key, which this project does not use.
-Every other provider file is maintained by hand and is never written to by
-automation.
+with public, unauthenticated pricing APIs. Every other provider file is
+maintained by hand and is never written to by automation.
+
+`prices/gcp.json` is no longer refreshed. Google withdrew the public pricing
+JSON it was built from, and the documented successor requires an API key,
+which this project does not use. The existing data stays but is frozen; the
+fetcher remains in the tree and under test, so re-enabling it means updating
+one URL if a public endpoint reappears.
 
 The workflow fetches all providers in one pass, validates required fields, runs
 the schema-validation tests against `prices/schema.json`, then runs

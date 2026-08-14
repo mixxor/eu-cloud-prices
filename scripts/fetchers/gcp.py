@@ -1,4 +1,10 @@
-"""GCP Compute Engine on-demand pricing (europe-west1)."""
+"""GCP Compute Engine on-demand pricing (europe-west1).
+
+Not registered in REGISTRY: the source URL below now 404s and GCP's documented
+successor, the Cloud Billing Catalog API, requires an API key. The parsing
+logic is unaffected and still covered by tests, so if a public unauthenticated
+endpoint reappears, updating the URL and re-adding the registry entry is enough.
+"""
 
 from __future__ import annotations
 
