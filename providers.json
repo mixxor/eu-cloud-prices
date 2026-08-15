@@ -776,17 +776,15 @@
     "locations": [
       "ch-gva",
       "ch-gld",
-      "ch-luz"
+      "ch-luc"
     ],
     "certifications": [
       "ISO27001",
       "Swiss Hosting",
-      "FINMA",
-      "KCSP",
-      "CNCF Certified"
+      "FINMA"
     ],
     "egress_free_tb": "unlimited",
-    "website": "https://hikube.cloud/",
+    "website": "https://hikube.cloud/en/managed-kubernetes",
     "gpu_available": true
   }
 }

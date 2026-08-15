@@ -405,5 +405,5 @@
     "ipv6_monthly": 0,
     "currency": "EUR"
   },
-  "notes": "Swiss sovereign cloud by Hidora. High availability included at no extra cost: synchronous triple replication across 3 Swiss datacenters (Geneva, Gland, Lucerne) with automatic public IP failover. CNCF-certified managed Kubernetes. Hourly metering, monthly invoicing. Discounts on 1/3/5-year commitments, no exit fees. Prices in EUR excl. VAT as displayed on hikube.cloud/tarifs. Managed databases (PostgreSQL, MariaDB, Redis, MongoDB, ClickHouse) and GPU are billed as separate resources."
+  "notes": "Swiss sovereign cloud by Hidora. High availability included at no extra cost: synchronous triple replication across 3 Swiss datacenters (Geneva, Gland, Lucerne) with automatic public IP failover. CNCF-certified managed Kubernetes. Hourly metering, monthly invoicing. Discounts on 1/3/5-year commitments, no exit fees. All figures are the EUR prices published on hikube.cloud/tarifs, excl. VAT. Hikube sells and invoices in EUR, so no currency conversion is applied here. Block storage IOPS are not public."
 }
