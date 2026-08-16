@@ -765,5 +765,26 @@
     "egress_free_tb": "unlimited",
     "website": "https://nebius.com/services/managed-kubernetes",
     "gpu_available": true
+  },
+  "hikube": {
+    "name": "Hikube",
+    "country": "CH",
+    "flag": "/flags/ch.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 34.98,
+    "locations": [
+      "ch-gva",
+      "ch-gld",
+      "ch-luc"
+    ],
+    "certifications": [
+      "ISO27001",
+      "Swiss Hosting",
+      "FINMA"
+    ],
+    "egress_free_tb": "unlimited",
+    "website": "https://hikube.cloud/en/managed-kubernetes",
+    "gpu_available": true
   }
 }
