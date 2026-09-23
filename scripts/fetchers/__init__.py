@@ -4,7 +4,7 @@ Each provider module exposes ``fetch(ctx) -> dict`` returning a payload that
 conforms to ``prices/schema.json``.
 """
 
-from . import atlanticcloud, aws, azure, ovh, scaleway
+from . import atlanticcloud, aws, azure, ovh, scaleway, stackit
 
 # gcp is deliberately absent: its public price JSON was withdrawn and the
 # documented successor needs an API key, which this project does not use.
@@ -16,4 +16,5 @@ REGISTRY = {
     "azure": azure.fetch,
     "ovh": ovh.fetch,
     "scaleway": scaleway.fetch,
+    "stackit": stackit.fetch,
 }

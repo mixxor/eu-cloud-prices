@@ -1,0 +1,700 @@
+[
+  {
+    "id": "STA_SKU_119403",
+    "language": "en",
+    "version": "22",
+    "region": "eu01",
+    "title": "Confidential Server-m1a.2cd-EU01",
+    "name": "Confidential Server-m1a.2cd-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Confidential Server",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:31Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 0.15334305556,
+        "roundedValue": 0.15,
+        "valueAsInt": 15334305556,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 110.4070000032,
+        "roundedValue": 110.41,
+        "valueAsInt": 11040700000320,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ConfidentialComputing",
+      "flavor": "m1a.2cd",
+      "hardware": "AMD",
+      "licenseName": null,
+      "metro": false,
+      "os": null,
+      "ram": 15,
+      "vCPU": 2,
+      "metric": null,
+      "cpuOverprovisioning": false,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0070101",
+    "savingsPlans": [],
+    "serviceId": [
+      "ST-0070101",
+      "m1a.2cd"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Confidential Computing",
+      "id": "STA_ConfidentialComputing"
+    },
+    "product": {
+      "id": "STA_ConfidentialServer",
+      "name": "Confidential Server"
+    }
+  },
+  {
+    "id": "STA_SKU_131351",
+    "language": "en",
+    "version": "31",
+    "region": "eu01",
+    "title": "GPU Server-n2.14d.g1-EU01",
+    "name": "GPU Server-n2.14d.g1-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:35Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 1.74290277778,
+        "roundedValue": 1.74,
+        "valueAsInt": 174290277778,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 1254.8900000016,
+        "roundedValue": 1254.89,
+        "valueAsInt": 125489000000159,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "cpuOverprovisioning": false,
+      "discriminator": "ComputeEngineGPU",
+      "flavor": "n2.14d.g1",
+      "hardware": "GPU",
+      "metro": false,
+      "os": null,
+      "ram": 50,
+      "vCPU": 14
+    },
+    "sapArticleNumber": "ST-0080601",
+    "savingsPlans": [],
+    "serviceId": [
+      "n2.14d.g1",
+      "ST-0080601"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine GPU",
+      "id": "STA_ComputeEngineGPU"
+    },
+    "product": {
+      "id": "STA_GPUServer",
+      "name": "GPU Server"
+    }
+  },
+  {
+    "id": "STA_SKU_132797",
+    "language": "en",
+    "version": "21",
+    "region": "eu01",
+    "title": "Compute Optimized Server-c2i.4-EU01",
+    "name": "Compute Optimized Server-c2i.4-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:35Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 0.15331746528,
+        "roundedValue": 0.15,
+        "valueAsInt": 15331746528,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 110.3885750016,
+        "roundedValue": 110.39,
+        "valueAsInt": 11038857500160,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ComputeEngine",
+      "flavor": "c2i.4",
+      "hardware": "Intel",
+      "licenseName": null,
+      "metro": false,
+      "os": null,
+      "ram": 8,
+      "vCPU": 4,
+      "metric": null,
+      "cpuOverprovisioning": true,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0097001",
+    "savingsPlans": [],
+    "serviceId": [
+      "c2i.4",
+      "ST-0097001"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine",
+      "id": "STA_Compute"
+    },
+    "product": {
+      "id": "STA_Server",
+      "name": "Server"
+    }
+  },
+  {
+    "id": "STA_SKU_14552949",
+    "language": "en",
+    "version": "23",
+    "region": "eu01",
+    "title": "General Purpose Server-g1a.32d-EU01",
+    "name": "General Purpose Server-g1a.32d-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:27Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 1.57319444444,
+        "roundedValue": 1.57,
+        "valueAsInt": 157319444444,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 1132.6999999968,
+        "roundedValue": 1132.7,
+        "valueAsInt": 113269999999680,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ComputeEngine",
+      "flavor": "g1a.32d",
+      "hardware": "AMD",
+      "licenseName": null,
+      "metro": false,
+      "os": null,
+      "ram": 128,
+      "vCPU": 32,
+      "metric": null,
+      "cpuOverprovisioning": false,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0029601",
+    "savingsPlans": [],
+    "serviceId": [
+      "ST-0029601",
+      "g1a.32d"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine",
+      "id": "STA_Compute"
+    },
+    "product": {
+      "id": "STA_Server",
+      "name": "Server"
+    }
+  },
+  {
+    "id": "STA_SKU_14553012",
+    "language": "en",
+    "version": "23",
+    "region": "eu01",
+    "title": "Tiny Server-t1.1-EU01",
+    "name": "Tiny Server-t1.1-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:28Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 0.00304791667,
+        "roundedValue": 0.003,
+        "valueAsInt": 304791667,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 2.1945000024,
+        "roundedValue": 2.19,
+        "valueAsInt": 219450000240,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ComputeEngine",
+      "flavor": "t1.1",
+      "hardware": "Intel",
+      "licenseName": null,
+      "metro": false,
+      "os": null,
+      "ram": 0.5,
+      "vCPU": 1,
+      "metric": null,
+      "cpuOverprovisioning": true,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0007501",
+    "savingsPlans": [],
+    "serviceId": [
+      "t1.1",
+      "ST-0007501"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine",
+      "id": "STA_Compute"
+    },
+    "product": {
+      "id": "STA_Server",
+      "name": "Server"
+    }
+  },
+  {
+    "id": "STA_SKU_14553018",
+    "language": "en",
+    "version": "20",
+    "region": "eu01",
+    "title": "Kubernetes Engine-Cluster Management-EU01",
+    "name": "Kubernetes Engine-Cluster Management-EU01",
+    "documentation": "https://docs.stackit.cloud/stackit/en/kubernetes-10125671.html",
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Kubernetes",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:13Z",
+    "unit": "Hours",
+    "unitBilling": "per cluster/hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 0.09959511998,
+        "roundedValue": 0.1,
+        "valueAsInt": 9959511998,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 71.7084863856,
+        "roundedValue": 71.71,
+        "valueAsInt": 7170848638560,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "Runtime",
+      "planId": null,
+      "type": null
+    },
+    "sapArticleNumber": "ST-0010701",
+    "savingsPlans": [],
+    "serviceId": [
+      "6f4a324e-cdb1-11ea-87d0-0242ac130003"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Containers"
+    },
+    "category": {
+      "name": "Runtime",
+      "id": "STA_Runtime"
+    },
+    "product": {
+      "id": "STA_KubernetesEngine",
+      "name": "Kubernetes Engine"
+    }
+  },
+  {
+    "id": "STA_SKU_20723749",
+    "language": "en",
+    "version": "28",
+    "region": "eu01",
+    "title": "GPU Server-n1.56d.g4-EU01",
+    "name": "GPU Server-n1.56d.g4-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:29Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 16.33806944444,
+        "roundedValue": 16.34,
+        "valueAsInt": 1633806944443,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 11763.4099999968,
+        "roundedValue": 11763.41,
+        "valueAsInt": 1176340999999680,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "cpuOverprovisioning": false,
+      "discriminator": "ComputeEngineGPU",
+      "flavor": "n1.56d.g4",
+      "hardware": "GPU",
+      "metro": true,
+      "os": null,
+      "ram": 460,
+      "vCPU": 56
+    },
+    "sapArticleNumber": "ST-0067301",
+    "savingsPlans": [],
+    "serviceId": [
+      "n1.56d.g4-metro",
+      "t-n1.60d.g4",
+      "n1.56d.g4"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine GPU",
+      "id": "STA_ComputeEngineGPU"
+    },
+    "product": {
+      "id": "STA_GPUServer",
+      "name": "GPU Server"
+    }
+  },
+  {
+    "id": "STA_SKU_719458",
+    "language": "en",
+    "version": "5",
+    "region": "eu01",
+    "title": "Memory Optimized Server-m2a.8d-EU01",
+    "name": "Memory Optimized Server-m2a.8d-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-03-03T00:20:07Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 0.633701379,
+        "roundedValue": 0.63,
+        "valueAsInt": 63370137900,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 456.26499288,
+        "roundedValue": 456.26,
+        "valueAsInt": 45626499288000,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ComputeEngine",
+      "flavor": "m2a.8d",
+      "hardware": "AMD",
+      "licenseName": null,
+      "metro": false,
+      "os": null,
+      "ram": 60,
+      "vCPU": 8,
+      "metric": null,
+      "cpuOverprovisioning": false,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0222201",
+    "savingsPlans": [],
+    "serviceId": [
+      "ST-0222201"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine",
+      "id": "STA_Compute"
+    },
+    "product": {
+      "id": "STA_Server",
+      "name": "Server"
+    }
+  },
+  {
+    "id": "STA_SKU_14552956",
+    "language": "en",
+    "version": "23",
+    "region": "eu01",
+    "title": "General Purpose Server-g1a.32d-EU01-m",
+    "name": "General Purpose Server-g1a.32d-EU01-m",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:27Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": true,
+    "price": {
+      "list": {
+        "value": 3.14640277778,
+        "roundedValue": 3.15,
+        "valueAsInt": 314640277778,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 2265.4100000016,
+        "roundedValue": 2265.41,
+        "valueAsInt": 226541000000160,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ComputeEngine",
+      "flavor": "g1a.32d",
+      "hardware": "AMD",
+      "licenseName": null,
+      "metro": true,
+      "os": null,
+      "ram": 128,
+      "vCPU": 32,
+      "metric": null,
+      "cpuOverprovisioning": false,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0033101",
+    "savingsPlans": [],
+    "serviceId": [
+      "ST-0033101",
+      "g1a.32d-metro"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine",
+      "id": "STA_Compute"
+    },
+    "product": {
+      "id": "STA_Server",
+      "name": "Server"
+    }
+  },
+  {
+    "id": "STA_SKU_143119",
+    "language": "en",
+    "version": "27",
+    "region": "eu01",
+    "title": "Block Storage for Archiving Premium-Capacity-EU01",
+    "name": "Block Storage for Archiving Premium-Capacity-EU01",
+    "documentation": null,
+    "maturityModelState": "ga",
+    "deprecated": true,
+    "generalProductGroup": "Archiving",
+    "technicalProductGroup": "archiving",
+    "validStart": "2026-08-18T09:11:37Z",
+    "unit": "Gigabyte Hours",
+    "unitBilling": "per GB/hour",
+    "priceListVisibility": false,
+    "price": {
+      "list": {
+        "value": 9.07638e-05,
+        "roundedValue": 9.1e-05,
+        "valueAsInt": 9076380,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 0.065349936,
+        "roundedValue": 0.065,
+        "valueAsInt": 6534993600,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "Storage",
+      "class": null,
+      "maxIOPerSec": null,
+      "maxTroughInMB": null,
+      "metro": false,
+      "storage": "volume",
+      "type": "capacity"
+    },
+    "sapArticleNumber": "ST-0110001",
+    "savingsPlans": [],
+    "serviceId": [
+      "ST-0110001"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Storage",
+      "serviceSubCategory": "Block Storage"
+    },
+    "category": {
+      "name": "Storage",
+      "id": "STA_Storage"
+    },
+    "product": {
+      "id": "STA_BlockStorage",
+      "name": "Block Storage"
+    }
+  },
+  {
+    "id": "STA_SKU_105502",
+    "language": "en",
+    "version": "28",
+    "region": "eu01",
+    "title": "General Purpose Server-g2i.2s-EU01-m",
+    "name": "General Purpose Server-g2i.2s-EU01-m",
+    "documentation": null,
+    "maturityModelState": "beta",
+    "deprecated": false,
+    "generalProductGroup": "Virtual Machines",
+    "technicalProductGroup": null,
+    "validStart": "2026-08-18T09:11:31Z",
+    "unit": "Hours",
+    "unitBilling": "per hour",
+    "priceListVisibility": false,
+    "price": {
+      "list": {
+        "value": 0.198835,
+        "roundedValue": 0.2,
+        "valueAsInt": 19883500000,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      },
+      "monthly": {
+        "value": 143.1612,
+        "roundedValue": 143.16,
+        "valueAsInt": 14316120000000,
+        "currencyCode": "EUR",
+        "currencySymbol": "\u20ac"
+      }
+    },
+    "productSpecificAttributes": {
+      "discriminator": "ComputeEngine",
+      "flavor": "g2i.2s",
+      "hardware": "Intel",
+      "licenseName": null,
+      "metro": true,
+      "os": null,
+      "ram": 8,
+      "vCPU": 2,
+      "metric": null,
+      "cpuOverprovisioning": false,
+      "rateType": null,
+      "tierMinValue": null,
+      "tierMaxValue": null
+    },
+    "sapArticleNumber": "ST-0067501",
+    "savingsPlans": [],
+    "serviceId": [
+      "ST-0067501",
+      "g2i.2s-metro"
+    ],
+    "finOpsFocus": {
+      "serviceCategory": "Compute",
+      "serviceSubCategory": "Virtual Machines"
+    },
+    "category": {
+      "name": "Compute Engine",
+      "id": "STA_Compute"
+    },
+    "product": {
+      "id": "STA_Server",
+      "name": "Server"
+    }
+  }
+]

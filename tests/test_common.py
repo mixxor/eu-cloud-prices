@@ -213,3 +213,8 @@ def test_http_get_json_rejects_redirect_to_disallowed_host_with_explicit_port():
             hdrs={},
             newurl="https://evil.example.com:443/x"
         )
+
+
+def test_stackit_pim_host_is_allowed():
+    assert "pim.api.stackit.cloud" in common.ALLOWED_HOSTS
+

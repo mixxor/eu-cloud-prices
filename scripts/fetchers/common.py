@@ -26,6 +26,7 @@ ALLOWED_HOSTS = frozenset({
     "api.ovh.com",
     "api.scaleway.com",
     "api.atlantic.cloud",
+    "pim.api.stackit.cloud",
 })
 
 #: Keys a fetcher is allowed to own. Everything else in an existing price file

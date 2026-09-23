@@ -10,7 +10,7 @@ import pytest
 ROOT = Path(__file__).parent.parent
 SCHEMA = json.loads((ROOT / "prices" / "schema.json").read_text())
 
-_ALL_AUTOMATED_PROVIDERS = ["aws", "gcp", "azure", "ovh", "scaleway", "atlanticcloud"]
+_ALL_AUTOMATED_PROVIDERS = ["aws", "gcp", "azure", "ovh", "scaleway", "atlanticcloud", "stackit"]
 # Space-separated override, e.g. from a CI run that only fetched some
 # providers this pass - a hand-maintained or untouched automated-provider
 # file elsewhere must not be able to block that run. Unset (the default,
