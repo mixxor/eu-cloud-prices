@@ -1,6 +1,6 @@
 {
   "last_updated": "2026-09-23T00:00:00.000Z",
-  "build_timestamp": "2026-09-23T08:10:00.529Z",
+  "build_timestamp": "2026-09-23T08:19:39.355Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
@@ -21042,7 +21042,7 @@
     },
     "euronodes": {
       "provider": "euronodes",
-      "fetched_at": "2026-07-06T00:00:00.000Z",
+      "fetched_at": "2026-09-23T00:00:00.000Z",
       "source": "https://euronodes.com/cloud",
       "manual": true,
       "instances": [
@@ -21053,7 +21053,7 @@
           "ram_gb": 4,
           "disk_gb": 100,
           "disk_type": "ssd",
-          "price_monthly": 3.72,
+          "price_monthly": 4.54,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21066,7 +21066,7 @@
           "ram_gb": 8,
           "disk_gb": 150,
           "disk_type": "ssd",
-          "price_monthly": 6.54,
+          "price_monthly": 7.98,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21079,7 +21079,7 @@
           "ram_gb": 16,
           "disk_gb": 150,
           "disk_type": "ssd",
-          "price_monthly": 13.23,
+          "price_monthly": 16.14,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21092,7 +21092,7 @@
           "ram_gb": 16,
           "disk_gb": 200,
           "disk_type": "ssd",
-          "price_monthly": 15.99,
+          "price_monthly": 19.51,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21105,7 +21105,7 @@
           "ram_gb": 32,
           "disk_gb": 200,
           "disk_type": "ssd",
-          "price_monthly": 24.2,
+          "price_monthly": 29.52,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21118,7 +21118,7 @@
           "ram_gb": 32,
           "disk_gb": 200,
           "disk_type": "ssd",
-          "price_monthly": 31.66,
+          "price_monthly": 38.63,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21131,7 +21131,7 @@
           "ram_gb": 64,
           "disk_gb": 350,
           "disk_type": "ssd",
-          "price_monthly": 41,
+          "price_monthly": 50.02,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21144,7 +21144,7 @@
           "ram_gb": 128,
           "disk_gb": 600,
           "disk_type": "ssd",
-          "price_monthly": 96,
+          "price_monthly": 117.12,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
@@ -21158,8 +21158,8 @@
       "ipv4": {
         "included": false,
         "verified": true,
-        "price_monthly": 0.7,
-        "notes": "Dedicated IPv4 costs an extra €0.70/month; IPv6 is always included at no charge"
+        "price_monthly": 0.5,
+        "notes": "Dedicated IPv4 costs an extra €0.50/month; IPv6 is always included at no charge"
       },
       "locations": [
         "Portugal",
