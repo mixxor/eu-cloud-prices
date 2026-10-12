@@ -240,7 +240,7 @@
       "de-muc"
     ],
     "certifications": [],
-    "egress_free_tb": 32,
+    "egress_free_tb": "unlimited",
     "website": "https://contabo.com/en/vps/",
     "storage_iops": {
       "max_iops": 5800,
