@@ -65,7 +65,9 @@
       "PT"
     ],
     "certifications": [
-      "CDCTP"
+      "CDCTP",
+      "ISO27001",
+      "SOC Type II"
     ],
     "egress_free_tb": "unlimited",
     "website": "https://atlantic.cloud/en/vps/",
