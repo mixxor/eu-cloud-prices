@@ -66,6 +66,8 @@ def test_fetch_payload_matches_schema(monkeypatch):
     jsonschema.validate(payload, SCHEMA)
     by_id = {i["id"]: i for i in payload["instances"]}
     assert by_id["e2-medium"]["category"] == "burstable"
+    # page says 2 vCPU (burst); the sustained share of e2-medium is 1
+    assert by_id["e2-medium"]["vcpu"] == 1
     assert by_id["c4-standard-288-metal"]["category"] == "metal"
     assert by_id["c4a-highmem-1"]["category"] == "memory"
     assert by_id["c4a-highmem-1"]["architecture"] == "arm64"

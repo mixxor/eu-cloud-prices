@@ -59,7 +59,14 @@ _GCP_CATEGORY: dict[str, str] = {
 
 _GCP_ARM = {"t2a", "c4a", "n4a"}
 _GCP_SKIP_FAMILIES = {"a2", "a3", "a4", "g2", "g4"}  # GPU-only
-_SHARED_CORE = {"e2-micro", "e2-small", "e2-medium"}
+#: Shared-core types: the pricing page lists their burst vCPUs (2 for all
+#: e2 shared-core types), but the sustained share is what a comparison per
+#: vCPU must use, as the previous data did.
+_SHARED_CORE_VCPU = {
+    "e2-micro": 0.25, "e2-small": 0.5, "e2-medium": 1,
+    "f1-micro": 0.2, "g1-small": 0.5,
+}
+_SHARED_CORE = set(_SHARED_CORE_VCPU)
 
 
 def _category(name: str, family: str) -> str:
@@ -119,7 +126,7 @@ def _scrape_gcp(ctx: common.Context, rate: float) -> dict:
         instances.append({
             "id": name,
             "name": name,
-            "vcpu": m["vcpu"],
+            "vcpu": _SHARED_CORE_VCPU.get(name, m["vcpu"]),
             "ram_gb": m["ram_gb"],
             "disk_gb": 0,
             "disk_type": "pd-ssd",
