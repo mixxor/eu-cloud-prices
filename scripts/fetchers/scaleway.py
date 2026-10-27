@@ -8,6 +8,11 @@ from .common import HOURS_PER_MONTH
 BASE_URL = "https://api.scaleway.com/product-catalog/v2alpha1/public-catalog/products"
 PAGE_SIZE = 1000
 DEFAULT_ZONE = "fr-par-1"
+# Scaleway has moved the current instance offers between SKU trees: under
+# /compute/ in Aug 2026, under /instance/server/ since Sep 2026 (the other tree
+# then holds retired offers). Accept both and drop inactive offers by status.
+INSTANCE_SKU_PREFIXES = ("/instance/server/", "/compute/")
+INACTIVE_STATUSES = frozenset({"retired", "end_of_sale", "end_of_life"})
 NANOS = 1_000_000_000
 BYTES_PER_GB = 1024 ** 3
 
@@ -45,9 +50,11 @@ def _architecture(arch: str) -> str:
 
 def parse_catalog(products: list[dict], zone: str) -> list[dict]:
     instances = []
+    seen: set[str] = set()
     for product in products:
-        # current offers are under /compute/; /instance/server holds only retired ones
-        if not product.get("sku", "").startswith("/compute/"):
+        if not product.get("sku", "").startswith(INSTANCE_SKU_PREFIXES):
+            continue
+        if product.get("status") in INACTIVE_STATUSES:
             continue
         if not product.get("properties", {}).get("hardware"):
             continue
@@ -58,8 +65,9 @@ def parse_catalog(products: list[dict], zone: str) -> list[dict]:
 
         product_id = product.get("product")
         price_data = product.get("price", {}).get("retail_price")
-        if not product_id or not price_data:
+        if not product_id or not price_data or product_id in seen:
             continue
+        seen.add(product_id)
 
         hardware = product.get("properties", {}).get("hardware", {})
         cpu = hardware.get("cpu", {})
