@@ -188,6 +188,13 @@ def test_pagination_handling():
     payload = stackit.fetch(mock_ctx, region="eu01")
 
     assert mock_ctx.http_get_json.call_count == 2
+    first_url = mock_ctx.http_get_json.call_args_list[0].args[0]
+    second_url = mock_ctx.http_get_json.call_args_list[1].args[0]
+    # issue #53: the API only honours page_size/page_token
+    assert "page_size=100" in first_url and "page_token" not in first_url
+    assert "page_token=cursor-token-page2" in second_url
+    assert "cursor=" not in second_url and "limit=" not in second_url
+    assert mock_ctx.http_get_json.call_args_list[0].kwargs["headers"]["Accept-Language"] == "en"
     assert payload["provider"] == "stackit"
     assert len(payload["instances"]) == 2
     assert payload["instances"][0]["id"] == "c2i.8"
@@ -208,3 +215,14 @@ def test_payload_validates_against_schema():
         payload["control_plane_cost"] = k8s_cost
 
     jsonschema.validate(payload, SCHEMA)
+
+
+def test_repeated_cursor_raises_instead_of_looping():
+    """Old behaviour of the API with unknown paging params: page 1 forever."""
+    page = {"meta": {"hasNextPage": True, "nextCursor": "same"}, "data": []}
+    mock_ctx = mock.Mock(spec=common.Context)
+    mock_ctx.http_get_json.return_value = page
+
+    with pytest.raises(common.FetchError, match="same page cursor"):
+        stackit.fetch(mock_ctx, region="eu01")
+    assert mock_ctx.http_get_json.call_count == 2

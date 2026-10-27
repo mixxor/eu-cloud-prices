@@ -72,7 +72,8 @@ def test_zone_filtering_is_effective():
         p.get("product")
         for p in products
         if p.get("locality", {}).get("zone") == "fr-par-1"
-        and p.get("sku", "").startswith("/compute/")
+        and p.get("sku", "").startswith(scaleway.INSTANCE_SKU_PREFIXES)
+        and p.get("status") not in scaleway.INACTIVE_STATUSES
         and p.get("properties", {}).get("hardware")
         and p.get("unit_of_measure", {}).get("unit") == "hour"
     }
@@ -193,3 +194,51 @@ def test_fetch_paginates_until_total_count_is_reached():
     assert payload["provider"] == "scaleway"
     assert payload["manual"] is False
     assert payload["source_zone"] == "fr-par-1"
+
+
+def _server(sku: str, product_id: str, status: str = "general_availability", nanos: int = 39449000) -> dict:
+    return {
+        "sku": sku,
+        "product": product_id,
+        "status": status,
+        "locality": {"zone": "fr-par-1"},
+        "price": {"retail_price": {"currency_code": "EUR", "units": 0, "nanos": nanos}},
+        "unit_of_measure": {"unit": "hour", "size": 1},
+        "properties": {
+            "hardware": {
+                "cpu": {"arch": "x64", "type": "AMD EPYC 9555P", "virtual": {"count": 2}},
+                "ram": {"size": 4294967296},
+                "storage": {"total": 0},
+            },
+            "instance": {"range": "General Purpose"},
+        },
+    }
+
+
+def test_instance_server_tree_is_accepted():
+    """Since Sep 2026 current offers live under /instance/server/ (issue #43)."""
+    [inst] = scaleway.parse_catalog([_server("/instance/server/basic3_x2c_4g/fr-par-1", "BASIC3-X2C-4G")], "fr-par-1")
+    assert inst["id"] == "BASIC3-X2C-4G"
+    assert inst["price_hourly"] == 0.03945
+
+
+def test_retired_offers_are_dropped_in_either_tree():
+    products = [
+        _server("/instance/server/dev1_s/fr-par-1", "DEV1-S", status="retired"),
+        _server("/compute/dev1_s/run_par1", "DEV1-S-OLD", status="end_of_life"),
+        _server("/compute/pro2_s/run_par1", "PRO2-S"),
+    ]
+    assert [i["id"] for i in scaleway.parse_catalog(products, "fr-par-1")] == ["PRO2-S"]
+
+
+def test_same_product_in_both_trees_is_listed_once():
+    products = [
+        _server("/instance/server/basic3_x2c_4g/fr-par-1", "BASIC3-X2C-4G"),
+        _server("/compute/basic3_x2c_4g/run_par1", "BASIC3-X2C-4G", nanos=50000000),
+    ]
+    [inst] = scaleway.parse_catalog(products, "fr-par-1")
+    assert inst["price_hourly"] == 0.03945
+
+
+def test_other_sku_trees_are_ignored():
+    assert scaleway.parse_catalog([_server("/baremetal/em-a116x-ssd/fr-par-1", "EM-A116X-SSD")], "fr-par-1") == []

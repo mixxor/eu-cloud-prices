@@ -9,7 +9,9 @@ from typing import Any
 from . import common
 
 BASE_URL = "https://pim.api.stackit.cloud/v3alpha1/skus"
-PAGE_LIMIT = 100
+PAGE_SIZE = 100
+#: Safety net: the API returns ~8 pages of 100 for eu01 (Oct 2026).
+MAX_PAGES = 200
 DEFAULT_REGION = "eu01"
 LOCATION = "eu-de"
 
@@ -157,19 +159,28 @@ def fetch(ctx: common.Context, region: str = DEFAULT_REGION) -> dict[str, Any]:
     all_skus: list[dict[str, Any]] = []
     cursor: str | None = None
 
-    while True:
-        url = f"{BASE_URL}?limit={PAGE_LIMIT}&region={region}"
+    # Paging params are page_size/page_token. Since Oct 2026 the API silently
+    # ignores the old limit/cursor and keeps returning page 1 (10 SKUs) with
+    # the same nextCursor, so a repeated cursor is treated as an error rather
+    # than looped on.
+    for _ in range(MAX_PAGES):
+        url = f"{BASE_URL}?page_size={PAGE_SIZE}&region={region}"
         if cursor:
-            url += f"&cursor={urllib.parse.quote(cursor)}"
+            url += f"&page_token={urllib.parse.quote(cursor)}"
 
-        data = ctx.http_get_json(url)
+        data = ctx.http_get_json(url, headers={"Accept-Language": "en"})
         items = data.get("data", [])
         all_skus.extend(items)
 
         meta = data.get("meta", {})
-        if not meta.get("hasNextPage") or not meta.get("nextCursor"):
+        next_cursor = meta.get("nextCursor")
+        if not meta.get("hasNextPage") or not next_cursor:
             break
-        cursor = meta["nextCursor"]
+        if next_cursor == cursor:
+            raise common.FetchError("STACKIT PIM returned the same page cursor twice; paging parameters changed?")
+        cursor = next_cursor
+    else:
+        raise common.FetchError(f"STACKIT PIM paging did not finish within {MAX_PAGES} pages")
 
     instances, k8s_cost = parse_skus(all_skus)
     if not instances:
