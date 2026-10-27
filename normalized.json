@@ -1,6 +1,6 @@
 {
   "last_updated": "2026-10-12T00:00:00.000Z",
-  "build_timestamp": "2026-10-12T11:31:12.605Z",
+  "build_timestamp": "2026-10-27T10:48:11.261Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
@@ -20576,8 +20576,8 @@
     },
     "contabo": {
       "provider": "contabo",
-      "fetched_at": "2026-09-23T00:00:00.000Z",
-      "source": "contabo.com/en/vps + /en/vps-performance (1-month term, excl. VAT)",
+      "fetched_at": "2026-10-12T00:00:00.000Z",
+      "source": "contabo.com/en/vps + /en/vps-performance (1-month term, excl. VAT; the large card price is the 24-month rate, 20% lower)",
       "manual": true,
       "instances": [
         {
@@ -20744,8 +20744,9 @@
         "price_per_gb_monthly": 0.01
       },
       "egress": {
-        "free_tb": 32,
-        "price_per_gb_overage": 0.01
+        "free_tb": "unlimited",
+        "price_per_gb": 0,
+        "notes": "Unlimited traffic, fair usage policy with throttling; no per-GB overage price."
       },
       "object_storage": {
         "price_per_gb_monthly": 0.01,
@@ -21042,7 +21043,7 @@
     },
     "euronodes": {
       "provider": "euronodes",
-      "fetched_at": "2026-09-23T00:00:00.000Z",
+      "fetched_at": "2026-10-12T00:00:00.000Z",
       "source": "https://euronodes.com/cloud",
       "manual": true,
       "instances": [
@@ -21057,7 +21058,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-4c8g",
@@ -21070,7 +21071,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-4c16g",
@@ -21083,7 +21084,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-8c16g",
@@ -21096,7 +21097,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-8c32g",
@@ -21109,7 +21110,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-16c32g",
@@ -21122,7 +21123,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-16c64g",
@@ -21135,7 +21136,7 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         },
         {
           "id": "vps-32c128g",
@@ -21148,18 +21149,18 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "category": "dedicated"
+          "category": "shared"
         }
       ],
       "egress": {
         "free_tb": 20,
-        "notes": "20TB bandwidth included on every listed plan"
+        "notes": "20 TB transfer included per VPS; above 20 TB the port is throttled, no overage billing"
       },
       "ipv4": {
         "included": false,
         "verified": true,
-        "price_monthly": 0.5,
-        "notes": "Dedicated IPv4 costs an extra €0.50/month; IPv6 is always included at no charge"
+        "price_monthly": 0.7,
+        "notes": "Dedicated IPv4 costs an extra €0.70/month; IPv6 /64 always included at no charge"
       },
       "locations": [
         "Portugal",
@@ -21170,7 +21171,8 @@
         "price_per_gb_monthly": 0.004,
         "base_monthly": 3.99,
         "notes": "€3.99 per TB, rounded up to the next full TB; per-GB price is the linear equivalent"
-      }
+      },
+      "notes": "Hourly billing from a prepaid balance, no monthly minimum, no setup fee. vCPUs allocated 3:1 per CPU thread. Instance prices exclude IPv4 (see ipv4). The site does not state whether prices include VAT; invoices add VAT per customer (reverse charge for EU businesses)."
     },
     "exoscale": {
       "provider": "exoscale",
@@ -27543,8 +27545,8 @@
     },
     "netcup": {
       "provider": "netcup",
-      "fetched_at": "2026-09-23T00:00:00.000Z",
-      "source": "static",
+      "fetched_at": "2026-10-12T00:00:00.000Z",
+      "source": "netcup.com/en/server/vps, /vps-lite, /arm-server, /root-server, /vgpu (shortest available term, net = gross incl. 19% VAT / 1.19)",
       "manual": true,
       "instances": [
         {
@@ -27553,14 +27555,15 @@
           "vcpu": 1,
           "ram_gb": 1,
           "disk_gb": 30,
-          "price_monthly": 1.85,
+          "price_monthly": 1.86,
           "category": "vps",
           "disk_type": "ssd",
           "price_hourly": 0.0025,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "tier": "lite"
+          "tier": "lite",
+          "notes": "Only offered with a 12-month minimum contract term."
         },
         {
           "id": "vps-nano-g11-5s",
@@ -27575,7 +27578,8 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "tier": "lite"
+          "tier": "lite",
+          "notes": "Only offered with a 6-month minimum contract term."
         },
         {
           "id": "vps-lite-1-g12-5s",
@@ -27590,7 +27594,8 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "tier": "lite"
+          "tier": "lite",
+          "notes": "Only offered with a 6-month minimum contract term."
         },
         {
           "id": "vps-lite-2-g12-5s",
@@ -27605,7 +27610,8 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "tier": "lite"
+          "tier": "lite",
+          "notes": "Only offered with a 3-month minimum contract term."
         },
         {
           "id": "vps-lite-3-g12-5s",
@@ -27620,7 +27626,8 @@
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "tier": "lite"
+          "tier": "lite",
+          "notes": "Only offered with a 2-month minimum contract term."
         },
         {
           "id": "vps-lite-4-g12-5s",
@@ -27657,7 +27664,7 @@
           "vcpu": 4,
           "ram_gb": 8,
           "disk_gb": 128,
-          "price_monthly": 14.01,
+          "price_monthly": 14.02,
           "category": "vps",
           "disk_type": "ssd",
           "price_hourly": 0.0192,
@@ -27671,7 +27678,7 @@
           "vcpu": 8,
           "ram_gb": 16,
           "disk_gb": 256,
-          "price_monthly": 26.01,
+          "price_monthly": 26.02,
           "category": "vps",
           "disk_type": "ssd",
           "price_hourly": 0.0356,
@@ -27728,7 +27735,7 @@
           "vcpu": 4,
           "ram_gb": 8,
           "disk_gb": 128,
-          "price_monthly": 14.01,
+          "price_monthly": 14.02,
           "category": "vps",
           "arch": "arm64",
           "disk_type": "nvme",
@@ -27743,7 +27750,7 @@
           "vcpu": 8,
           "ram_gb": 16,
           "disk_gb": 256,
-          "price_monthly": 26.01,
+          "price_monthly": 26.02,
           "category": "vps",
           "arch": "arm64",
           "disk_type": "nvme",
@@ -27788,7 +27795,7 @@
           "vcpu": 2,
           "ram_gb": 4,
           "disk_gb": 64,
-          "price_monthly": 12.49,
+          "price_monthly": 12.5,
           "category": "dedicated",
           "dedicated": true,
           "disk_type": "nvme",
@@ -27803,7 +27810,7 @@
           "vcpu": 4,
           "ram_gb": 8,
           "disk_gb": 128,
-          "price_monthly": 21,
+          "price_monthly": 21.01,
           "category": "dedicated",
           "dedicated": true,
           "disk_type": "nvme",
@@ -27818,7 +27825,7 @@
           "vcpu": 8,
           "ram_gb": 16,
           "disk_gb": 256,
-          "price_monthly": 39.33,
+          "price_monthly": 39.34,
           "category": "dedicated",
           "dedicated": true,
           "disk_type": "nvme",
@@ -27848,7 +27855,7 @@
           "vcpu": 16,
           "ram_gb": 64,
           "disk_gb": 1024,
-          "price_monthly": 143.43,
+          "price_monthly": 143.44,
           "category": "dedicated",
           "dedicated": true,
           "disk_type": "nvme",
@@ -27863,7 +27870,7 @@
           "vcpu": 20,
           "ram_gb": 96,
           "disk_gb": 1536,
-          "price_monthly": 209.6,
+          "price_monthly": 209.61,
           "category": "dedicated",
           "dedicated": true,
           "disk_type": "nvme",
@@ -27931,12 +27938,14 @@
       },
       "egress": {
         "free_tb": "unlimited",
-        "price_per_gb": 0
+        "price_per_gb": 0,
+        "notes": "No traffic charges. Throttling: VPS G12.5 to 200 Mbit/s if the 24h average exceeds 2 TB; root servers to 300 Mbit/s above 3 TB in 24h; Lite/pico/nano to 100 Mbit/s."
       },
       "object_storage": {
         "available": false,
         "notes": "No dedicated S3-compatible object storage service"
-      }
+      },
+      "source_url": "https://www.netcup.com/en/server/vps"
     },
     "nws": {
       "$schema": "./schema.json",
