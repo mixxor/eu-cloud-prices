@@ -88,27 +88,31 @@ def _aws_stub(url, *args, **kwargs):
     return _AWS_PAYLOAD
 
 
-_GCP_PAYLOAD = {
-    "gcp_price_list": {
-        "CP-COMPUTEENGINE-VMIMAGE-C2-STANDARD-4": {
-            # 8.00 chosen (like the AWS 3.864 fixture) so full-precision vs
-            # 4dp-rounded-rate arithmetic disagree on the final rounded price.
-            "europe-west1": 8.00,
-            "cores": "4",
-            "memory": "16",
-        },
-        "CP-COMPUTEENGINE-VMIMAGE-N2-STANDARD-2": {
-            "europe-west1": 0.10,
-            "cores": "2",
-            "memory": "8",
-        },
-    }
-}
+def _gcp_page(rows: list[tuple[str, str, str, str]]) -> str:
+    """Minimal cloud.google.com pricing page: one europe-west1 hourly table."""
+    cell = lambda t: '[1,1,null,[null,[null,"' + t + '"]]]'
+    body = ",".join(
+        "[[" + ",".join([cell(n), cell(v), cell(r + " GiB"),
+                         '[1,1,null,[null,[null,"$' + p + ' / 1 hour"]],1]']) + "]]"
+        for n, v, r, p in rows
+    )
+    return '],[[],[' + body + ']],"Belgium (europe-west1)",[3]]'
+
+
+# 8.00 chosen (like the AWS 3.864 fixture) so full-precision vs
+# 4dp-rounded-rate arithmetic disagree on the final rounded price.
+_GCP_PAGE = _gcp_page([("c2-standard-4", "4", "16", "8.00"), ("n2-standard-2", "2", "8", "0.10")])
 
 
 def _gcp_stub(url, *args, **kwargs):
-    assert "www.gstatic.com" in url
-    return _GCP_PAYLOAD
+    assert "cloud.google.com" in url
+    # only the general-purpose page carries rows; the others parse to nothing
+    return _GCP_PAGE if "general-purpose" in url else ""
+
+
+@pytest.fixture
+def _gcp_small(monkeypatch):
+    monkeypatch.setattr(gcp, "MIN_INSTANCES", 1)
 
 
 _AZURE_SPECS_PAYLOAD = {"offers": {"linux-d4sv3-standard": {"cores": 4, "ram": 16}}}
@@ -150,8 +154,8 @@ def test_aws_fetch_rounds_the_rate_before_price_arithmetic():
     assert c8i["price_hourly"] != bug_value
 
 
-def test_gcp_fetch_rounds_the_rate_before_price_arithmetic():
-    ctx = common.Context(prices_dir=PRICES, fx=_DIVERGING_RATES, http_get_json=_gcp_stub)
+def test_gcp_fetch_rounds_the_rate_before_price_arithmetic(_gcp_small):
+    ctx = common.Context(prices_dir=PRICES, fx=_DIVERGING_RATES, http_get_text=_gcp_stub)
     payload = gcp.fetch(ctx)
     c2 = next(i for i in payload["instances"] if i["id"] == "c2-standard-4")
 
@@ -174,8 +178,8 @@ def test_aws_fetch_end_to_end_shape():
     assert payload["fx"]["rates"]["USD"] == 1.1534
 
 
-def test_gcp_fetch_end_to_end_shape():
-    ctx = common.Context(prices_dir=PRICES, fx=_BASELINE_RATES, http_get_json=_gcp_stub)
+def test_gcp_fetch_end_to_end_shape(_gcp_small):
+    ctx = common.Context(prices_dir=PRICES, fx=_BASELINE_RATES, http_get_text=_gcp_stub)
     payload = gcp.fetch(ctx)
     assert payload["provider"] == "gcp"
     assert len(payload["instances"]) == 2
