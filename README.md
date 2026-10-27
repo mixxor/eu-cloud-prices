@@ -47,17 +47,18 @@ Data source for [eucloudcost.com](https://www.eucloudcost.com)
 
 ## Automated updates
 
-Five providers are refreshed automatically every Friday by
+Seven providers are refreshed automatically every Friday by
 [`.github/workflows/fetch-prices.yml`](.github/workflows/fetch-prices.yml):
-`aws`, `azure`, `ovh`, `scaleway`, `atlanticcloud`. They are the providers
-with public, unauthenticated pricing APIs. Every other provider file is
-maintained by hand and is never written to by automation.
+`aws`, `azure`, `gcp`, `ovh`, `scaleway`, `stackit`, `atlanticcloud`. They are
+the providers with public, unauthenticated pricing data. Every other provider
+file is maintained by hand and is never written to by automation.
 
-`prices/gcp.json` is no longer refreshed. Google withdrew the public pricing
-JSON it was built from, and the documented successor requires an API key,
-which this project does not use. The existing data stays but is frozen; the
-fetcher remains in the tree and under test, so re-enabling it means updating
-one URL if a public endpoint reappears.
+`gcp` reads Google's public pricing pages on cloud.google.com (general-purpose,
+compute-optimized, memory-optimized). Those pages embed the tables for every
+region in the HTML; the fetcher takes the europe-west1 on-demand hourly prices
+and fails if it finds fewer than 100 machine types, so a page redesign shows up
+as a failed-fetch issue rather than a shrunken file. The old JSON feed on
+www.gstatic.com was withdrawn in Aug 2026 (#36).
 
 The workflow fetches all providers in one pass, validates required fields, runs
 the schema-validation tests against `prices/schema.json`, then runs
@@ -73,7 +74,7 @@ branch:
   findings at the top of the body. The gate's job is to make the risk
   unmissable, not to hide the diff: reviewing a blocked PR is how you see
   exactly what changed and decide whether to mark it ready.
-- A provider whose fetch itself failed (e.g. `gcp`'s 404s) never produces a
+- A provider whose fetch itself failed (e.g. an upstream 404) never produces a
   diff, so it gets no PR; instead the workflow opens (or updates) one issue
   per failed provider.
 - A provider with no change at all gets nothing.

@@ -21,6 +21,7 @@ ALLOWED_HOSTS = frozenset({
     "data-api.ecb.europa.eu",
     "b0.p.awsstatic.com",
     "www.gstatic.com",
+    "cloud.google.com",
     "azure.microsoft.com",
     "prices.azure.com",
     "api.ovh.com",
@@ -91,6 +92,30 @@ def http_get_json(url: str, headers: dict | None = None, *, timeout: int = 60) -
         raise FetchError(f"GET {url} failed: {exc}") from exc
 
 
+def http_get_text(url: str, headers: dict | None = None, *, timeout: int = 120) -> str:
+    """Like ``http_get_json`` but returns the decoded body as text (HTML pages)."""
+    _validate_fetch_url(url)
+
+    req = urllib.request.Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept-Encoding": "gzip, deflate",
+        **(headers or {}),
+    })
+
+    opener = urllib.request.build_opener(_AllowlistEnforcingHTTPRedirectHandler)
+
+    try:
+        with opener.open(req, timeout=timeout) as resp:
+            raw = resp.read()
+            if resp.headers.get("Content-Encoding") == "gzip" or raw[:2] == b"\x1f\x8b":
+                raw = gzip.decompress(raw)
+            return raw.decode("utf-8")
+    except FetchError:
+        raise
+    except Exception as exc:  # noqa: BLE001 - upstream failures are all equivalent here
+        raise FetchError(f"GET {url} failed: {exc}") from exc
+
+
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
@@ -128,3 +153,4 @@ class Context:
     prices_dir: Path
     fx: Any = None
     http_get_json: Callable[..., dict] = field(default=http_get_json)
+    http_get_text: Callable[..., str] = field(default=http_get_text)
