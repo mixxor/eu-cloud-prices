@@ -1,6 +1,6 @@
 {
   "provider": "euronodes",
-  "fetched_at": "2026-09-23T00:00:00.000Z",
+  "fetched_at": "2026-10-12T00:00:00.000Z",
   "source": "https://euronodes.com/cloud",
   "manual": true,
   "instances": [
@@ -15,7 +15,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-4c8g",
@@ -28,7 +28,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-4c16g",
@@ -41,7 +41,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-8c16g",
@@ -54,7 +54,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-8c32g",
@@ -67,7 +67,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-16c32g",
@@ -80,7 +80,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-16c64g",
@@ -93,7 +93,7 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     },
     {
       "id": "vps-32c128g",
@@ -106,18 +106,18 @@
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "category": "dedicated"
+      "category": "shared"
     }
   ],
   "egress": {
     "free_tb": 20,
-    "notes": "20TB bandwidth included on every listed plan"
+    "notes": "20 TB transfer included per VPS; above 20 TB the port is throttled, no overage billing"
   },
   "ipv4": {
     "included": false,
     "verified": true,
-    "price_monthly": 0.50,
-    "notes": "Dedicated IPv4 costs an extra €0.50/month; IPv6 is always included at no charge"
+    "price_monthly": 0.7,
+    "notes": "Dedicated IPv4 costs an extra €0.70/month; IPv6 /64 always included at no charge"
   },
   "locations": [
     "Portugal",
@@ -128,5 +128,6 @@
     "price_per_gb_monthly": 0.004,
     "base_monthly": 3.99,
     "notes": "€3.99 per TB, rounded up to the next full TB; per-GB price is the linear equivalent"
-  }
+  },
+  "notes": "Hourly billing from a prepaid balance, no monthly minimum, no setup fee. vCPUs allocated 3:1 per CPU thread. Instance prices exclude IPv4 (see ipv4). The site does not state whether prices include VAT; invoices add VAT per customer (reverse charge for EU businesses)."
 }

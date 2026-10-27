@@ -1,7 +1,7 @@
 {
   "provider": "contabo",
-  "fetched_at": "2026-09-23T00:00:00.000Z",
-  "source": "contabo.com/en/vps + /en/vps-performance (1-month term, excl. VAT)",
+  "fetched_at": "2026-10-12T00:00:00.000Z",
+  "source": "contabo.com/en/vps + /en/vps-performance (1-month term, excl. VAT; the large card price is the 24-month rate, 20% lower)",
   "manual": true,
   "instances": [
     {
@@ -168,8 +168,9 @@
     "price_per_gb_monthly": 0.01
   },
   "egress": {
-    "free_tb": 32,
-    "price_per_gb_overage": 0.01
+    "free_tb": "unlimited",
+    "price_per_gb": 0,
+    "notes": "Unlimited traffic, fair usage policy with throttling; no per-GB overage price."
   },
   "object_storage": {
     "price_per_gb_monthly": 0.01,
