@@ -30,6 +30,11 @@ Data source for [eucloudcost.com](https://www.eucloudcost.com)
 | plusserver | VM | DE |
 | Cyso | VM | NL |
 | metalstack | VM | DE |
+| T Cloud Public | VM + Managed K8s + GPU | DE |
+| SysEleven | VM + Managed K8s + GPU | DE |
+| enum | Managed K8s | DE |
+| Elastx | VM + Managed K8s + GPU | SE |
+| Verda | VM + GPU | FI |
 | AWS | VM + Managed K8s | US |
 | Azure | VM + Managed K8s | US |
 | GCP | VM + Managed K8s | US |

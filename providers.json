@@ -71,7 +71,10 @@
     ],
     "egress_free_tb": "unlimited",
     "website": "https://atlantic.cloud/en/vps/",
-    "api_pricing_url": ["https://api.atlantic.cloud/offer/vps-config?currency=EUR&trackViewItem=true", "https://api.atlantic.cloud/offer/vds-config?currency=EUR&trackViewItem=true"],
+    "api_pricing_url": [
+      "https://api.atlantic.cloud/offer/vps-config?currency=EUR&trackViewItem=true",
+      "https://api.atlantic.cloud/offer/vds-config?currency=EUR&trackViewItem=true"
+    ],
     "gpu_available": false
   },
   "ovh": {
@@ -787,6 +790,121 @@
     ],
     "egress_free_tb": "unlimited",
     "website": "https://hikube.cloud/en/managed-kubernetes",
+    "gpu_available": true
+  },
+  "tcloud": {
+    "name": "T Cloud Public",
+    "country": "DE",
+    "flag": "/flags/de.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": [
+      "eu-de",
+      "eu-nl"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO27017",
+      "ISO27018",
+      "ISO27701",
+      "C5",
+      "SOC2"
+    ],
+    "egress_free_tb": 0,
+    "website": "https://www.t-cloud-public.com/en/products-services/core-services/cloud-container-engine",
+    "gpu_available": true
+  },
+  "enum": {
+    "name": "enum",
+    "country": "DE",
+    "flag": "/flags/de.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 0,
+    "locations": [
+      "de-fra"
+    ],
+    "certifications": [],
+    "egress_free_tb": 0,
+    "website": "https://enum.co/kubernetes-engine",
+    "gpu_available": false
+  },
+  "elastx": {
+    "name": "Elastx",
+    "country": "SE",
+    "flag": "/flags/se.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 446.35,
+    "locations": [
+      "se-sto"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO27017",
+      "ISO27018",
+      "ISO14001"
+    ],
+    "egress_free_tb": 0,
+    "website": "https://elastx.se/en/kubernetes",
+    "storage_iops": {
+      "max_iops": 128000,
+      "source_type": "official",
+      "source_url": "https://elastx.se/en/openstack/pricing"
+    },
+    "gpu_available": true
+  },
+  "syseleven": {
+    "name": "SysEleven",
+    "country": "DE",
+    "flag": "/flags/de.svg",
+    "type": "managed",
+    "managed_k8s": true,
+    "control_plane_cost": 73.0,
+    "locations": [
+      "ham1",
+      "dus2"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO27017",
+      "ISO27018",
+      "C5"
+    ],
+    "egress_free_tb": 0,
+    "website": "https://www.syseleven.de/en/products-services/metakube-core/",
+    "storage_iops": {
+      "max_iops": 45000,
+      "source_type": "official",
+      "source_url": "https://www.syseleven.de/wp-content/uploads/2026/06/SysEleven-Public-Cloud-Preisliste.pdf"
+    },
+    "gpu_available": true
+  },
+  "verda": {
+    "name": "Verda",
+    "country": "FI",
+    "flag": "/flags/fi.svg",
+    "type": "vm-only",
+    "managed_k8s": false,
+    "control_plane_cost": null,
+    "locations": [
+      "fi-hel"
+    ],
+    "certifications": [
+      "ISO27001",
+      "ISO27017",
+      "ISO27018",
+      "ISO27701",
+      "SOC2"
+    ],
+    "egress_free_tb": 0,
+    "website": "https://verda.com",
+    "storage_iops": {
+      "max_iops": 100000,
+      "source_type": "official",
+      "source_url": "https://verda.com/pricing"
+    },
     "gpu_available": true
   }
 }
