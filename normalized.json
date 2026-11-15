@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-11-06T19:52:29Z",
-  "build_timestamp": "2026-11-11T13:39:11.252Z",
+  "last_updated": "2026-11-13T20:21:41Z",
+  "build_timestamp": "2026-11-15T21:28:57.557Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
@@ -34676,7 +34676,7 @@
     },
     "ovh": {
       "provider": "ovh",
-      "fetched_at": "2026-08-14T15:37:21Z",
+      "fetched_at": "2026-11-13T20:21:41Z",
       "source": "https://api.ovh.com/v1/order/catalog/public/cloud?ovhSubsidiary=DE",
       "manual": false,
       "control_plane_cost": 0,
@@ -35469,6 +35469,8 @@
         "a100-180",
         "a100-360",
         "a100-720",
+        "b300-1990",
+        "b300-1990_reserved",
         "eg-120",
         "eg-15",
         "eg-30",
@@ -35484,6 +35486,7 @@
         "h100-380",
         "h100-760",
         "h200-1920",
+        "h200-1920-eph",
         "hg-120",
         "hg-15",
         "hg-30",
