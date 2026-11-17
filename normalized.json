@@ -1,69 +1,98 @@
 {
-  "last_updated": "2026-11-13T20:21:41Z",
-  "build_timestamp": "2026-11-16T19:06:04.671Z",
+  "last_updated": "2026-11-16T00:00:00.000Z",
+  "build_timestamp": "2026-11-17T07:16:06.320Z",
   "providers": {
     "arubacloud": {
       "provider": "arubacloud",
-      "fetched_at": "2026-10-12T00:00:00.000Z",
+      "fetched_at": "2026-11-16T00:00:00.000Z",
+      "vat_included": false,
       "source": "static",
       "source_url": "https://www.arubacloud.com/vps/",
       "manual": true,
       "instances": [
         {
-          "id": "vps-o1i1",
-          "name": "VPS O1I1",
+          "id": "vps-h-1-1",
+          "name": "VPS H.1-1",
           "vcpu": 1,
           "ram_gb": 1,
           "disk_gb": 20,
-          "disk_type": "nvme",
-          "price_hourly": 0.0027,
-          "price_monthly": 1.99,
+          "disk_type": "ssd",
+          "price_hourly": 0.0041,
+          "price_monthly": 2.99,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "2TB bandwidth included. IPv6 only. Linux pricing."
+          "notes": "2TB bandwidth included. IPv4 + IPv6 included. Linux pricing. Standard price."
         },
         {
-          "id": "vps-o1i1-ipv4",
-          "name": "VPS O1I1 (IPv4)",
-          "vcpu": 1,
-          "ram_gb": 1,
-          "disk_gb": 20,
-          "disk_type": "nvme",
-          "price_hourly": 0.0034,
-          "price_monthly": 2.49,
-          "currency": "EUR",
-          "architecture": "x86",
-          "location": "eu",
-          "notes": "2TB bandwidth included. IPv4 included. Linux pricing."
-        },
-        {
-          "id": "vps-o1i2",
-          "name": "VPS O1I2",
+          "id": "vps-h-1-2",
+          "name": "VPS H.1-2",
           "vcpu": 1,
           "ram_gb": 2,
           "disk_gb": 40,
-          "disk_type": "nvme",
+          "disk_type": "ssd",
           "price_hourly": 0.0055,
           "price_monthly": 3.99,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "5TB bandwidth included. IPv6 only. Linux pricing."
+          "notes": "5TB bandwidth included. IPv4 + IPv6 included. Linux pricing. Standard price."
         },
         {
-          "id": "vps-o1i2-ipv4",
-          "name": "VPS O1I2 (IPv4)",
-          "vcpu": 1,
-          "ram_gb": 2,
+          "id": "vps-h-2-4",
+          "name": "VPS H.2-4",
+          "vcpu": 2,
+          "ram_gb": 4,
           "disk_gb": 40,
-          "disk_type": "nvme",
-          "price_hourly": 0.0062,
-          "price_monthly": 4.49,
+          "disk_type": "ssd",
+          "price_hourly": 0.0075,
+          "price_monthly": 5.49,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "5TB bandwidth included. IPv4 included. Linux pricing."
+          "notes": "25TB bandwidth included. IPv4 + IPv6 included. Linux pricing. Standard price; launch promo €3.00/mo for the first 3 months."
+        },
+        {
+          "id": "vps-h-4-8",
+          "name": "VPS H.4-8",
+          "vcpu": 4,
+          "ram_gb": 8,
+          "disk_gb": 80,
+          "disk_type": "ssd",
+          "price_hourly": 0.0144,
+          "price_monthly": 10.49,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "notes": "50TB bandwidth included. IPv4 + IPv6 included. Linux pricing. Standard price; launch promo €5.00/mo for the first 3 months."
+        },
+        {
+          "id": "vps-h-8-16",
+          "name": "VPS H.8-16",
+          "vcpu": 8,
+          "ram_gb": 16,
+          "disk_gb": 160,
+          "disk_type": "ssd",
+          "price_hourly": 0.026,
+          "price_monthly": 18.99,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "notes": "100TB bandwidth included. IPv4 + IPv6 included. Linux pricing. Standard price; launch promo €13.00/mo for the first 3 months."
+        },
+        {
+          "id": "vps-h-16-32",
+          "name": "VPS H.16-32",
+          "vcpu": 16,
+          "ram_gb": 32,
+          "disk_gb": 320,
+          "disk_type": "ssd",
+          "price_hourly": 0.052,
+          "price_monthly": 37.99,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "notes": "100TB bandwidth included. IPv4 + IPv6 included. Linux pricing. Standard price; launch promo €24.00/mo for the first 3 months."
         },
         {
           "id": "vps-o2a4",
@@ -138,7 +167,8 @@
         "price_per_gb_monthly": 0.0204,
         "type": "S3-compatible",
         "notes": "Aruba Object Storage available"
-      }
+      },
+      "notes": "Prices excl. VAT: arubacloud.com/vps/ shows every price as \"+ VAT / month\" (checked 2026-11-16)."
     },
     "atlanticcloud": {
       "provider": "atlanticcloud",
@@ -19845,7 +19875,8 @@
     },
     "c1v": {
       "provider": "c1v",
-      "fetched_at": "2026-10-12T00:00:00.000Z",
+      "fetched_at": "2026-11-16T00:00:00.000Z",
+      "vat_included": false,
       "source": "c1vhosting.it/store/linux-vps-high-cpu",
       "manual": true,
       "instances": [
@@ -19925,7 +19956,7 @@
         "bandwidth_gbps": 1,
         "notes": "20TB @ 1Gbps bandwidth included"
       },
-      "notes": "High-CPU VPS, NVMe storage, DDR4 ECC RAM. Datacenter in Pomezia, Rome. IPv4 + IPv6 included. Store page does not state whether prices include 22% IT VAT. Hourly = monthly/730 (not published)."
+      "notes": "High-CPU VPS, NVMe storage, DDR4 ECC RAM. Datacenter in Pomezia, Rome. IPv4 + IPv6 included. Prices are 1-month term, excl. VAT (cart adds 22% IT VAT on top). Hourly = monthly/730 (not published)."
     },
     "civo": {
       "provider": "civo",
@@ -20502,6 +20533,7 @@
     "cleura": {
       "provider": "cleura",
       "fetched_at": "2026-05-20T00:00:00.000Z",
+      "vat_included": false,
       "source": "cleura.com/pricing",
       "manual": true,
       "control_plane_cost": 0,
@@ -20577,6 +20609,7 @@
     "contabo": {
       "provider": "contabo",
       "fetched_at": "2026-10-12T00:00:00.000Z",
+      "vat_included": false,
       "source": "contabo.com/en/vps + /en/vps-performance (1-month term, excl. VAT; the large card price is the 24-month rate, 20% lower)",
       "manual": true,
       "instances": [
@@ -21044,6 +21077,7 @@
     "elastx": {
       "provider": "elastx",
       "fetched_at": "2026-11-01T00:00:00.000Z",
+      "vat_included": false,
       "source": "elastx.se/en/openstack/pricing + elastx.se/en/kubernetes/pricing",
       "source_url": "https://elastx.se/en/openstack/pricing",
       "manual": true,
@@ -21966,6 +22000,7 @@
     "enum": {
       "provider": "enum",
       "fetched_at": "2026-11-01T00:00:00.000Z",
+      "vat_included": false,
       "source": "enum.co/pricing",
       "source_url": "https://enum.co/pricing",
       "manual": true,
@@ -22119,10 +22154,23 @@
     },
     "euronodes": {
       "provider": "euronodes",
-      "fetched_at": "2026-10-12T00:00:00.000Z",
+      "fetched_at": "2026-11-16T00:00:00.000Z",
       "source": "https://euronodes.com/cloud",
       "manual": true,
       "instances": [
+        {
+          "id": "vps-1c2g",
+          "name": "1 vCore / 2GB",
+          "vcpu": 1,
+          "ram_gb": 2,
+          "disk_gb": 50,
+          "disk_type": "ssd",
+          "price_monthly": 1.99,
+          "currency": "EUR",
+          "architecture": "x86",
+          "location": "eu",
+          "category": "shared"
+        },
         {
           "id": "vps-2c4g",
           "name": "2 vCore / 4GB",
@@ -22176,19 +22224,6 @@
           "category": "shared"
         },
         {
-          "id": "vps-8c32g",
-          "name": "8 vCore / 32GB",
-          "vcpu": 8,
-          "ram_gb": 32,
-          "disk_gb": 200,
-          "disk_type": "ssd",
-          "price_monthly": 29.52,
-          "currency": "EUR",
-          "architecture": "x86",
-          "location": "eu",
-          "category": "shared"
-        },
-        {
           "id": "vps-16c32g",
           "name": "16 vCore / 32GB",
           "vcpu": 16,
@@ -22230,6 +22265,7 @@
       ],
       "egress": {
         "free_tb": 20,
+        "overage": "throttled",
         "notes": "20 TB transfer included per VPS; above 20 TB the port is throttled, no overage billing"
       },
       "ipv4": {
@@ -30016,6 +30052,7 @@
     "hetzner": {
       "provider": "hetzner",
       "fetched_at": "2026-10-12T00:00:00.000Z",
+      "vat_included": false,
       "source": "https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/",
       "manual": true,
       "instances": [
@@ -30336,6 +30373,7 @@
     "hikube": {
       "provider": "hikube",
       "fetched_at": "2026-10-12T00:00:00.000Z",
+      "vat_included": false,
       "source": "hikube.cloud/tarifs",
       "source_url": "https://hikube.cloud/tarifs",
       "manual": true,
@@ -30744,9 +30782,10 @@
     },
     "hostinger": {
       "provider": "hostinger",
-      "fetched_at": "2026-05-20T00:00:00.000Z",
-      "source": "static",
-      "source_url": "https://www.hostinger.com/de/Preise/vps-hosting",
+      "fetched_at": "2026-11-16T00:00:00.000Z",
+      "vat_included": false,
+      "source": "hostinger.com/de/vps + cart.hostinger.com (1-month term, recurring rate, excl. VAT)",
+      "source_url": "https://www.hostinger.com/de/vps",
       "manual": true,
       "instances": [
         {
@@ -30756,13 +30795,13 @@
           "ram_gb": 4,
           "disk_gb": 50,
           "disk_type": "nvme",
-          "price_hourly": 0.00752,
-          "price_monthly": 5.49,
-          "price_monthly_renewal": 11.99,
+          "price_hourly": 0.02396,
+          "price_monthly": 17.49,
+          "price_monthly_renewal": 17.49,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "4TB bandwidth. Promo price for 24-month term. Renewal €11.99/mo."
+          "notes": "4TB bandwidth. 1-month term, recurring rate (first month promo €7.99, list €17.99). 24-month term: €5.49/mo, renews at €11.99/mo."
         },
         {
           "id": "kvm-2",
@@ -30771,13 +30810,13 @@
           "ram_gb": 8,
           "disk_gb": 100,
           "disk_type": "nvme",
-          "price_hourly": 0.01095,
-          "price_monthly": 7.99,
-          "price_monthly_renewal": 14.99,
+          "price_hourly": 0.02944,
+          "price_monthly": 21.49,
+          "price_monthly_renewal": 21.49,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "8TB bandwidth. Promo price for 24-month term. Renewal €14.99/mo."
+          "notes": "8TB bandwidth. 1-month term, recurring rate (first month promo €9.99, list €21.49). 24-month term: €7.79/mo, renews at €14.99/mo."
         },
         {
           "id": "kvm-4",
@@ -30786,13 +30825,13 @@
           "ram_gb": 16,
           "disk_gb": 200,
           "disk_type": "nvme",
-          "price_hourly": 0.01506,
-          "price_monthly": 10.99,
-          "price_monthly_renewal": 27.99,
+          "price_hourly": 0.0493,
+          "price_monthly": 35.99,
+          "price_monthly_renewal": 35.99,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "16TB bandwidth. Promo price for 24-month term. Renewal €27.99/mo."
+          "notes": "16TB bandwidth. 1-month term, recurring rate (first month promo €19.99, list €35.99). 24-month term: €10.99/mo, renews at €27.99/mo."
         },
         {
           "id": "kvm-8",
@@ -30801,13 +30840,13 @@
           "ram_gb": 32,
           "disk_gb": 400,
           "disk_type": "nvme",
-          "price_hourly": 0.03012,
-          "price_monthly": 21.99,
-          "price_monthly_renewal": 49.99,
+          "price_hourly": 0.08903,
+          "price_monthly": 64.99,
+          "price_monthly_renewal": 64.99,
           "currency": "EUR",
           "architecture": "x86",
           "location": "eu",
-          "notes": "32TB bandwidth. Promo price for 24-month term. Renewal €49.99/mo."
+          "notes": "32TB bandwidth. 1-month term, recurring rate (first month promo €38.99, list €64.99). 24-month term: €21.99/mo, renews at €49.99/mo."
         }
       ],
       "load_balancer": {
@@ -30823,12 +30862,14 @@
       },
       "object_storage": {
         "available": false
-      }
+      },
+      "notes": "Prices excl. VAT: hostinger.com/de/vps states \"Preisangaben ohne Mehrwertsteuer\" and the cart lists taxes (\"Steuern\") as a separate line (checked 2026-11-16)."
     },
     "infomaniak": {
       "provider": "infomaniak",
       "provider_name": "Infomaniak",
       "fetched_at": "2026-05-20T00:00:00.000Z",
+      "vat_included": false,
       "source": "static",
       "manual": true,
       "source_urls": [
@@ -32202,7 +32243,7 @@
         "FINMA compliant"
       ],
       "data_residency": "Switzerland only (data sovereignty)",
-      "notes": "Swiss sovereign cloud. All infrastructure in Switzerland. 300 EUR free credits for new accounts (3-month validity).",
+      "notes": "Swiss sovereign cloud. All infrastructure in Switzerland. 300 EUR free credits for new accounts (3-month validity). Prices excl. VAT: the public-cloud price page states \"Prices do not include VAT\" (checked 2026-11-16).",
       "object_storage": {
         "price_per_gb_hourly": 0.000013,
         "price_per_gb_monthly": 0.0095,
@@ -33766,6 +33807,7 @@
     "netcup": {
       "provider": "netcup",
       "fetched_at": "2026-10-12T00:00:00.000Z",
+      "vat_included": false,
       "source": "netcup.com/en/server/vps, /vps-lite, /arm-server, /root-server, /vgpu (shortest available term, net = gross incl. 19% VAT / 1.19)",
       "manual": true,
       "instances": [
@@ -34171,6 +34213,7 @@
       "$schema": "./schema.json",
       "provider": "nws",
       "fetched_at": "2026-10-12T00:00:00.000Z",
+      "vat_included": false,
       "source": "static",
       "source_url": "https://nws.netways.de/en/prices",
       "manual": true,
@@ -38476,14 +38519,14 @@
       "provider": "stackit",
       "provider_name": "STACKIT (Schwarz Group)",
       "fetched_at": "2026-11-06T19:52:29Z",
+      "vat_included": false,
       "source": "https://pim.api.stackit.cloud/v3alpha1/skus",
       "manual": false,
       "control_plane_cost": 71.71,
       "billing_model": {
         "unit": "hourly",
         "monthly_hours": 720,
-        "currency": "EUR",
-        "vat_included": false
+        "currency": "EUR"
       },
       "instances": [
         {
@@ -41694,6 +41737,7 @@
     "syseleven": {
       "provider": "syseleven",
       "fetched_at": "2026-11-01T00:00:00.000Z",
+      "vat_included": false,
       "manual": true,
       "source": "SysEleven Preisliste Public Cloud v2.0.3 (Stand 01.07.2026, PDF)",
       "source_url": "https://www.syseleven.de/wp-content/uploads/2026/06/SysEleven-Public-Cloud-Preisliste.pdf",
@@ -43901,6 +43945,7 @@
     "upcloud": {
       "provider": "upcloud",
       "fetched_at": "2026-10-12T00:00:00.000Z",
+      "vat_included": false,
       "source": "upcloud.com/pricing (Starter, Premium, Cloud Native)",
       "manual": true,
       "instances": [
@@ -45052,13 +45097,14 @@
         "type": "S3-compatible",
         "notes": "€5/month per 250GB block (€0.02/GB). Zero-cost egress included."
       },
-      "notes": "Lineup changed 2026: Starter (budget SSD), Premium (MaxIOPS, production), Cloud Native (decoupled compute/storage). Cloud Native disk billed separately so no disk_gb. Old General Purpose/High CPU/High Memory plans discontinued. Managed Kubernetes control plane: Development (up to 30 nodes) €0, Production (up to 120 nodes) €60/month.",
+      "notes": "Lineup changed 2026: Starter (budget SSD), Premium (MaxIOPS, production), Cloud Native (decoupled compute/storage). Cloud Native disk billed separately so no disk_gb. Old General Purpose/High CPU/High Memory plans discontinued. Managed Kubernetes control plane: Development (up to 30 nodes) €0, Production (up to 120 nodes) €60/month. Prices excl. VAT: upcloud.com/pricing states \"Prices exclude any applicable local taxes.\" (checked 2026-11-16).",
       "source_url": "https://upcloud.com/pricing/",
       "control_plane_cost": 0
     },
     "verda": {
       "provider": "verda",
       "fetched_at": "2026-11-01T00:00:00.000Z",
+      "vat_included": false,
       "source": "verda.com/pricing (EUR) + api.verda.com/v1/instance-types?currency=eur",
       "source_url": "https://verda.com/pricing?currency=eur",
       "manual": true,
