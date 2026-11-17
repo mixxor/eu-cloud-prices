@@ -1,6 +1,7 @@
 {
   "provider": "elastx",
   "fetched_at": "2026-11-01T00:00:00.000Z",
+  "vat_included": false,
   "source": "elastx.se/en/openstack/pricing + elastx.se/en/kubernetes/pricing",
   "source_url": "https://elastx.se/en/openstack/pricing",
   "manual": true,

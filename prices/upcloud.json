@@ -1,6 +1,7 @@
 {
   "provider": "upcloud",
   "fetched_at": "2026-10-12T00:00:00.000Z",
+  "vat_included": false,
   "source": "upcloud.com/pricing (Starter, Premium, Cloud Native)",
   "manual": true,
   "instances": [
@@ -1152,7 +1153,7 @@
     "type": "S3-compatible",
     "notes": "€5/month per 250GB block (€0.02/GB). Zero-cost egress included."
   },
-  "notes": "Lineup changed 2026: Starter (budget SSD), Premium (MaxIOPS, production), Cloud Native (decoupled compute/storage). Cloud Native disk billed separately so no disk_gb. Old General Purpose/High CPU/High Memory plans discontinued. Managed Kubernetes control plane: Development (up to 30 nodes) €0, Production (up to 120 nodes) €60/month.",
+  "notes": "Lineup changed 2026: Starter (budget SSD), Premium (MaxIOPS, production), Cloud Native (decoupled compute/storage). Cloud Native disk billed separately so no disk_gb. Old General Purpose/High CPU/High Memory plans discontinued. Managed Kubernetes control plane: Development (up to 30 nodes) €0, Production (up to 120 nodes) €60/month. Prices excl. VAT: upcloud.com/pricing states \"Prices exclude any applicable local taxes.\" (checked 2026-11-16).",
   "source_url": "https://upcloud.com/pricing/",
   "control_plane_cost": 0
 }

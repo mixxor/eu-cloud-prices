@@ -1,6 +1,7 @@
 {
   "provider": "c1v",
-  "fetched_at": "2026-10-12T00:00:00.000Z",
+  "fetched_at": "2026-11-16T00:00:00.000Z",
+  "vat_included": false,
   "source": "c1vhosting.it/store/linux-vps-high-cpu",
   "manual": true,
   "instances": [
@@ -80,5 +81,5 @@
     "bandwidth_gbps": 1,
     "notes": "20TB @ 1Gbps bandwidth included"
   },
-  "notes": "High-CPU VPS, NVMe storage, DDR4 ECC RAM. Datacenter in Pomezia, Rome. IPv4 + IPv6 included. Store page does not state whether prices include 22% IT VAT. Hourly = monthly/730 (not published)."
+  "notes": "High-CPU VPS, NVMe storage, DDR4 ECC RAM. Datacenter in Pomezia, Rome. IPv4 + IPv6 included. Prices are 1-month term, excl. VAT (cart adds 22% IT VAT on top). Hourly = monthly/730 (not published)."
 }

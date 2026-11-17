@@ -2,6 +2,7 @@
   "provider": "infomaniak",
   "provider_name": "Infomaniak",
   "fetched_at": "2026-05-20T00:00:00.000Z",
+  "vat_included": false,
   "source": "static",
   "manual": true,
   "source_urls": [
@@ -1366,7 +1367,7 @@
     "FINMA compliant"
   ],
   "data_residency": "Switzerland only (data sovereignty)",
-  "notes": "Swiss sovereign cloud. All infrastructure in Switzerland. 300 EUR free credits for new accounts (3-month validity).",
+  "notes": "Swiss sovereign cloud. All infrastructure in Switzerland. 300 EUR free credits for new accounts (3-month validity). Prices excl. VAT: the public-cloud price page states \"Prices do not include VAT\" (checked 2026-11-16).",
   "object_storage": {
     "price_per_gb_hourly": 0.000013,
     "price_per_gb_monthly": 0.0095,

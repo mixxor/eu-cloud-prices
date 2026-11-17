@@ -1,6 +1,7 @@
 {
   "provider": "hikube",
   "fetched_at": "2026-10-12T00:00:00.000Z",
+  "vat_included": false,
   "source": "hikube.cloud/tarifs",
   "source_url": "https://hikube.cloud/tarifs",
   "manual": true,

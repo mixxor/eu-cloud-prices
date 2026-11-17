@@ -1,8 +1,9 @@
 {
   "provider": "hostinger",
-  "fetched_at": "2026-05-20T00:00:00.000Z",
-  "source": "static",
-  "source_url": "https://www.hostinger.com/de/Preise/vps-hosting",
+  "fetched_at": "2026-11-16T00:00:00.000Z",
+  "vat_included": false,
+  "source": "hostinger.com/de/vps + cart.hostinger.com (1-month term, recurring rate, excl. VAT)",
+  "source_url": "https://www.hostinger.com/de/vps",
   "manual": true,
   "instances": [
     {
@@ -12,13 +13,13 @@
       "ram_gb": 4,
       "disk_gb": 50,
       "disk_type": "nvme",
-      "price_hourly": 0.00752,
-      "price_monthly": 5.49,
-      "price_monthly_renewal": 11.99,
+      "price_hourly": 0.02396,
+      "price_monthly": 17.49,
+      "price_monthly_renewal": 17.49,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "notes": "4TB bandwidth. Promo price for 24-month term. Renewal €11.99/mo."
+      "notes": "4TB bandwidth. 1-month term, recurring rate (first month promo €7.99, list €17.99). 24-month term: €5.49/mo, renews at €11.99/mo."
     },
     {
       "id": "kvm-2",
@@ -27,13 +28,13 @@
       "ram_gb": 8,
       "disk_gb": 100,
       "disk_type": "nvme",
-      "price_hourly": 0.01095,
-      "price_monthly": 7.99,
-      "price_monthly_renewal": 14.99,
+      "price_hourly": 0.02944,
+      "price_monthly": 21.49,
+      "price_monthly_renewal": 21.49,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "notes": "8TB bandwidth. Promo price for 24-month term. Renewal €14.99/mo."
+      "notes": "8TB bandwidth. 1-month term, recurring rate (first month promo €9.99, list €21.49). 24-month term: €7.79/mo, renews at €14.99/mo."
     },
     {
       "id": "kvm-4",
@@ -42,13 +43,13 @@
       "ram_gb": 16,
       "disk_gb": 200,
       "disk_type": "nvme",
-      "price_hourly": 0.01506,
-      "price_monthly": 10.99,
-      "price_monthly_renewal": 27.99,
+      "price_hourly": 0.0493,
+      "price_monthly": 35.99,
+      "price_monthly_renewal": 35.99,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "notes": "16TB bandwidth. Promo price for 24-month term. Renewal €27.99/mo."
+      "notes": "16TB bandwidth. 1-month term, recurring rate (first month promo €19.99, list €35.99). 24-month term: €10.99/mo, renews at €27.99/mo."
     },
     {
       "id": "kvm-8",
@@ -57,13 +58,13 @@
       "ram_gb": 32,
       "disk_gb": 400,
       "disk_type": "nvme",
-      "price_hourly": 0.03012,
-      "price_monthly": 21.99,
-      "price_monthly_renewal": 49.99,
+      "price_hourly": 0.08903,
+      "price_monthly": 64.99,
+      "price_monthly_renewal": 64.99,
       "currency": "EUR",
       "architecture": "x86",
       "location": "eu",
-      "notes": "32TB bandwidth. Promo price for 24-month term. Renewal €49.99/mo."
+      "notes": "32TB bandwidth. 1-month term, recurring rate (first month promo €38.99, list €64.99). 24-month term: €21.99/mo, renews at €49.99/mo."
     }
   ],
   "load_balancer": {
@@ -79,5 +80,6 @@
   },
   "object_storage": {
     "available": false
-  }
+  },
+  "notes": "Prices excl. VAT: hostinger.com/de/vps states \"Preisangaben ohne Mehrwertsteuer\" and the cart lists taxes (\"Steuern\") as a separate line (checked 2026-11-16)."
 }

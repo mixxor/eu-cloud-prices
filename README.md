@@ -130,12 +130,32 @@ supplies them. Flavors absent from that map are reported in the file's
 sells far more tiers (GPU, bare metal, high-memory) than this dataset covers.
 Adding a tier means adding its specs to that map.
 
-**What the gate does not check.** It compares the `instances` array only.
-`control_plane_cost`, `load_balancer`, `block_storage`, `egress` and
-`object_storage` are written by the fetchers but no rule validates them, so an
-error there reaches the PR unflagged. For `aws` and `gcp` those blocks are also
-derived from hardcoded source-currency constants that do not refresh, so they
-drift from the providers' real prices over time. Review them by eye.
+**Component checks.** Besides `instances`, the gate inspects
+`control_plane_cost` and the `load_balancer`, `block_storage`,
+`object_storage` and `egress` blocks. Every numeric price-like field is
+checked (names containing `price`, `retrieval`, or ending in `_monthly`,
+`_hourly`, `_cost`; nested `tiers` included). Notes, `currency`, bandwidth,
+quotas, booleans and strings are skipped.
+
+| Check | Severity | Rule |
+|---|---|---|
+| `component_negative_price` | hard | any price field below 0 |
+| `component_price_missing` | hard | number at HEAD, now missing, null or non-numeric |
+| `component_price_zeroed` | hard | positive at HEAD, now exactly 0 |
+| `component_currency_change` | hard | a block's own `currency` differs from HEAD (prices then not compared) |
+| `component_price_move` | soft | moved more than `COMPONENT_MOVE_PCT` (15 %, per-provider override via `OVERRIDES`) |
+| `egress_free_allowance_change` | soft | any `free_*` field of `egress` changed, including number <-> `"unlimited"` |
+
+Movement is measured net of FX exactly like instance prices: for files with a
+USD rate on both sides the EUR figures are converted back to source currency
+first. A block that carries its own `currency` is compared as-is.
+
+**What the gate does not check.** For `aws` and `gcp` the component blocks are
+derived from hardcoded source-currency constants that do not refresh. The gate
+flags movement versus HEAD, so it cannot detect a constant that never changes
+and has drifted from the provider's real price. Nor does it check that a
+component exists at all (a provider that never had one is not flagged), tier
+structure, or `object_storage` allowances such as `included_*`/`free_*`.
 
 ## Data Format
 

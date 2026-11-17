@@ -1,6 +1,7 @@
 {
   "provider": "enum",
   "fetched_at": "2026-11-01T00:00:00.000Z",
+  "vat_included": false,
   "source": "enum.co/pricing",
   "source_url": "https://enum.co/pricing",
   "manual": true,

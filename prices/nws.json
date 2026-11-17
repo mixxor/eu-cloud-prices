@@ -2,6 +2,7 @@
   "$schema": "./schema.json",
   "provider": "nws",
   "fetched_at": "2026-10-12T00:00:00.000Z",
+  "vat_included": false,
   "source": "static",
   "source_url": "https://nws.netways.de/en/prices",
   "manual": true,

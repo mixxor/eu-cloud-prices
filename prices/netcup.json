@@ -1,6 +1,7 @@
 {
   "provider": "netcup",
   "fetched_at": "2026-10-12T00:00:00.000Z",
+  "vat_included": false,
   "source": "netcup.com/en/server/vps, /vps-lite, /arm-server, /root-server, /vgpu (shortest available term, net = gross incl. 19% VAT / 1.19)",
   "manual": true,
   "instances": [

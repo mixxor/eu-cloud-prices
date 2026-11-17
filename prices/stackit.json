@@ -2,14 +2,14 @@
   "provider": "stackit",
   "provider_name": "STACKIT (Schwarz Group)",
   "fetched_at": "2026-11-06T19:52:29Z",
+  "vat_included": false,
   "source": "https://pim.api.stackit.cloud/v3alpha1/skus",
   "manual": false,
   "control_plane_cost": 71.71,
   "billing_model": {
     "unit": "hourly",
     "monthly_hours": 720,
-    "currency": "EUR",
-    "vat_included": false
+    "currency": "EUR"
   },
   "instances": [
     {

@@ -1,6 +1,7 @@
 {
   "provider": "syseleven",
   "fetched_at": "2026-11-01T00:00:00.000Z",
+  "vat_included": false,
   "manual": true,
   "source": "SysEleven Preisliste Public Cloud v2.0.3 (Stand 01.07.2026, PDF)",
   "source_url": "https://www.syseleven.de/wp-content/uploads/2026/06/SysEleven-Public-Cloud-Preisliste.pdf",

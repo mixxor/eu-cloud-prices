@@ -1,6 +1,7 @@
 {
   "provider": "contabo",
   "fetched_at": "2026-10-12T00:00:00.000Z",
+  "vat_included": false,
   "source": "contabo.com/en/vps + /en/vps-performance (1-month term, excl. VAT; the large card price is the 24-month rate, 20% lower)",
   "manual": true,
   "instances": [

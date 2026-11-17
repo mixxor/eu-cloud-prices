@@ -639,3 +639,180 @@ def test_default_behaviour_without_the_new_flags_is_unchanged(tmp_path):
     subprocess.run(["git", "add", "prices/alpha.json"], cwd=tmp_path, check=True)
 
     assert pc.main(["--prices-dir", str(prices)]) == 1
+
+
+# --- non-instance price components -------------------------------------------
+
+_FX_OLD = {"base": "EUR", "rate_date": "2026-01-01", "rates": {"USD": 1.0}}
+_FX_NEW = {"base": "EUR", "rate_date": "2026-08-13", "rates": {"USD": 2.0}}
+_INST = [{"id": "a", "price_monthly": 10.0}]
+
+
+def _components():
+    return {
+        "control_plane_cost": 50.0,
+        "load_balancer": {"price_monthly": 10.0, "notes": "x"},
+        "block_storage": {"price_per_gb_monthly": 0.05, "type": "ssd"},
+        "object_storage": {"price_per_gb_monthly": 0.01},
+        "egress": {"free_tb": 10, "price_per_gb": 0.02, "price_per_gb_overage": None},
+    }
+
+
+def _cmp(old_extra=None, new_extra=None, **kw):
+    old = _file(_INST, **{**_components(), **(old_extra or {})})
+    new = _file(_INST, **{**_components(), **(new_extra or {})})
+    return pc.compare("p", old, new)
+
+
+def test_unchanged_components_produce_no_findings():
+    assert _cmp() == []
+
+
+def test_component_shapes_with_strings_nulls_and_tiers_do_not_crash_or_flag():
+    block = {
+        "price_monthly": None, "notes": "n", "currency": "EUR",
+        "tiers": {"S": {"price_monthly": 5.0, "bandwidth": "200 Mbps"}},
+    }
+    egress = {"free_tb": "unlimited", "price_per_gb": 0, "bandwidth_gbps": 10}
+    assert _cmp({"load_balancer": block, "egress": egress}, {"load_balancer": block, "egress": egress}) == []
+
+
+@pytest.mark.parametrize("extra", [
+    {"control_plane_cost": -1.0},
+    {"load_balancer": {"price_monthly": -5.0}},
+    {"block_storage": {"price_per_gb_monthly": -0.01}},
+    {"egress": {"free_tb": 10, "price_per_gb": -0.02}},
+])
+def test_negative_component_price_is_hard(extra):
+    assert "component_negative_price" in _hard(_cmp(None, extra))
+
+
+@pytest.mark.parametrize("extra", [
+    {"control_plane_cost": None},
+    {"load_balancer": None},
+    {"load_balancer": {"price_monthly": None}},
+    {"load_balancer": {"notes": "gone"}},
+    {"block_storage": {"price_per_gb_monthly": "n/a"}},
+    {"egress": {"free_tb": 10}},
+])
+def test_price_disappearing_is_hard_and_not_read_as_free(extra):
+    findings = _cmp(None, extra)
+    assert "component_price_missing" in _hard(findings)
+    assert "component_price_zeroed" not in _hard(findings)
+
+
+def test_control_plane_key_removed_entirely_is_hard():
+    new = _file(_INST, **{k: v for k, v in _components().items() if k != "control_plane_cost"})
+    assert "component_price_missing" in _hard(pc.compare("p", _file(_INST, **_components()), new))
+
+
+def test_missing_nested_tier_price_is_hard():
+    old = {"load_balancer": {"tiers": {"S": {"price_monthly": 5.0}, "M": {"price_monthly": 9.0}}}}
+    new = {"load_balancer": {"tiers": {"S": {"price_monthly": 5.0}}}}
+    assert "component_price_missing" in _hard(_cmp(old, new))
+
+
+def test_positive_to_zero_is_hard():
+    findings = _cmp(None, {"object_storage": {"price_per_gb_monthly": 0}})
+    assert "component_price_zeroed" in _hard(findings)
+
+
+def test_zero_to_zero_and_zero_to_positive_are_not_flagged():
+    z = {"egress": {"free_tb": 10, "price_per_gb": 0}}
+    assert _cmp(z, z) == []
+    assert _cmp(z, {"egress": {"free_tb": 10, "price_per_gb": 0.02}}) == []
+
+
+def test_component_move_over_threshold_is_soft_review():
+    findings = _cmp(None, {"control_plane_cost": 60.0})  # +20%
+    assert "component_price_move" in _soft(findings)
+    assert _hard(findings) == []
+
+
+def test_component_move_under_threshold_is_not_flagged():
+    assert _cmp(None, {"control_plane_cost": 56.0}) == []  # +12%
+    assert _cmp(None, {"control_plane_cost": 44.0}) == []  # -12%
+
+
+def test_component_price_drop_over_threshold_is_flagged():
+    assert "component_price_move" in _soft(_cmp(None, {"load_balancer": {"price_monthly": 8.0}}))
+
+
+def test_component_threshold_is_overridable_per_provider(monkeypatch):
+    monkeypatch.setitem(pc.OVERRIDES, "p", {"COMPONENT_MOVE_PCT": 50})
+    assert _cmp(None, {"control_plane_cost": 60.0}) == []
+    monkeypatch.setitem(pc.OVERRIDES, "p", {"COMPONENT_MOVE_PCT": 5})
+    assert "component_price_move" in _soft(_cmp(None, {"control_plane_cost": 56.0}))
+
+
+@pytest.mark.parametrize("before,after", [(10, "unlimited"), ("unlimited", 10), (10, 20), (10, 10.5)])
+def test_egress_free_allowance_change_is_soft(before, after):
+    findings = _cmp({"egress": {"free_tb": before, "price_per_gb": 0.02}},
+                    {"egress": {"free_tb": after, "price_per_gb": 0.02}})
+    assert "egress_free_allowance_change" in _soft(findings)
+    assert _hard(findings) == []
+
+
+def test_egress_free_gb_change_is_soft():
+    findings = _cmp({"egress": {"free_gb": 0, "price_per_gb": 0.1}},
+                    {"egress": {"free_gb": 100, "price_per_gb": 0.1}})
+    assert "egress_free_allowance_change" in _soft(findings)
+
+
+def test_component_price_is_measured_net_of_fx():
+    """Same USD price, EUR moved only because the rate doubled: no finding."""
+    old = _file([{"id": "a", "price_monthly": 20.0}], fx=_FX_OLD,
+                control_plane_cost=100.0, load_balancer={"price_monthly": 20.0})
+    new = _file([{"id": "a", "price_monthly": 10.0}], fx=_FX_NEW,
+                control_plane_cost=50.0, load_balancer={"price_monthly": 10.0})
+    # raw ratio 0.5 would trip the 15% threshold; netted it is 1.0
+    assert pc.compare("p", old, new) == []
+
+
+def test_component_real_move_is_still_caught_with_fx_present():
+    old = _file([{"id": "a", "price_monthly": 20.0}], fx=_FX_OLD, control_plane_cost=100.0)
+    new = _file([{"id": "a", "price_monthly": 10.0}], fx=_FX_NEW, control_plane_cost=70.0)  # 140 USD-equivalent, +40%
+    assert "component_price_move" in _soft(pc.compare("p", old, new))
+
+
+def test_component_with_own_eur_currency_is_not_fx_netted():
+    old = _file([{"id": "a", "price_monthly": 20.0}], fx=_FX_OLD,
+                load_balancer={"price_monthly": 20.0, "currency": "EUR"})
+    new = _file([{"id": "a", "price_monthly": 10.0}], fx=_FX_NEW,
+                load_balancer={"price_monthly": 10.0, "currency": "EUR"})
+    assert "component_price_move" in _soft(pc.compare("p", old, new))
+
+
+def test_component_currency_change_is_hard_and_skips_price_comparison():
+    findings = _cmp({"load_balancer": {"price_monthly": 10.0, "currency": "EUR"}},
+                    {"load_balancer": {"price_monthly": 20.0, "currency": "USD"}})
+    assert "component_currency_change" in _hard(findings)
+    assert "component_price_move" not in _soft(findings)
+
+
+def test_component_findings_reach_the_report_json_and_exit_code(tmp_path):
+    prices = tmp_path / "prices"
+    prices.mkdir()
+    path = prices / "alpha.json"
+    base = {"provider": "alpha", "fetched_at": "2026-08-13T00:00:00Z", "instances": _INST}
+    path.write_text(json.dumps({**base, "load_balancer": {"price_monthly": 10.0},
+                                "egress": {"free_tb": 10, "price_per_gb": 0.02}}))
+    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "config", "user.email", "t@test.local"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "config", "user.name", "T"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "baseline"], cwd=tmp_path, check=True)
+
+    # soft only: allowance change -> exit 0, soft counted
+    path.write_text(json.dumps({**base, "load_balancer": {"price_monthly": 10.0},
+                                "egress": {"free_tb": 5, "price_per_gb": 0.02}}))
+    out = tmp_path / "v.json"
+    assert pc.main(["--prices-dir", str(prices), "--json-out", str(out)]) == 0
+    assert json.loads(out.read_text())["alpha"] == {"hard": 0, "soft": 1, "blocked": False}
+
+    # hard: load balancer price vanished -> exit 1, blocked, in the report
+    path.write_text(json.dumps({**base, "egress": {"free_tb": 10, "price_per_gb": 0.02}}))
+    report = tmp_path / "r.md"
+    assert pc.main(["--prices-dir", str(prices), "--json-out", str(out), "--report", str(report)]) == 1
+    assert json.loads(out.read_text())["alpha"] == {"hard": 1, "soft": 0, "blocked": True}
+    assert "component_price_missing" in report.read_text()

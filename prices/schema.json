@@ -28,6 +28,10 @@
       "type": "boolean",
       "description": "True if data was manually collected, false if from API"
     },
+    "vat_included": {
+      "type": "boolean",
+      "description": "Whether the prices in this file include VAT. The dataset records net prices; this flag marks the files where the provider itself confirms it. Set it only when the provider states it on its price page, in its terms or in its checkout (say where in notes or source); omit when the provider does not say."
+    },
     "fx": {
       "type": "object",
       "description": "Exchange rates used to convert source-currency prices to EUR",
@@ -327,6 +331,11 @@
           "type": "number",
           "minimum": 0,
           "description": "Alternative key for overage pricing"
+        },
+        "overage": {
+          "type": "string",
+          "enum": ["throttled"],
+          "description": "What happens above free_tb when no per-GB price applies. 'throttled': the port is slowed down and nothing is billed. Omit when overage is billed per GB or the policy is unknown."
         },
         "bandwidth_gbps": {
           "type": "number",

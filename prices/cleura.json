@@ -1,6 +1,7 @@
 {
   "provider": "cleura",
   "fetched_at": "2026-05-20T00:00:00.000Z",
+  "vat_included": false,
   "source": "cleura.com/pricing",
   "manual": true,
   "control_plane_cost": 0,

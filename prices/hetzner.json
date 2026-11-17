@@ -1,6 +1,7 @@
 {
   "provider": "hetzner",
   "fetched_at": "2026-10-12T00:00:00.000Z",
+  "vat_included": false,
   "source": "https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/",
   "manual": true,
   "instances": [

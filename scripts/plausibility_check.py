@@ -25,6 +25,13 @@ PRICE_JUMP_FACTOR = 1.5
 PRICE_DROP_FACTOR = 0.5
 MAX_MEDIAN_MOVE_PCT = 25
 
+#: Non-instance price components, gated by ``_compare_components``. Allowed
+#: relative move (percent) of any numeric price field versus the old file;
+#: overridable per provider via OVERRIDES[provider]["COMPONENT_MOVE_PCT"].
+COMPONENT_MOVE_PCT = 15
+#: Object-valued components. ``control_plane_cost`` (a bare number) is handled alongside.
+COMPONENT_BLOCKS = ("load_balancer", "block_storage", "object_storage", "egress")
+
 #: Unconditional ceiling on the rendered report (GitHub's issue/PR body limit is 65,536 chars).
 MAX_REPORT_CHARS = 60_000
 #: Slack reserved so the truncation note itself never pushes the report over MAX_REPORT_CHARS.
@@ -69,6 +76,130 @@ def _usable_price(inst: dict, field: str, rate: float | None) -> float | None:
     if price is None or isinstance(price, bool) or not isinstance(price, (int, float)) or price <= 0:
         return None
     return _normalise(price, rate)
+
+
+def _is_price_key(key: str) -> bool:
+    """True for field names that carry a price (as opposed to notes, specs, quotas)."""
+    k = key.lower()
+    return "price" in k or "retrieval" in k or k.endswith(("_monthly", "_hourly", "_cost"))
+
+
+def _is_number(value: object) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _price_leaves(block: object, prefix: str = "") -> dict[str, float]:
+    """Flatten every numeric price-like field of a component block.
+
+    Recurses into nested dicts (e.g. ``tiers``). Bools, strings, nulls and
+    non-price metadata (free_*, bandwidth, notes, currency, ...) are skipped.
+    """
+    out: dict[str, float] = {}
+    if not isinstance(block, dict):
+        return out
+    for key, value in block.items():
+        path = f"{prefix}{key}"
+        if isinstance(value, dict):
+            out.update(_price_leaves(value, f"{path}."))
+        elif _is_number(value) and _is_price_key(key):
+            out[path] = value
+    return out
+
+
+def _fmt(value: object) -> str:
+    return "missing" if value is None else repr(value)
+
+
+def _compare_components(name: str, old: dict, new: dict) -> list[Finding]:
+    """Gate control_plane_cost, load_balancer, block_storage, object_storage, egress."""
+    findings: list[Finding] = []
+    old_rate, new_rate = _usd_rate(old), _usd_rate(new)
+    fx_aware = old_rate is not None and new_rate is not None
+    limit = _threshold(name, "COMPONENT_MOVE_PCT", COMPONENT_MOVE_PCT)
+
+    # control_plane_cost is a bare number; wrap it so it shares the block logic.
+    components: dict[str, tuple[object, object]] = {
+        "control_plane_cost": (
+            {"control_plane_cost": old.get("control_plane_cost")},
+            {"control_plane_cost": new.get("control_plane_cost")},
+        ),
+    }
+    for block in COMPONENT_BLOCKS:
+        components[block] = (old.get(block), new.get(block))
+
+    for comp, (old_block, new_block) in components.items():
+        old_leaves, new_leaves = _price_leaves(old_block), _price_leaves(new_block)
+        old_cur = old_block.get("currency") if isinstance(old_block, dict) else None
+        new_cur = new_block.get("currency") if isinstance(new_block, dict) else None
+
+        negative, missing, to_zero, moved = [], [], [], []
+
+        for path, value in sorted(new_leaves.items()):
+            if value < 0:
+                negative.append(f"{path} is {value!r}")
+
+        # A component carrying its own currency is already in that currency:
+        # nothing to net. Otherwise net FX exactly as the instance check does.
+        own_currency = bool(old_cur or new_cur)
+        use_fx = fx_aware and not own_currency
+        currency_changed = bool(old_cur and new_cur and old_cur != new_cur)
+        if currency_changed:
+            findings.append(Finding(
+                name, "hard", "component_currency_change",
+                f"{comp}: currency changed {old_cur} -> {new_cur}; prices not compared",
+            ))
+
+        for path, before in sorted(old_leaves.items()):
+            after = new_leaves.get(path)
+            if after is None:
+                missing.append(f"{path} {before!r} -> {_fmt(None)}")
+                continue
+            if currency_changed or before <= 0 or after < 0:
+                continue
+            if after == 0:
+                to_zero.append(f"{path} {before!r} -> 0")
+                continue
+            a = _normalise(before, old_rate if use_fx else None)
+            b = _normalise(after, new_rate if use_fx else None)
+            move = (b - a) / a * 100
+            if abs(move) > limit:
+                moved.append(f"{path} {before!r} -> {after!r} ({move:+.1f}%)")
+
+        if negative:
+            findings.append(Finding(name, "hard", "component_negative_price", f"{comp}: " + "; ".join(negative)))
+        if missing:
+            findings.append(Finding(
+                name, "hard", "component_price_missing",
+                f"{comp}: price was a number at HEAD and is now missing, null or non-numeric "
+                f"(never read as free): " + "; ".join(missing),
+            ))
+        if to_zero:
+            findings.append(Finding(
+                name, "hard", "component_price_zeroed",
+                f"{comp}: price fell from positive to exactly 0: " + "; ".join(to_zero),
+            ))
+        if moved:
+            suffix = "" if use_fx or own_currency else " (compared without FX netting)"
+            findings.append(Finding(
+                name, "soft", "component_price_move",
+                f"{comp}: moved more than {limit}%: " + "; ".join(moved) + suffix,
+            ))
+
+    # egress free allowance: free_tb / free_gb (number or "unlimited")
+    old_eg = old.get("egress") if isinstance(old.get("egress"), dict) else {}
+    new_eg = new.get("egress") if isinstance(new.get("egress"), dict) else {}
+    changes = []
+    for key in sorted(k for k in set(old_eg) | set(new_eg) if k.startswith("free_")):
+        before, after = old_eg.get(key), new_eg.get(key)
+        if before != after:
+            changes.append(f"{key} {_fmt(before)} -> {_fmt(after)}")
+    if changes:
+        findings.append(Finding(
+            name, "soft", "egress_free_allowance_change",
+            "egress free allowance changed (shifts every total above the allowance): " + "; ".join(changes),
+        ))
+
+    return findings
 
 
 def is_fetched_at_only(old: dict, new: dict) -> bool:
@@ -251,6 +382,8 @@ def compare(name: str, old: dict, new: dict) -> list[Finding]:
             f"{len(codes)} plan code(s) with no spec entry: {shown}{more} "
             "(full list in the file's unknown_plan_codes)",
         ))
+
+    findings.extend(_compare_components(name, old, new))
 
     return findings
 

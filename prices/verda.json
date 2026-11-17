@@ -1,6 +1,7 @@
 {
   "provider": "verda",
   "fetched_at": "2026-11-01T00:00:00.000Z",
+  "vat_included": false,
   "source": "verda.com/pricing (EUR) + api.verda.com/v1/instance-types?currency=eur",
   "source_url": "https://verda.com/pricing?currency=eur",
   "manual": true,

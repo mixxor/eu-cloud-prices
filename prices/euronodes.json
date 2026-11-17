@@ -1,9 +1,22 @@
 {
   "provider": "euronodes",
-  "fetched_at": "2026-10-12T00:00:00.000Z",
+  "fetched_at": "2026-11-16T00:00:00.000Z",
   "source": "https://euronodes.com/cloud",
   "manual": true,
   "instances": [
+    {
+      "id": "vps-1c2g",
+      "name": "1 vCore / 2GB",
+      "vcpu": 1,
+      "ram_gb": 2,
+      "disk_gb": 50,
+      "disk_type": "ssd",
+      "price_monthly": 1.99,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "category": "shared"
+    },
     {
       "id": "vps-2c4g",
       "name": "2 vCore / 4GB",
@@ -57,19 +70,6 @@
       "category": "shared"
     },
     {
-      "id": "vps-8c32g",
-      "name": "8 vCore / 32GB",
-      "vcpu": 8,
-      "ram_gb": 32,
-      "disk_gb": 200,
-      "disk_type": "ssd",
-      "price_monthly": 29.52,
-      "currency": "EUR",
-      "architecture": "x86",
-      "location": "eu",
-      "category": "shared"
-    },
-    {
       "id": "vps-16c32g",
       "name": "16 vCore / 32GB",
       "vcpu": 16,
@@ -111,6 +111,7 @@
   ],
   "egress": {
     "free_tb": 20,
+    "overage": "throttled",
     "notes": "20 TB transfer included per VPS; above 20 TB the port is throttled, no overage billing"
   },
   "ipv4": {
