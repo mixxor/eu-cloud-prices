@@ -1,6 +1,6 @@
 {
   "provider": "ovh",
-  "fetched_at": "2026-11-13T20:21:41Z",
+  "fetched_at": "2026-11-19T14:05:53Z",
   "source": "https://api.ovh.com/v1/order/catalog/public/cloud?ovhSubsidiary=DE",
   "manual": false,
   "control_plane_cost": 0,
@@ -710,6 +710,66 @@
       "location": "eu",
       "gpu": 2,
       "gpu_model": "Tesla V100S 32GB"
+    },
+    {
+      "id": "vps-2027-model1",
+      "name": "VPS-1 2027",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_gb": 40,
+      "price_monthly": 4.49,
+      "category": "vps",
+      "disk_type": "nvme",
+      "price_hourly": null,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "range": "VPS"
+    },
+    {
+      "id": "vps-2027-model2",
+      "name": "VPS-2 2027",
+      "vcpu": 4,
+      "ram_gb": 8,
+      "disk_gb": 75,
+      "price_monthly": 8.49,
+      "category": "vps",
+      "disk_type": "nvme",
+      "price_hourly": null,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "range": "VPS"
+    },
+    {
+      "id": "vps-2027-model3",
+      "name": "VPS-3 2027",
+      "vcpu": 6,
+      "ram_gb": 12,
+      "disk_gb": 100,
+      "price_monthly": 12.24,
+      "category": "vps",
+      "disk_type": "nvme",
+      "price_hourly": null,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "range": "VPS"
+    },
+    {
+      "id": "vps-2027-model4",
+      "name": "VPS-4 2027",
+      "vcpu": 8,
+      "ram_gb": 24,
+      "disk_gb": 200,
+      "price_monthly": 23.49,
+      "category": "vps",
+      "disk_type": "nvme",
+      "price_hourly": null,
+      "currency": "EUR",
+      "architecture": "x86",
+      "location": "eu",
+      "range": "VPS"
     }
   ],
   "load_balancer": {
@@ -895,5 +955,7 @@
     "win-t2-180",
     "win-t2-45",
     "win-t2-90"
-  ]
+  ],
+  "vat_included": false,
+  "notes": "Public Cloud flavors: hourly consumption rate x 730. VPS (category 'vps'): the range OVH currently sells, from the VPS order catalog, at the monthly price without commitment; ovhcloud.com advertises the cheaper 12-month commitment price as 'from'. VPS are billed monthly, so they carry no hourly price; one IPv4 is included. VPS are not Public Cloud instances and cannot be Managed Kubernetes Service worker nodes. All prices excl. VAT: both catalogs list price and tax separately."
 }

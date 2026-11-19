@@ -130,6 +130,16 @@ supplies them. Flavors absent from that map are reported in the file's
 sells far more tiers (GPU, bare metal, high-memory) than this dataset covers.
 Adding a tier means adding its specs to that map.
 
+**OVH is one file from two catalogs.** Besides the Public Cloud flavors, the
+fetcher reads OVH's VPS order catalog and adds the range OVH currently sells
+(the plans tagged `website:show`) as instances with `category: "vps"`. Their
+specs come from the catalog itself. The price is the monthly rate without
+commitment, not the 12-month "from" price on ovhcloud.com, and there is no
+hourly price because VPS are billed monthly. Older VPS generations still in
+the catalog and local-zone plans are skipped. VPS are not Public Cloud
+instances and cannot be Managed Kubernetes worker nodes, so anything that
+prices an OVH cluster has to leave `category: "vps"` out.
+
 **Component checks.** Besides `instances`, the gate inspects
 `control_plane_cost` and the `load_balancer`, `block_storage`,
 `object_storage` and `egress` blocks. Every numeric price-like field is

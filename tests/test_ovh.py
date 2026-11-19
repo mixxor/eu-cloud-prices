@@ -200,3 +200,118 @@ def test_micro_unit_conversion_with_divergent_rounding():
     assert inst["price_monthly"] == round(0.01234567 * 730, 2)
     # This should be 9.01, not 8.98, proving we derived from the unrounded value.
     assert inst["price_monthly"] == 9.01
+
+
+# --- VPS range (second catalog) ---
+
+from scripts.fetchers import common  # noqa: E402
+
+VPS_CATALOG = json.loads((Path(__file__).parent / "fixtures" / "ovh_vps_catalog.json").read_text())
+CLOUD_CATALOG = json.loads((Path(__file__).parent / "fixtures" / "ovh_catalog.json").read_text())
+
+
+def _vps_catalog(**plan_overrides):
+    """A deep copy of the recorded catalog with one plan's fields replaced."""
+    catalog = json.loads(json.dumps(VPS_CATALOG))
+    for plan in catalog["plans"]:
+        if plan["planCode"] in plan_overrides:
+            plan.update(plan_overrides[plan["planCode"]])
+    return catalog
+
+
+def test_vps_plans_on_sale_are_read_with_specs_from_the_catalog():
+    instances, unknown = ovh.parse_vps_plans(VPS_CATALOG)
+
+    assert [(i["id"], i["vcpu"], i["ram_gb"], i["disk_gb"], i["price_monthly"]) for i in instances] == [
+        ("vps-2027-model1", 2, 4, 40, 4.49),
+        ("vps-2027-model2", 4, 8, 75, 8.49),
+        ("vps-2027-model3", 6, 12, 100, 12.24),
+        ("vps-2027-model4", 8, 24, 200, 23.49),
+    ]
+    assert unknown == []
+
+
+def test_vps_price_is_the_month_without_commitment_not_the_12_month_from_price():
+    """ovhcloud.com advertises 'from 7.21' for VPS-2; that row needs a 12-month commitment."""
+    by_id = {i["id"]: i for i in ovh.parse_vps_plans(VPS_CATALOG)[0]}
+
+    assert by_id["vps-2027-model2"]["price_monthly"] == 8.49
+
+
+def test_vps_instances_are_marked_vps_and_carry_no_hourly_price():
+    for inst in ovh.parse_vps_plans(VPS_CATALOG)[0]:
+        assert inst["category"] == "vps"
+        assert inst["price_hourly"] is None
+        assert inst["currency"] == "EUR"
+        assert inst["architecture"] == "x86"
+        assert inst["disk_type"] == "nvme"
+
+
+def test_vps_local_zone_plans_are_excluded():
+    """vps-2027-model1.LZ is on sale too, but prices other hardware in other locations."""
+    ids = [i["id"] for i in ovh.parse_vps_plans(VPS_CATALOG)[0]]
+
+    assert "vps-2027-model1.LZ" in [p["planCode"] for p in VPS_CATALOG["plans"]]
+    assert not any(i.endswith(".LZ") for i in ids)
+
+
+def test_vps_generations_no_longer_on_sale_are_ignored_not_reported():
+    instances, unknown = ovh.parse_vps_plans(VPS_CATALOG)
+    seen = [i["id"] for i in instances] + unknown
+
+    assert "vps-2025-model1" not in seen
+    assert "vps-starter-1-2-20" not in seen
+
+
+def test_vps_plan_on_sale_without_specs_is_reported_not_guessed():
+    catalog = _vps_catalog()
+    catalog["products"] = [p for p in catalog["products"] if p["name"] != "vps-2027-model3"]
+
+    instances, unknown = ovh.parse_vps_plans(catalog)
+
+    assert "vps-2027-model3" not in [i["id"] for i in instances]
+    assert unknown == ["vps-2027-model3"]
+
+
+def test_vps_plan_without_a_no_commitment_price_is_reported_not_guessed():
+    committed_only = [p for p in VPS_CATALOG["plans"][1]["pricings"] if p["mode"] != "default"]
+    catalog = _vps_catalog(**{"vps-2027-model2": {"pricings": committed_only}})
+
+    instances, unknown = ovh.parse_vps_plans(catalog)
+
+    assert "vps-2027-model2" not in [i["id"] for i in instances]
+    assert unknown == ["vps-2027-model2"]
+
+
+def _ctx(tmp_path, vps_catalog):
+    def fake_get(url, *args, **kwargs):
+        return {ovh.BASE_URL: CLOUD_CATALOG, ovh.VPS_URL: vps_catalog}[url]
+
+    return common.Context(prices_dir=tmp_path, http_get_json=fake_get)
+
+
+def test_fetch_publishes_cloud_flavors_and_vps_in_one_file(tmp_path):
+    payload = ovh.fetch(_ctx(tmp_path, VPS_CATALOG))
+
+    categories = {i["id"]: i["category"] for i in payload["instances"]}
+    assert categories["vps-2027-model2"] == "vps"
+    assert any(c != "vps" for c in categories.values())
+    assert payload["vat_included"] is False
+    assert payload["provider"] == "ovh"
+
+
+def test_fetch_output_validates_against_the_schema(tmp_path):
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads((Path(__file__).parent.parent / "prices" / "schema.json").read_text())
+
+    jsonschema.validate(ovh.fetch(_ctx(tmp_path, VPS_CATALOG)), schema)
+
+
+def test_fetch_fails_when_no_vps_plan_is_on_sale(tmp_path):
+    """If OVH drops the tag or hides the range, the run must fail instead of publishing a file without VPS."""
+    catalog = _vps_catalog()
+    for plan in catalog["plans"]:
+        plan["blobs"]["tags"] = []
+
+    with pytest.raises(common.FetchError, match="VPS"):
+        ovh.fetch(_ctx(tmp_path, catalog))
