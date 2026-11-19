@@ -1,0 +1,1128 @@
+{
+  "catalogId": 9926,
+  "locale": {
+    "currencyCode": "EUR",
+    "subsidiary": "DE",
+    "taxRate": 19
+  },
+  "plans": [
+    {
+      "planCode": "vps-2027-model1",
+      "invoiceName": "VPS-1 2027",
+      "product": "vps-2027-model1",
+      "family": "vps-2025",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 449000000,
+          "tax": 85310000,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 12,
+          "description": "12 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 381000000,
+          "tax": 72390000,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 6,
+          "description": "6 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 426000000,
+          "tax": 80940000,
+          "mode": "upfront6"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "2027",
+          "range": "2027"
+        },
+        "tags": [
+          "order-funnel:show",
+          "website:show",
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    },
+    {
+      "planCode": "vps-2027-model2",
+      "invoiceName": "VPS-2 2027",
+      "product": "vps-2027-model2",
+      "family": "vps-2025",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 849000000,
+          "tax": 161310000,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 12,
+          "description": "12 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 721000000,
+          "tax": 136990000,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 6,
+          "description": "6 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 806000000,
+          "tax": 153140000,
+          "mode": "upfront6"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "2027",
+          "range": "2027"
+        },
+        "tags": [
+          "order-funnel:show",
+          "website:show",
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    },
+    {
+      "planCode": "vps-2027-model3",
+      "invoiceName": "VPS-3 2027",
+      "product": "vps-2027-model3",
+      "family": "vps-2025",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 1224000000,
+          "tax": 232560000,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 12,
+          "description": "12 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 1040000000,
+          "tax": 197600000,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 6,
+          "description": "6 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 1162000000,
+          "tax": 220780000,
+          "mode": "upfront6"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "2027",
+          "range": "2027"
+        },
+        "tags": [
+          "order-funnel:show",
+          "website:show",
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    },
+    {
+      "planCode": "vps-2027-model4",
+      "invoiceName": "VPS-4 2027",
+      "product": "vps-2027-model4",
+      "family": "vps-2025",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 2349000000,
+          "tax": 446310000,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 12,
+          "description": "12 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 1996000000,
+          "tax": 379240000,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 6,
+          "description": "6 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 2231000000,
+          "tax": 423890000,
+          "mode": "upfront6"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "2027",
+          "range": "2027"
+        },
+        "tags": [
+          "order-funnel:show",
+          "website:show",
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    },
+    {
+      "planCode": "vps-2027-model1.LZ",
+      "invoiceName": "VPS-1 LZ 2027",
+      "product": "vps-2027-model1-lz",
+      "family": "vps-2025-lz",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 549000000,
+          "tax": 104310000,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 12,
+          "description": "12 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 466000000,
+          "tax": 88540000,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 6,
+          "description": "6 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 521000000,
+          "tax": 98990000,
+          "mode": "upfront6"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "2027",
+          "range": "2027",
+          "brickSubtype": "vps-2027-LZ"
+        },
+        "tags": [
+          "order-funnel:show",
+          "website:show",
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    },
+    {
+      "planCode": "vps-2025-model1",
+      "invoiceName": "VPS-1 2026",
+      "product": "vps-2025-model1",
+      "family": "vps-2025",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 649000000,
+          "tax": 123310000,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 12,
+          "description": "12 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 552000000,
+          "tax": 104880000,
+          "mode": "upfront12"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "upfront6"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 6,
+          "description": "6 months fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 617000000,
+          "tax": 117230000,
+          "mode": "upfront6"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "2025",
+          "range": "2025"
+        },
+        "tags": [
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    },
+    {
+      "planCode": "vps-starter-1-2-20",
+      "invoiceName": "VPS Starter 1-2-20",
+      "product": "vps-starter-1-2-20",
+      "family": "vps",
+      "pricingType": "rental",
+      "pricings": [
+        {
+          "phase": 0,
+          "capacities": [
+            "installation"
+          ],
+          "commitment": 0,
+          "description": "Installation fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 0,
+          "capacities": [
+            "upgrade"
+          ],
+          "commitment": 0,
+          "description": "Upgrade fees",
+          "interval": 0,
+          "intervalUnit": "none",
+          "price": 0,
+          "tax": 0,
+          "mode": "default"
+        },
+        {
+          "phase": 1,
+          "capacities": [
+            "renew"
+          ],
+          "commitment": 0,
+          "description": "Monthly fees",
+          "interval": 1,
+          "intervalUnit": "month",
+          "price": 352000000,
+          "tax": 66880000,
+          "mode": "default"
+        }
+      ],
+      "blobs": {
+        "commercial": {
+          "line": "Starter",
+          "range": "Starter"
+        },
+        "tags": [
+          "os:distribution-only",
+          "os:distribution-with-application"
+        ]
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "vps-2027-model1",
+      "description": "VPS 2 vCPU 4 GB RAM 40 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": " ",
+            "cores": 2,
+            "model": " "
+          },
+          "memory": {
+            "size": 4
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 40,
+                "interface": "NVMe",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 500,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    },
+    {
+      "name": "vps-2027-model2",
+      "description": "VPS 4 vCPU 8 GB RAM 75 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": " ",
+            "cores": 4,
+            "model": " "
+          },
+          "memory": {
+            "size": 8
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 75,
+                "interface": "NVMe",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 1000,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    },
+    {
+      "name": "vps-2027-model3",
+      "description": "VPS 6 vCPU 12 GB RAM 100 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": " ",
+            "cores": 6,
+            "model": " "
+          },
+          "memory": {
+            "size": 12
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 100,
+                "interface": "NVMe",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 2000,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    },
+    {
+      "name": "vps-2027-model4",
+      "description": "VPS 8 vCPU 24 GB RAM 200 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": " ",
+            "cores": 8,
+            "model": " "
+          },
+          "memory": {
+            "size": 24
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 200,
+                "interface": "NVMe",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 3000,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    },
+    {
+      "name": "vps-2027-model1-lz",
+      "description": "VPS 2 vCPU 4 GB RAM 40 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": " ",
+            "cores": 2,
+            "model": " "
+          },
+          "memory": {
+            "size": 4
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 40,
+                "interface": "NVMe",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 500,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    },
+    {
+      "name": "vps-2025-model1",
+      "description": "VPS 4 vCPU 8 GB RAM 75 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": " ",
+            "cores": 4,
+            "model": " "
+          },
+          "memory": {
+            "size": 8
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 75,
+                "interface": "NVMe",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 400,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    },
+    {
+      "name": "vps-starter-1-2-20",
+      "description": "VPS Starter 1 vCPU 2 GB RAM 20 GB disk",
+      "blobs": {
+        "technical": {
+          "cpu": {
+            "type": "vCore",
+            "brand": "Intel",
+            "cores": 1,
+            "model": "Xeon"
+          },
+          "memory": {
+            "size": 2
+          },
+          "storage": {
+            "disks": [
+              {
+                "capacity": 20,
+                "interface": "SATA",
+                "technology": "SSD"
+              }
+            ]
+          },
+          "bandwidth": {
+            "level": 100,
+            "unlimited": true
+          },
+          "virtualization": {
+            "hypervisor": "KVM OpenStack"
+          }
+        }
+      }
+    }
+  ]
+}
