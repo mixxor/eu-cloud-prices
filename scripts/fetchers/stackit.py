@@ -8,7 +8,7 @@ from typing import Any
 
 from . import common
 
-BASE_URL = "https://pim.api.stackit.cloud/v3alpha1/skus"
+BASE_URL = "https://pim.api.stackit.cloud/v3beta1/skus"
 PAGE_SIZE = 100
 #: Safety net: the API returns ~8 pages of 100 for eu01 (Oct 2026).
 MAX_PAGES = 200
@@ -155,7 +155,7 @@ def parse_skus(skus: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], float 
 
 
 def fetch(ctx: common.Context, region: str = DEFAULT_REGION) -> dict[str, Any]:
-    """Fetch all pages from STACKIT PIM v3alpha1 endpoint and return price file payload."""
+    """Fetch all pages from STACKIT PIM v3beta1 endpoint and return price file payload."""
     all_skus: list[dict[str, Any]] = []
     cursor: str | None = None
 

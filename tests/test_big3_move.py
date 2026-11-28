@@ -178,6 +178,31 @@ def test_aws_fetch_end_to_end_shape():
     assert payload["fx"]["rates"]["USD"] == 1.1534
 
 
+def test_aws_graviton_families_are_arm64_without_being_listed():
+    """The feed carries no processor field, so architecture comes from the
+    family name. A hand-kept list of Graviton families went stale: c9g, m9g
+    and r9g shipped as x86, and t9g was about to (PR #78). The ``g`` variant
+    is what marks Graviton, whatever the generation.
+    """
+    def row(itype):
+        return {"price": "0.10", "Instance Type": itype, "vCPU": "2", "Memory": "4 GiB"}
+
+    types = ["t9g.micro", "m9g.large", "c9g.large", "r9g.large", "t4g.micro",
+             "t3.micro", "t3a.micro", "m7i.large", "c8a.large", "c8i-flex.large"]
+    payload = {"regions": {"EU (Frankfurt)": {t: row(t) for t in types}}}
+    ctx = common.Context(prices_dir=PRICES, fx=_BASELINE_RATES,
+                         http_get_json=lambda url, *a, **kw: payload)
+
+    arch = {i["id"]: i["architecture"] for i in aws.fetch(ctx)["instances"]}
+
+    assert arch == {
+        "t9g.micro": "arm64", "m9g.large": "arm64", "c9g.large": "arm64",
+        "r9g.large": "arm64", "t4g.micro": "arm64",
+        "t3.micro": "x86", "t3a.micro": "x86", "m7i.large": "x86",
+        "c8a.large": "x86", "c8i-flex.large": "x86",
+    }
+
+
 def test_gcp_fetch_end_to_end_shape(_gcp_small):
     ctx = common.Context(prices_dir=PRICES, fx=_BASELINE_RATES, http_get_text=_gcp_stub)
     payload = gcp.fetch(ctx)

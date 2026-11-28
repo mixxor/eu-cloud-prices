@@ -1,9 +1,9 @@
 {
   "provider": "stackit",
   "provider_name": "STACKIT (Schwarz Group)",
-  "fetched_at": "2026-11-06T19:52:29Z",
+  "fetched_at": "2026-11-28T12:19:25Z",
   "vat_included": false,
-  "source": "https://pim.api.stackit.cloud/v3alpha1/skus",
+  "source": "https://pim.api.stackit.cloud/v3beta1/skus",
   "manual": false,
   "control_plane_cost": 71.71,
   "billing_model": {
@@ -3215,5 +3215,5 @@
     "api_docs": "https://docs.api.eu01.stackit.cloud/",
     "machine_types": "https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html"
   },
-  "source_url": "https://pim.api.stackit.cloud/v3alpha1/skus"
+  "source_url": "https://pim.api.stackit.cloud/v3beta1/skus"
 }

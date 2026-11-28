@@ -190,6 +190,9 @@ def test_pagination_handling():
     assert mock_ctx.http_get_json.call_count == 2
     first_url = mock_ctx.http_get_json.call_args_list[0].args[0]
     second_url = mock_ctx.http_get_json.call_args_list[1].args[0]
+    # issue #81: v3alpha1 was retired (404) in Nov 2026; v3beta1 serves the
+    # same SKU shape.
+    assert first_url.startswith("https://pim.api.stackit.cloud/v3beta1/skus?")
     # issue #53: the API only honours page_size/page_token
     assert "page_size=100" in first_url and "page_token" not in first_url
     assert "page_token=cursor-token-page2" in second_url
