@@ -51,6 +51,20 @@ def _aws_parse_family(family: str):
     return m.group(1), int(m.group(2)), (m.group(3) or "")
 
 
+def _aws_architecture(family: str) -> str:
+    """The price feed has no processor field; the family name is all there is.
+
+    For c/m/r/t the ``g`` variant marks Graviton in every generation, so new
+    ones (c9g, m9g, r9g, t9g) need no entry in ``_AWS_ARM_FAMILIES``.
+    """
+    if family in _AWS_ARM_FAMILIES:
+        return "arm64"
+    parsed = _aws_parse_family(family)
+    if parsed is not None and parsed[2].startswith("g"):
+        return "arm64"
+    return "x86"
+
+
 def _aws_keep_families(all_families: set[str]) -> set[str]:
     """All gen >= 6 (or >=3 for t) c/m/r/t families with clean variants only.
 
@@ -127,7 +141,7 @@ def _scrape_aws(ctx: common.Context, rate: float) -> dict:
         except (ValueError, AttributeError):
             ram_gb = 0.0
 
-        arch = "arm64" if family in _AWS_ARM_FAMILIES else "x86"
+        arch = _aws_architecture(family)
 
         instances.append({
             "id": itype,
