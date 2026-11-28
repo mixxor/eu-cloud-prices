@@ -1,6 +1,6 @@
 {
   "provider": "azure",
-  "fetched_at": "2026-11-13T20:21:18Z",
+  "fetched_at": "2026-11-28T12:34:39Z",
   "source_url": "https://prices.azure.com/api/retail/prices",
   "source_region": "westeurope",
   "manual": false,
@@ -704,6 +704,40 @@
       "version": "_v2"
     },
     {
+      "id": "D1pls_v7",
+      "name": "D1pls_v7",
+      "vcpu": 1,
+      "ram_gb": 2.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.0556,
+      "price_monthly": 40.56,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
+      "id": "D1ps_v7",
+      "name": "D1ps_v7",
+      "vcpu": 1,
+      "ram_gb": 4.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.0628,
+      "price_monthly": 45.87,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D2pls_v6",
       "name": "D2pls_v6",
       "vcpu": 2,
@@ -787,6 +821,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D2pls_v7",
+      "name": "D2pls_v7",
+      "vcpu": 2,
+      "ram_gb": 4.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.1113,
+      "price_monthly": 81.26,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D2ps_v6",
@@ -959,6 +1010,23 @@
       "version": "_v6"
     },
     {
+      "id": "D2ps_v7",
+      "name": "D2ps_v7",
+      "vcpu": 2,
+      "ram_gb": 8.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.1257,
+      "price_monthly": 91.75,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D4pls_v6",
       "name": "D4pls_v6",
       "vcpu": 4,
@@ -1042,6 +1110,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D4pls_v7",
+      "name": "D4pls_v7",
+      "vcpu": 4,
+      "ram_gb": 8.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.2226,
+      "price_monthly": 162.52,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D4ps_v6",
@@ -1214,6 +1299,23 @@
       "version": "_v6"
     },
     {
+      "id": "D4ps_v7",
+      "name": "D4ps_v7",
+      "vcpu": 4,
+      "ram_gb": 16.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.2514,
+      "price_monthly": 183.49,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D8pls_v6",
       "name": "D8pls_v6",
       "vcpu": 8,
@@ -1297,6 +1399,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D8pls_v7",
+      "name": "D8pls_v7",
+      "vcpu": 8,
+      "ram_gb": 16.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.4453,
+      "price_monthly": 325.04,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D8ps_v6",
@@ -1469,6 +1588,23 @@
       "version": "_v6"
     },
     {
+      "id": "D8ps_v7",
+      "name": "D8ps_v7",
+      "vcpu": 8,
+      "ram_gb": 32.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.5027,
+      "price_monthly": 366.98,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D16pls_v6",
       "name": "D16pls_v6",
       "vcpu": 16,
@@ -1552,6 +1688,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D16pls_v7",
+      "name": "D16pls_v7",
+      "vcpu": 16,
+      "ram_gb": 32.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.8896,
+      "price_monthly": 649.43,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D16ps_v6",
@@ -1724,6 +1877,23 @@
       "version": "_v6"
     },
     {
+      "id": "D16ps_v7",
+      "name": "D16ps_v7",
+      "vcpu": 16,
+      "ram_gb": 64.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 1.0045,
+      "price_monthly": 733.31,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D32pls_v6",
       "name": "D32pls_v6",
       "vcpu": 32,
@@ -1807,6 +1977,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D32pls_v7",
+      "name": "D32pls_v7",
+      "vcpu": 32,
+      "ram_gb": 64.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 1.7793,
+      "price_monthly": 1298.86,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D32ps_v6",
@@ -1979,6 +2166,23 @@
       "version": "_v6"
     },
     {
+      "id": "D32ps_v7",
+      "name": "D32ps_v7",
+      "vcpu": 32,
+      "ram_gb": 128.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 2.01,
+      "price_monthly": 1467.27,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D48pls_v6",
       "name": "D48pls_v6",
       "vcpu": 48,
@@ -2062,6 +2266,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D48pls_v7",
+      "name": "D48pls_v7",
+      "vcpu": 48,
+      "ram_gb": 96.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 2.6698,
+      "price_monthly": 1948.94,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D48ps_v6",
@@ -2234,6 +2455,23 @@
       "version": "_v6"
     },
     {
+      "id": "D48ps_v7",
+      "name": "D48ps_v7",
+      "vcpu": 48,
+      "ram_gb": 192.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 3.0145,
+      "price_monthly": 2200.58,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D64pls_v6",
       "name": "D64pls_v6",
       "vcpu": 64,
@@ -2317,6 +2555,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D64pls_v7",
+      "name": "D64pls_v7",
+      "vcpu": 64,
+      "ram_gb": 128.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 3.5594,
+      "price_monthly": 2598.37,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D64ps_v6",
@@ -2489,6 +2744,23 @@
       "version": "_v6"
     },
     {
+      "id": "D64ps_v7",
+      "name": "D64ps_v7",
+      "vcpu": 64,
+      "ram_gb": 256.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 4.019,
+      "price_monthly": 2933.89,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D96pls_v6",
       "name": "D96pls_v6",
       "vcpu": 96,
@@ -2572,6 +2844,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D96pls_v7",
+      "name": "D96pls_v7",
+      "vcpu": 96,
+      "ram_gb": 192.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 5.3387,
+      "price_monthly": 3897.22,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D96ps_v6",
@@ -2676,6 +2965,23 @@
       "version": "_v6"
     },
     {
+      "id": "D96ps_v7",
+      "name": "D96ps_v7",
+      "vcpu": 96,
+      "ram_gb": 384.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 6.029,
+      "price_monthly": 4401.17,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D128als_v7",
       "name": "D128als_v7",
       "vcpu": 128,
@@ -2710,6 +3016,23 @@
       "version": "_v6"
     },
     {
+      "id": "D128pls_v7",
+      "name": "D128pls_v7",
+      "vcpu": 128,
+      "ram_gb": 256.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 7.1179,
+      "price_monthly": 5196.08,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "D128as_v7",
       "name": "D128as_v7",
       "vcpu": 128,
@@ -2742,6 +3065,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "D128ps_v7",
+      "name": "D128ps_v7",
+      "vcpu": 128,
+      "ram_gb": 512.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 8.0381,
+      "price_monthly": 5867.79,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "general",
+      "family": "D",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "D160als_v7",
@@ -2793,6 +3133,23 @@
       "family": "D",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "E1ps_v7",
+      "name": "E1ps_v7",
+      "vcpu": 1,
+      "ram_gb": 8.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.0824,
+      "price_monthly": 60.16,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "E2ps_v6",
@@ -2997,6 +3354,23 @@
       "family": "E",
       "is_amd": false,
       "version": "_v3"
+    },
+    {
+      "id": "E2ps_v7",
+      "name": "E2ps_v7",
+      "vcpu": 2,
+      "ram_gb": 16.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.1652,
+      "price_monthly": 120.58,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "E4-2as_v7",
@@ -3456,6 +3830,23 @@
       "family": "E",
       "is_amd": false,
       "version": "_v3"
+    },
+    {
+      "id": "E4ps_v7",
+      "name": "E4ps_v7",
+      "vcpu": 4,
+      "ram_gb": 32.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.3295,
+      "price_monthly": 240.5,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "E4as_v5",
@@ -3951,6 +4342,23 @@
       "version": "_v3"
     },
     {
+      "id": "E8ps_v7",
+      "name": "E8ps_v7",
+      "vcpu": 8,
+      "ram_gb": 64.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 0.6598,
+      "price_monthly": 481.66,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "E16-8as_v7",
       "name": "E16-8as_v7",
       "vcpu": 8,
@@ -4425,6 +4833,23 @@
       "family": "E",
       "is_amd": false,
       "version": "_v3"
+    },
+    {
+      "id": "E16ps_v7",
+      "name": "E16ps_v7",
+      "vcpu": 16,
+      "ram_gb": 128.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 1.3187,
+      "price_monthly": 962.67,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "E32-16as_v7",
@@ -5158,6 +5583,23 @@
       "version": "_v3"
     },
     {
+      "id": "E32ps_v7",
+      "name": "E32ps_v7",
+      "vcpu": 32,
+      "ram_gb": 256.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 2.6375,
+      "price_monthly": 1925.35,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "E32as_v5",
       "name": "E32as_v5",
       "vcpu": 32,
@@ -5583,6 +6025,23 @@
       "version": "_v6"
     },
     {
+      "id": "E48ps_v7",
+      "name": "E48ps_v7",
+      "vcpu": 48,
+      "ram_gb": 384.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 3.9562,
+      "price_monthly": 2888.02,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "E96-48s_v5",
       "name": "E96-48s_v5",
       "vcpu": 48,
@@ -5940,6 +6399,23 @@
       "version": "_v6"
     },
     {
+      "id": "E64ps_v7",
+      "name": "E64ps_v7",
+      "vcpu": 64,
+      "ram_gb": 512.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 5.2749,
+      "price_monthly": 3850.69,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "E64as_v5",
       "name": "E64as_v5",
       "vcpu": 64,
@@ -6195,6 +6671,23 @@
       "version": "_v6"
     },
     {
+      "id": "E96ps_v7",
+      "name": "E96ps_v7",
+      "vcpu": 96,
+      "ram_gb": 768.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 7.9133,
+      "price_monthly": 5776.7,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
+    },
+    {
       "id": "E96-24ds_v6",
       "name": "E96-24ds_v6",
       "vcpu": 96,
@@ -6261,6 +6754,23 @@
       "family": "E",
       "is_amd": false,
       "version": "_v6"
+    },
+    {
+      "id": "E128ps_v7",
+      "name": "E128ps_v7",
+      "vcpu": 128,
+      "ram_gb": 1024.0,
+      "disk_gb": 0,
+      "disk_type": "managed-ssd",
+      "price_hourly": 10.5507,
+      "price_monthly": 7702.04,
+      "currency": "EUR",
+      "architecture": "arm64",
+      "location": "westeurope",
+      "category": "memory",
+      "family": "E",
+      "is_amd": false,
+      "version": "_v7"
     },
     {
       "id": "E160as_v7",
